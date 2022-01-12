@@ -9,22 +9,25 @@ type Props = {
   exists: boolean
   project: string
   page: string
+  json: { links: string[]; relatedPages: string[] }
 }
 
 export const getStaticProps: GetStaticProps<Props> = async ctx => {
   const project = encodeURIComponent(ctx.params.project as string)
   const page = encodeURIComponent(ctx.params.page as string)
-  const url = `https://scrapbox.io/api/pages/${project}/${page}/text`
+  const url = `https://scrapbox.io/api/pages/${project}/${page}`
   const response = await fetch(url)
-  const content: string = await response.text()
+  const json = await response.json()
+  const text = json.lines.map(line => line.text).join('\n')
 
   return {
     props: {
       date: Date.now(),
-      content: parse(content),
+      content: parse(text),
       exists: response.ok,
       project: ctx.params.project as string,
       page: ctx.params.page as string,
+      json: json,
     },
     revalidate: 30,
   }
@@ -68,6 +71,8 @@ const View = (props: Props) => {
       <Title {...props} />
       generated at <time>{new Date(props.date).toLocaleString()}</time>
       <Page blocks={props.content} />
+      <p>{JSON.stringify(props.json.links)}</p>
+      <p>{JSON.stringify(props.json.relatedPages)}</p>
     </>
   )
 }
