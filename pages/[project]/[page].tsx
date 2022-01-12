@@ -69,7 +69,13 @@ const View = (props: Props) => {
   return (
     <>
       <Title {...props} />
-      generated at <time>{new Date(props.date).toLocaleString()}</time>
+      generated at <time>{new Date(props.date).toLocaleString()}</time> |{' '}
+      <a
+        href={`https://scrapbox.io/${props.project}/${props.page}`}
+        target="_blank"
+      >
+        [Scrapbox]
+      </a>
       <Page blocks={props.content} />
       <p>{JSON.stringify(props.json.links)}</p>
       <p>{JSON.stringify(props.json.relatedPages)}</p>
