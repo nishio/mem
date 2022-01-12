@@ -9,7 +9,10 @@ type Props = {
   exists: boolean
   project: string
   page: string
-  json: { links: string[]; relatedPages: string[] }
+  json: {
+    links: string[]
+    relatedPages: { links2hop: { title: string; linksLc: string }[] }
+  }
 }
 
 export const getStaticProps: GetStaticProps<Props> = async ctx => {
@@ -65,7 +68,21 @@ const View = (props: Props) => {
         This is an empty page
       </>
     )
-
+  const to_link = s => <a href={`/${props.project}/${s}`}>[{s}]</a>
+  const links = props.json.links.map(to_link)
+  const two_hops = {}
+  props.json.relatedPages.links2hop.forEach(x => {
+    if (two_hops[x.linksLc] === undefined) {
+      two_hops[x.linksLc] = [x.title]
+    } else {
+      two_hops[x.linksLc].push(x.title)
+    }
+  })
+  const two_hop_links = Object.keys(two_hops).map(key => (
+    <p>
+      {key}: {two_hops[key].map(to_link)}
+    </p>
+  ))
   return (
     <>
       <Title {...props} />
@@ -77,8 +94,8 @@ const View = (props: Props) => {
         [Scrapbox]
       </a>
       <Page blocks={props.content} />
-      <p>{JSON.stringify(props.json.links)}</p>
-      <p>{JSON.stringify(props.json.relatedPages)}</p>
+      <p>Links: {links}</p>
+      <p>{two_hop_links}</p>
     </>
   )
 }
