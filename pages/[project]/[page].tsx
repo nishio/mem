@@ -11,7 +11,10 @@ type Props = {
   page: string
   json: {
     links: string[]
-    relatedPages: { links2hop: { title: string; linksLc: string }[] }
+    relatedPages: {
+      links1hop: { title: string; titleLc: string }[]
+      links2hop: { title: string; linksLc: string }[]
+    }
   }
 }
 
@@ -78,10 +81,21 @@ const View = (props: Props) => {
       two_hops[x.linksLc].push(x.title)
     }
   })
+  const lc_to_title = {}
+  props.json.relatedPages.links1hop.forEach(x => {
+    lc_to_title[x.titleLc] = x.title
+  })
+
+  const intermediate_page = key => {
+    if (lc_to_title[key] !== undefined) {
+      return to_link(lc_to_title[key])
+    }
+    return key
+  }
   const two_hop_links = Object.keys(two_hops).map(key => (
-    <p>
-      {key}: {two_hops[key].map(to_link)}
-    </p>
+    <li>
+      → {intermediate_page(key)} → {two_hops[key].map(to_link)}
+    </li>
   ))
   return (
     <>
@@ -94,8 +108,15 @@ const View = (props: Props) => {
         [Scrapbox]
       </a>
       <Page blocks={props.content} />
-      <p>Links: {links}</p>
-      <p>{two_hop_links}</p>
+      <div>
+        <h3>Related Pages</h3>
+        <p>Direct Links: {links}</p>
+        <div>
+          <p>2-hop links</p>
+          <ul>{two_hop_links}</ul>
+        </div>
+      </div>
+      {JSON.stringify(props.json.relatedPages)}
     </>
   )
 }
