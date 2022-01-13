@@ -113,13 +113,13 @@ const View = (props: Props) => {
         two_hops[x.linksLc].push(x.title)
       }
     })
-    Object.keys(two_hops).forEach(key => {
-      two_hops_links.push(
-        <li>
-          → {intermediate_page(key)} → {two_hops[key].map(to_link)}
-        </li>,
-      )
-    })
+  })
+  Object.keys(two_hops).forEach(key => {
+    two_hops_links.push(
+      <li>
+        → {intermediate_page(key)} → {two_hops[key].map(to_link)}
+      </li>,
+    )
   })
 
   return (
