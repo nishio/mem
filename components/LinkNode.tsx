@@ -16,7 +16,9 @@ export const LinkNode = (props: LinkNodeType) => {
 const InternalLink = (props: LinkNodeType) => {
   const { project } = useRouter().query
   const href =
-    props.pathType === 'relative' ? `/${project}/${props.href}` : props.href
+    props.pathType === 'relative'
+      ? `/${project ?? 'en'}/${props.href}`
+      : props.href
 
   return (
     <Link href="/[project]/[page]" as={href.replace(' ', '_')}>
