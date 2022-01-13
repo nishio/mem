@@ -36,6 +36,9 @@ const Title = (props: TitleType) => (
 
 const CodeBlock = (props: CodeBlockType) => {
   const { project, page } = useRouter().query
+  if (props.fileName === 'on_scrapbox') {
+    return null
+  }
   const path = `https://scrapbox.io/api/code/${project}/${page}/${props.fileName}`
 
   return (
