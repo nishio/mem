@@ -19,7 +19,7 @@ const InternalLink = (props: LinkNodeType) => {
     props.pathType === 'relative' ? `/${project}/${props.href}` : props.href
 
   return (
-    <Link href="/[project]/[page]" as={href}>
+    <Link href="/[project]/[page]" as={href.replace(' ', '_')}>
       <a className="page-link">{props.href}</a>
     </Link>
   )
