@@ -9,16 +9,22 @@ import {
 import { useRouter } from 'next/router'
 import { Node } from './Node'
 
-export const Block = (props: BlockType) => {
-  switch (props.type) {
+type Props = {
+  block: BlockType
+  hide_title: boolean
+}
+export const Block = (props: Props) => {
+  const { block, hide_title } = props
+  switch (block.type) {
     case 'title':
-      return <Title {...props} />
+      if (hide_title) return null
+      return <Title {...block} />
     case 'codeBlock':
-      return <CodeBlock {...props} />
+      return <CodeBlock {...block} />
     case 'table':
-      return <Table {...props} />
+      return <Table {...block} />
     case 'line':
-      return <Line {...props} />
+      return <Line {...block} />
   }
 }
 

@@ -113,7 +113,7 @@ const View = (props: Props) => {
       >
         [Scrapbox]
       </a>
-      <Page blocks={props.content} />
+      <Page blocks={props.content} hide_title={false} />
       <div>
         <h3>Related Pages</h3>
         <p>Direct Links: {links}</p>
