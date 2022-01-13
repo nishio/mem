@@ -2,6 +2,7 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import { parse, Page as PageType } from '@progfay/scrapbox-parser'
 import { Page } from '../../components/Page'
+import Link from 'next/link'
 
 type Props = {
   date: number
@@ -71,7 +72,12 @@ const View = (props: Props) => {
         This is an empty page
       </>
     )
-  const to_link = s => <a href={`/${props.project}/${s}`}>[{s}]</a>
+  const to_link = s => (
+    <Link href={`/${props.project}/${s}`}>
+      <a>[{s}]</a>
+    </Link>
+  )
+
   const links = props.json.links.map(to_link)
   const two_hops = {}
   props.json.relatedPages.links2hop.forEach(x => {
