@@ -72,13 +72,19 @@ const View = (props: Props) => {
         This is an empty page
       </>
     )
-  const to_link = s => (
-    <Link href={`/${props.project}/${s}`}>
-      <a>[{s}]</a>
+  const to_link = (title, titleLc) => (
+    <Link href={`/${props.project}/${titleLc}`}>
+      <a style={{ marginRight: '1em' }}>[{title}]</a>
     </Link>
   )
 
-  const links = props.json.links.map(to_link)
+  const links = []
+  const lc_to_title = {}
+  props.json.relatedPages.links1hop.forEach(x => {
+    lc_to_title[x.titleLc] = x.title
+    links.push(to_link(x.title, x.titleLc))
+  })
+
   const two_hops = {}
   props.json.relatedPages.links2hop.forEach(x => {
     if (two_hops[x.linksLc] === undefined) {
@@ -87,14 +93,10 @@ const View = (props: Props) => {
       two_hops[x.linksLc].push(x.title)
     }
   })
-  const lc_to_title = {}
-  props.json.relatedPages.links1hop.forEach(x => {
-    lc_to_title[x.titleLc] = x.title
-  })
 
   const intermediate_page = key => {
     if (lc_to_title[key] !== undefined) {
-      return to_link(lc_to_title[key])
+      return to_link(lc_to_title[key], key)
     }
     return key
   }
