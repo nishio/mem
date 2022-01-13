@@ -122,7 +122,6 @@ const View = (props: Props) => {
           <ul>{two_hop_links}</ul>
         </div>
       </div>
-      {JSON.stringify(props.json.relatedPages)}
     </>
   )
 }
