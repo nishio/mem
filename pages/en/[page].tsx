@@ -133,12 +133,30 @@ const View = (props: Props) => {
         [Scrapbox]
       </a> */}
       {props.en.exists ? (
-        <Page blocks={props.en.content} hide_title={false} />
+        <div style={{ borderTop: '#888 solid 1px' }}>
+          from{' '}
+          <a
+            href={`https://scrapbox.io/intellitech-en/${props.en.page}`}
+            target="_blank"
+          >
+            Scrapbox(intellitech-en)
+          </a>
+          <Page blocks={props.en.content} hide_title={false} />
+        </div>
       ) : null}
       {props.ja.exists ? (
-        <Page blocks={props.ja.content} hide_title={false} />
+        <div style={{ borderTop: '#888 solid 1px' }}>
+          from{' '}
+          <a
+            href={`https://scrapbox.io/nishio/${props.ja.page}`}
+            target="_blank"
+          >
+            Scrapbox(nishio)
+          </a>
+          <Page blocks={props.ja.content} hide_title={false} />
+        </div>
       ) : null}
-      <div>
+      <div style={{ borderTop: '#888 solid 1px' }}>
         <h3>Related Pages</h3>
         <p>Direct Links: {links}</p>
         <div>
