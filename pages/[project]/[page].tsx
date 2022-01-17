@@ -2,7 +2,7 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import { parse, Page as PageType } from '@progfay/scrapbox-parser'
 import { Page } from '../../components/Page'
-import Link from 'next/link'
+import { generate_links } from '../../utils/generate_links'
 
 type Props = {
   date: number
@@ -72,39 +72,8 @@ const View = (props: Props) => {
         This is an empty page
       </>
     )
-  const to_link = (title, titleLc) => (
-    <Link href={`/${props.project}/${titleLc}`}>
-      <a style={{ marginRight: '1em' }}>[{title}]</a>
-    </Link>
-  )
 
-  const links = []
-  const lc_to_title = {}
-  props.json.relatedPages.links1hop.forEach(x => {
-    lc_to_title[x.titleLc] = x.title
-    links.push(to_link(x.title, x.titleLc))
-  })
-
-  const two_hops = {}
-  props.json.relatedPages.links2hop.forEach(x => {
-    if (two_hops[x.linksLc] === undefined) {
-      two_hops[x.linksLc] = [x.title]
-    } else {
-      two_hops[x.linksLc].push(x.title)
-    }
-  })
-
-  const intermediate_page = key => {
-    if (lc_to_title[key] !== undefined) {
-      return to_link(lc_to_title[key], key)
-    }
-    return key
-  }
-  const two_hop_links = Object.keys(two_hops).map(key => (
-    <li>
-      → {intermediate_page(key)} → {two_hops[key].map(to_link)}
-    </li>
-  ))
+  const { links, two_hops_links } = generate_links([props])
   return (
     <>
       <Title {...props} />
@@ -121,7 +90,7 @@ const View = (props: Props) => {
         <p>Direct Links: {links}</p>
         <div>
           <p>2-hop links</p>
-          <ul>{two_hop_links}</ul>
+          <ul>{two_hops_links}</ul>
         </div>
       </div>
     </>

@@ -2,7 +2,7 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import { parse, Page as PageType } from '@progfay/scrapbox-parser'
 import { Page } from '../../components/Page'
-import Link from 'next/link'
+import { generate_links } from '../../utils/generate_links'
 
 type TDataFromScrapbox = {
   content: PageType
@@ -13,7 +13,7 @@ type TDataFromScrapbox = {
     links: string[]
     relatedPages: {
       links1hop: { title: string; titleLc: string }[]
-      links2hop: { title: string; linksLc: string }[]
+      links2hop: { title: string; titleLc: string; linksLc: string }[]
     }
   }
 }
@@ -83,44 +83,8 @@ const View = (props: Props) => {
       </>
     )
 
-  const to_link = (title, titleLc) => (
-    <Link href={`/en/${titleLc}`}>
-      <a style={{ marginRight: '1em' }}>[{title}]</a>
-    </Link>
-  )
-  const intermediate_page = key => {
-    if (lc_to_title[key] !== undefined) {
-      return to_link(lc_to_title[key], key)
-    }
-    return key
-  }
-
-  const links = []
-  const lc_to_title = {}
-  const two_hops = {}
-  const two_hops_links = []
   const projects = [props.en, props.ja]
-  projects.forEach(props => {
-    if (!props.exists) return
-    props.json.relatedPages.links1hop.forEach(x => {
-      lc_to_title[x.titleLc] = x.title
-      links.push(to_link(x.title, x.titleLc))
-    })
-    props.json.relatedPages.links2hop.forEach(x => {
-      if (two_hops[x.linksLc] === undefined) {
-        two_hops[x.linksLc] = [x.title]
-      } else {
-        two_hops[x.linksLc].push(x.title)
-      }
-    })
-  })
-  Object.keys(two_hops).forEach(key => {
-    two_hops_links.push(
-      <li key={key}>
-        → {intermediate_page(key)} → {two_hops[key].map(to_link)}
-      </li>,
-    )
-  })
+  const { links, two_hops_links } = generate_links(projects)
 
   return (
     <>
