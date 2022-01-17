@@ -67,7 +67,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const Title = (props: Props) => (
   <Head>
     <title>
-      {!props.en
+      {!props.date
         ? 'Loading... - Scrapbox Reader'
         : `${props.en.page} - Scrapbox Reader`}
     </title>
@@ -75,10 +75,10 @@ const Title = (props: Props) => (
 )
 
 const View = (props: Props) => {
-  if (!props.en && !props.ja)
+  if (!props.date)
     return (
       <>
-        {/* <Title {...props} /> */}
+        <Title {...props} />
         loading...
       </>
     )
