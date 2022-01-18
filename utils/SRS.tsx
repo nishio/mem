@@ -40,8 +40,8 @@ export const get_SRS = (props: Props) => {
     if (updated === 0) return
     const diff = now - updated * 1000
     const p = { ...page }
-    sections.forEach(section => {
-      p[section.title] = section.score(diff)
+    sections.forEach(sction => {
+      p[sction.title] = sction.score(diff)
     })
     scored_pages.push(p)
   })
@@ -55,7 +55,6 @@ export const get_SRS = (props: Props) => {
     lines.push(section.title)
     scored_pages.sort((a, b) => a[section.title] - b[section.title])
     scored_pages.slice(0, LINE_PER_SECTION).forEach(page => {
-      if (page[section.title] > year / 2) return
       const title = page['title']
       const date = strftime(new Date(page.updated * 1000))
       lines.push(` ${date} [${title}]`)
