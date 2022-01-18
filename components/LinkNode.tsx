@@ -15,13 +15,21 @@ export const LinkNode = (props: LinkNodeType) => {
 
 const InternalLink = (props: LinkNodeType) => {
   const { project } = useRouter().query
-  const href =
-    props.pathType === 'relative'
-      ? `/${project ?? 'en'}/${props.href}`
-      : props.href
+
+  let url = props.href // suspicious code
+  // props.href should be properly encoded
+  // e.g. `foo/bar` -> `foo%2Fbar`
+  // but `foo bar` ->  `foo_bar`, not `foo%20bar`
+  if (props.pathType === 'relative') {
+    const url_project = project ?? 'en'
+    console.log(project)
+    const url_page = encodeURIComponent(props.href.replace(' ', '_'))
+    url = `/${url_project}/${url_page}`
+    console.log(url)
+  }
 
   return (
-    <Link href="/[project]/[page]" as={href.replace(' ', '_')}>
+    <Link href={url}>
       <a className="page-link">{props.href}</a>
     </Link>
   )
