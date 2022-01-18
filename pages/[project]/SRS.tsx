@@ -19,15 +19,15 @@ export const getStaticProps: GetStaticProps<Props> = async ctx => {
 
   for (let i = 0; i < 30; i++) {
     const last = json.slice(-1)[0]
-    if (last === undefined) {
-      break
-    }
     const last_id = last.id
     console.log(last_id)
     const url = `https://scrapbox.io/api/pages/${project}/search/titles?followingId=${last_id}`
     const response = await fetch(url)
     json = (await response.json()) as Array<any>
-    titles.push(...json)
+    titles.push(...json.slice(1))
+    if (json.length === 1) {
+      break
+    }
   }
 
   console.log(titles.length)
