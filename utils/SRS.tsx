@@ -40,8 +40,8 @@ export const get_SRS = (props: Props) => {
     if (updated === 0) return
     const diff = now - updated * 1000
     const p = { ...page }
-    sections.forEach(sction => {
-      p[sction.title] = sction.score(diff)
+    sections.forEach(section => {
+      p[section.title] = section.score(diff)
     })
     scored_pages.push(p)
   })
