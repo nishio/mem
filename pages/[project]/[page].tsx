@@ -84,6 +84,12 @@ const View = (props: Props) => {
       >
         [Scrapbox]
       </a>
+      <a
+        href={`sbporter://scrapbox.io/${props.project}/${props.page}`}
+        target="_blank"
+      >
+        [Porter]
+      </a>
       <Page blocks={props.content} hide_title={false} />
       <div>
         <h3>Related Pages</h3>

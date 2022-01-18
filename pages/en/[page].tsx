@@ -105,6 +105,12 @@ const View = (props: Props) => {
           >
             Scrapbox(intellitech-en)
           </a>
+          <a
+            href={`sbporter://scrapbox.io/intellitech-en/${props.en.page}`}
+            target="_blank"
+          >
+            [Edit]
+          </a>
           <Page blocks={props.en.content} hide_title={false} />
         </div>
       ) : null}
@@ -116,6 +122,12 @@ const View = (props: Props) => {
             target="_blank"
           >
             Scrapbox(nishio)
+          </a>
+          <a
+            href={`sbporter://scrapbox.io/nishio/${props.ja.page}`}
+            target="_blank"
+          >
+            [Edit]
           </a>
           <Page blocks={props.ja.content} hide_title={false} />
         </div>
