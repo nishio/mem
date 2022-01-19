@@ -22,10 +22,8 @@ const InternalLink = (props: LinkNodeType) => {
   // but `foo bar` ->  `foo_bar`, not `foo%20bar`
   if (props.pathType === 'relative') {
     const url_project = project ?? 'en'
-    console.log(project)
     const url_page = encodeURIComponent(props.href.replace(' ', '_'))
     url = `/${url_project}/${url_page}`
-    console.log(url)
   }
 
   return (
