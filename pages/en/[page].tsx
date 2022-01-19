@@ -23,6 +23,26 @@ type Props = {
   ja: TDataFromScrapbox
 }
 
+const deepl = async (text: string) => {
+  const secret = undefined
+  if (secret === undefined) throw new Error('secret is undefined')
+  const data = {
+    auth_key: secret,
+    text,
+    source_lang: 'JA',
+    target_lang: 'EN-US',
+  }
+  const trans = await fetch('https://api-free.deepl.com/v2/translate', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
+    },
+    body: new URLSearchParams(data),
+  })
+  const transJson = await trans.json()
+  return transJson.translations.map(x => x.text).join('\n\n')
+}
+
 const getData = async (project: string, page: string) => {
   const url = `https://scrapbox.io/api/pages/${project}/${page}`
   const response = await fetch(url)
@@ -30,7 +50,12 @@ const getData = async (project: string, page: string) => {
   let content = null
   if (json.lines) {
     const text = json.lines.map(line => line.text).join('\n')
-    content = parse(text)
+    const doTrans = false
+    if (project === 'nishio' && doTrans) {
+      content = parse(await deepl(text))
+    } else {
+      content = parse(text)
+    }
   }
 
   return {
