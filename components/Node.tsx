@@ -19,7 +19,6 @@ import type {
   PlainNode as PlainNodeType,
 } from '@progfay/scrapbox-parser'
 import { LinkNode } from './LinkNode'
-import { useRouter } from 'next/router'
 import NextLink from 'next/link'
 
 export const Node = (props: NodeType) => {
@@ -82,7 +81,7 @@ const StrongImage = (props: StrongImageNodeType) => (
 )
 
 const StrongIcon = (props: StrongIconNodeType) => {
-  const { project } = useRouter().query
+  const project = 'nishio'
   const path =
     props.pathType === 'relative' ? `/${project}/${props.path}` : props.path
   const name = path.split('/')[2]
@@ -168,7 +167,7 @@ const GoogleMap = (props: GoogleMapNodeType) => (
 )
 
 const Icon = (props: IconNodeType) => {
-  const { project } = useRouter().query
+  const project = 'nishio'
   const path =
     props.pathType === 'relative' ? `/${project}/${props.path}` : props.path
   const name = path.split('/')[2]
@@ -188,7 +187,7 @@ const Icon = (props: IconNodeType) => {
 }
 
 const HashTag = (props: HashTagNodeType) => {
-  const { project } = useRouter().query
+  const project = 'nishio'
   const href = `/${project}/${props.href}`
 
   return (
