@@ -1,6 +1,33 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i');
 
+body {
+  background-color: #88cc88;
+  margin: 0;
+  font-size: 15px;
+}
+.header {
+  background-color: rgba(91, 165, 111, 0.8);
+  padding: 8px;
+  font-weight: bold;
+}
+.grid li.page-list-item a .header {
+  background-color: #eeffee;
+}
+.grid li.two-two.page-list-item a .title {
+  background-color: #eeffee !important;
+}
+.grid li.page-list-item a .content {
+  background-color: #eeffee;
+}
+
+#porter {
+  display: none;
+}
+
 .page {
+  margin: 16px;
+  border-radius: 8px;
+  padding: 16px;
   font-size: 15px;
   line-height: 28px;
   font-family: 'Roboto', Helvetica, Arial, 'Hiragino Sans', sans-serif;
