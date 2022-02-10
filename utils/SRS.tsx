@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Props } from '../pages/[project]/SRS'
+import { Props } from '../tmp/[project]/SRS'
 import { parse, Page as PageType } from '@progfay/scrapbox-parser'
 
 const LINE_PER_SECTION = 10

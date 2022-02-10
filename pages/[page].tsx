@@ -1,8 +1,8 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import { parse, Page as PageType } from '@progfay/scrapbox-parser'
-import { Page } from '../../components/Page'
-import { generate_links } from '../../utils/generate_links'
+import { Page } from '../components/Page'
+import { generate_links } from '../utils/generate_links'
 
 type Props = {
   date: number
@@ -20,7 +20,7 @@ type Props = {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async ctx => {
-  const project = encodeURIComponent(ctx.params.project as string)
+  const project = 'nishio'
   const page = encodeURIComponent(ctx.params.page as string)
   const url = `https://scrapbox.io/api/pages/${project}/${page}`
   const response = await fetch(url)
@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps<Props> = async ctx => {
       date: Date.now(),
       content: parse(text),
       exists: response.ok,
-      project: ctx.params.project as string,
+      project,
       page: ctx.params.page as string,
       json: json,
     },
