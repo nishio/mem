@@ -172,17 +172,37 @@ const Icon = (props: IconNodeType) => {
     props.pathType === 'relative' ? `/${project}/${props.path}` : props.path
   const name = path.split('/')[2]
 
+  if (props.pathType === 'relative') {
+    return (
+      <NextLink href="/[project]/[page]" as={`${path}`}>
+        <a className="link icon">
+          <img
+            src={`https://scrapbox.io/api/pages${path}/icon`}
+            alt={name}
+            title={name}
+            className="icon"
+          />
+        </a>
+      </NextLink>
+    )
+  }
+
+  // it is link to another scrapbox project
+  const url = `https://scrapbox.io${path}`
   return (
-    <NextLink href="/[project]/[page]" as={`${path}`}>
-      <a className="link icon">
-        <img
-          src={`https://scrapbox.io/api/pages${path}/icon`}
-          alt={name}
-          title={name}
-          className="icon"
-        />
-      </a>
-    </NextLink>
+    <a
+      className="link icon"
+      href={url}
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <img
+        src={`https://scrapbox.io/api/pages${path}/icon`}
+        alt={name}
+        title={name}
+        className="icon"
+      />
+    </a>
   )
 }
 
