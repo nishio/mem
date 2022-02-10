@@ -4,7 +4,7 @@ import { Block } from './Block'
 export const Page = (props: {
   blocks: PageType
   hide_title: boolean
-  children: any
+  children?: any
 }) => (
   <div className="page">
     {props.blocks.map((block, i) => (
