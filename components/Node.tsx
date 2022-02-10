@@ -115,8 +115,8 @@ const Formula = (props: FormulaNodeType) => (
 const Decoration = (props: DecorationNodeType) => (
   <span className="deco">
     <span className={props.decos.map(deco => `deco-${deco}`).join(' ')}>
-      {props.nodes.map(node => (
-        <Node {...node} />
+      {props.nodes.map((node, i) => (
+        <Node {...node} key={i} />
       ))}
     </span>
   </span>

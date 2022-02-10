@@ -7,7 +7,7 @@ export const generate_links = projects => {
   const two_hops_links = []
 
   const _to_link = (title, titleLc) => (
-    <Link href={`/en/${titleLc}`}>
+    <Link href={`/en/${titleLc}`} key={titleLc}>
       <a style={{ marginRight: '1em' }}>[{title}]</a>
     </Link>
   )
