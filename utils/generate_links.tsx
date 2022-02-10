@@ -10,11 +10,14 @@ export const generate_links = projects => {
   const two_hops = {}
   const two_hops_links = []
 
-  const _to_link = (title, titleLc) => (
-    <Link href={`/${titleLc}`} key={titleLc}>
-      <a style={{ marginRight: '1em' }}>[{title}]</a>
-    </Link>
-  )
+  const _to_link = (title, titleLc) => {
+    const url = title_to_url(titleLc)
+    return (
+      <Link href={`/${url}`} key={titleLc}>
+        <a style={{ marginRight: '1em' }}>[{title}]</a>
+      </Link>
+    )
+  }
   const to_link = key => {
     if (lc_to_title[key] !== undefined) {
       return _to_link(lc_to_title[key], key)
