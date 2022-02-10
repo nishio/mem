@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { title } from 'process'
 import React from 'react'
 import { nav } from '../book_navigation.js'
-import { title_to_url } from './generate_links.tsx'
+import { title_to_url } from './generate_links'
 
 export const Prev = current => {
   const title = nav.prev[current]
