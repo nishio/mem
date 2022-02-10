@@ -144,10 +144,10 @@
   "resolved" "https://registry.npmjs.org/styled-jsx/-/styled-jsx-5.0.0.tgz"
   "version" "5.0.0"
 
-"typescript@^3.9.7":
-  "integrity" "sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw=="
-  "resolved" "https://registry.npmjs.org/typescript/-/typescript-3.9.7.tgz"
-  "version" "3.9.7"
+"typescript@^4.5.5":
+  "integrity" "sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA=="
+  "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.5.5.tgz"
+  "version" "4.5.5"
 
 "use-subscription@1.5.1":
   "integrity" "sha512-Xv2a1P/yReAjAbhylMfFplFKj9GssgTwN7RlcTxBujFQcloStWNDQdc4g4NRWH9xS4i/FDk04vQBptAXoF3VcA=="
