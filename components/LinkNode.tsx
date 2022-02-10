@@ -14,27 +14,37 @@ export const LinkNode = (props: LinkNodeType) => {
 }
 
 const InternalLink = (props: LinkNodeType) => {
-  const { project } = useRouter().query
+  const project = 'nishio'
 
-  let url = props.href // suspicious code
   // props.href should be properly encoded
   // e.g. `foo/bar` -> `foo%2Fbar`
   // but `foo bar` ->  `foo_bar`, not `foo%20bar`
   if (props.pathType === 'relative') {
-    const url_project = project ?? 'en'
+    const url_project = project
     const url_page = encodeURIComponent(props.href.replace(/ /g, '_'))
-    url = `/${url_project}/${url_page}`
+    const url = `/${url_page}`
+    return (
+      <Link href={url} key={url}>
+        <a className="page-link">{props.href}</a>
+      </Link>
+    )
   }
-
+  // it is link to another scrapbox project
+  const url = `https://scrapbox.io${props.href}`
   return (
-    <Link href={url}>
-      <a className="page-link">{props.href}</a>
-    </Link>
+    <a href={url} rel="noopener noreferrer" target="_blank" key={url}>
+      {props.content || props.href}
+    </a>
   )
 }
 
 const ExternalLink = (props: LinkNodeType) => (
-  <a href={props.href} rel="noopener noreferrer" target="_blank">
+  <a
+    href={props.href}
+    rel="noopener noreferrer"
+    target="_blank"
+    key={props.href}
+  >
     {props.content || props.href}
   </a>
 )
