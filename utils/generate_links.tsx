@@ -1,5 +1,9 @@
 import Link from 'next/link'
 
+export const title_to_url = (title: string) => {
+  return encodeURIComponent(title.replace(/ /g, '_'))
+}
+
 export const generate_links = projects => {
   const links = []
   const lc_to_title = {}
@@ -7,7 +11,7 @@ export const generate_links = projects => {
   const two_hops_links = []
 
   const _to_link = (title, titleLc) => (
-    <Link href={`/en/${titleLc}`} key={titleLc}>
+    <Link href={`/${titleLc}`} key={titleLc}>
       <a style={{ marginRight: '1em' }}>[{title}]</a>
     </Link>
   )

@@ -2,6 +2,7 @@ import React from 'react'
 import type { LinkNode as LinkNodeType } from '@progfay/scrapbox-parser'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { title_to_url } from '../utils/generate_links'
 
 export const LinkNode = (props: LinkNodeType) => {
   switch (props.pathType) {
@@ -21,7 +22,7 @@ const InternalLink = (props: LinkNodeType) => {
   // but `foo bar` ->  `foo_bar`, not `foo%20bar`
   if (props.pathType === 'relative') {
     const url_project = project
-    const url_page = encodeURIComponent(props.href.replace(/ /g, '_'))
+    const url_page = title_to_url(props.href)
     const url = `/${url_page}`
     return (
       <Link href={url} key={url}>

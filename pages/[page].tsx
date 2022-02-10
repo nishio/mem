@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { parse, Page as PageType } from '@progfay/scrapbox-parser'
 import { Page } from '../components/Page'
 import { generate_links } from '../utils/generate_links'
+import { Prev, Next } from '../utils/book_navigation'
 
 type Props = {
   date: number
@@ -47,38 +48,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-const Title = (props: Props) => (
-  <Head>
-    <title>
-      {!props.project || !props.page
-        ? 'Loading... - Scrapbox Reader'
-        : `/${props.project}/${props.page} - Scrapbox Reader`}
-    </title>
-  </Head>
-)
-
 const View = (props: Props) => {
-  if (!props.content)
-    return (
-      <>
-        <Title {...props} />
-        loading...
-      </>
-    )
-  if (!props.exists)
-    return (
-      <>
-        <Title {...props} />
-        This is an empty page
-      </>
-    )
-
   const { links, two_hops_links } = generate_links([props])
+  const title = decodeURIComponent(props.page).replace(/_/g, ' ')
   return (
     <>
-      <Title {...props} />
+      <Head>
+        <title>{title} - NISHIO Hirokazu</title>
+      </Head>
       <div className="header">NISHIO Hirokazu</div>
-      <Page blocks={props.content} hide_title={false} />
+      <Page blocks={props.content} hide_title={false}>
+        {Prev(title)} {Next(title)}
+      </Page>
       <div className="page">
         <h3>Related Pages</h3>
         <p>Direct Links: {links}</p>
