@@ -12,10 +12,10 @@
   "resolved" "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-12.0.10.tgz"
   "version" "12.0.10"
 
-"@progfay/scrapbox-parser@^6.0.3":
-  "integrity" "sha512-vW3YxZtbkxjKI3NabHYBerMr/s6jPRh5PdWY6kjzCWsVTc1R78OYRmBn36bWec8fF1Z4T6pNnRAEcuxFIpPW1Q=="
-  "resolved" "https://registry.npmjs.org/@progfay/scrapbox-parser/-/scrapbox-parser-6.0.3.tgz"
-  "version" "6.0.3"
+"@progfay/scrapbox-parser@^7.2.0":
+  "integrity" "sha512-8b6jReJhSHVyoAkpzu4mO0hDN1qMl5j6NXhDxTd7C6AFeVjawVxudwCAM/2x0QQkI8K/L+wnaAv1w2fy0BiKSw=="
+  "resolved" "https://registry.npmjs.org/@progfay/scrapbox-parser/-/scrapbox-parser-7.2.0.tgz"
+  "version" "7.2.0"
 
 "@types/node@^14.0.27":
   "integrity" "sha512-kVrqXhbclHNHGu9ztnAwSncIgJv/FaxmzXJvGXNdcCpV1b8u1/Mi6z6m0vwy0LzKeXFTPLH0NzwmoJ3fNCIq0g=="
