@@ -2,7 +2,7 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
 import { parse, Page as PageType } from "@progfay/scrapbox-parser";
 import { Page } from "../components/Page";
-import { TScrapboxPageJSON } from "./TScrapboxPageJSON";
+import { TScrapboxPageJSON } from "../utils/TScrapboxPageJSON";
 
 type Props = {
   date: number;

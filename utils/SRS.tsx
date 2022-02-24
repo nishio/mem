@@ -9,7 +9,7 @@ const year = day * 365;
 const menu_title = "SRS振り返り";
 
 // score: 0 is best
-const sections = [
+const sections: { title: string; score: (diff: number) => number }[] = [
   {
     title: "100日前",
     score: (diff) => Math.abs(diff - 100 * day),
@@ -31,10 +31,14 @@ const sections = [
   },
 ];
 
+type TScoredPage = {
+  updated: number;
+  title: string;
+};
 export const get_SRS = (props: Props) => {
   // calc scores
   const now = Date.now();
-  const scored_pages = [];
+  const scored_pages: TScoredPage[] = [];
   props.titles.forEach((page) => {
     const updated = page.updated;
     if (updated === 0) return;
@@ -53,10 +57,12 @@ export const get_SRS = (props: Props) => {
 
   sections.forEach((section) => {
     lines.push(section.title);
+    // @ts-ignore
     scored_pages.sort((a, b) => a[section.title] - b[section.title]);
     scored_pages.slice(0, LINE_PER_SECTION).forEach((page) => {
+      // @ts-ignore
       if (page[section.title] > year / 2) return;
-      const title = page["title"];
+      const title = page.title;
       const date = strftime(new Date(page.updated * 1000));
       lines.push(` ${date} [${title}]`);
     });
@@ -66,14 +72,14 @@ export const get_SRS = (props: Props) => {
   return content;
 };
 
-function pad(number) {
+function pad(number: number) {
   if (number < 10) {
     return "0" + number;
   }
   return number;
 }
 
-function strftime(d) {
+function strftime(d: Date) {
   return (
     d.getUTCFullYear() +
     "-" +

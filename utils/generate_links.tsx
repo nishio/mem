@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { TPageProps } from "../pages/TPageProps";
+import { TPageProps } from "./TPageProps";
 
 /*
  from https://github.com/takker99/scrapbox-userscript-std/blob/0.8.5/title.ts#L28

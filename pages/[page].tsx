@@ -5,8 +5,8 @@ import { Page } from "../components/Page";
 import { generate_links } from "../utils/generate_links";
 import { Breadcrumb, PrevNext } from "../utils/book_navigation";
 import Link from "next/link";
-import { TScrapboxPageJSON } from "./TScrapboxPageJSON";
-import { TPageProps } from "./TPageProps";
+import { TScrapboxPageJSON } from "../utils/TScrapboxPageJSON";
+import { TPageProps } from "../utils/TPageProps";
 
 export const getStaticProps: GetStaticProps<TPageProps> = async (ctx) => {
   const project = "nishio";

@@ -11,7 +11,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   // const page = encodeURIComponent(ctx.params.page as string)
   // const en = await getData('intellitech-en', page)
   // const ja = await getData('nishio', page)
-  const project = ctx.params.project as string;
+  const project = ctx.params!!.project as string;
   const url = `https://scrapbox.io/api/pages/${project}/search/titles`;
   const response = await fetch(url);
   let json = (await response.json()) as Array<any>;
