@@ -68,12 +68,12 @@ export const Breadcrumb = (current: string) => {
   const links = parents.map((x) => {
     const url = title_to_url(x);
     return (
-      <>
+      <span key={x}>
         {" > "}
-        <Link href={`/${url}`} key={x}>
+        <Link href={`/${url}`}>
           <a>{x}</a>
         </Link>
-      </>
+      </span>
     );
   });
   return (

@@ -41,7 +41,7 @@ export const generate_links = (projects: TPageProps[]) => {
       return _to_link(lc_to_title[key], key);
     }
     const title = key.replace(/_/g, " ");
-    return <span>[{title}]</span>;
+    return <span key={title}>[{title}]</span>;
   };
 
   projects.forEach((props) => {
