@@ -9,16 +9,22 @@ body {
   background-color: rgba(91, 165, 111, 0.8);
   padding: 8px;
   font-weight: bold;
+  display: flex;
 }
-.header a {
+a#to-top {
   color: #000;
   text-decoration: none;
 }
-.header a:active,
-.header a:hover,
-.header a:focus {
+a#to-top:active,
+a#to-top:hover,
+a#to-top:focus {
   color: #1555f3;
   cursor: pointer;
+}
+
+a.header-util {
+  color: #000;
+  margin-left: auto;
 }
 
 .grid li.page-list-item a .header {

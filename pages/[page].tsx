@@ -63,9 +63,11 @@ const View = (props: Props) => {
       </Head>
       <div className="header">
         <Link href="/">
-          <a>NISHIO Hirokazu</a>
+          <a id="to-top">NISHIO Hirokazu</a>
         </Link>
-        <a href={trans_url}>Google Trans</a>
+        <a className="header-util" href={trans_url}>
+          [Translate]
+        </a>
       </div>
       <Page blocks={props.content} hide_title={false}>
         {Prev(title)} {Next(title)}
