@@ -37,6 +37,19 @@ export const Next = current => {
   return null
 }
 
+export const PrevNext = current => {
+  const prev = Prev(current)
+  const next = Next(current)
+  if (prev || next) {
+    return (
+      <div>
+        {prev} {next}
+      </div>
+    )
+  }
+  return null
+}
+
 export const Breadcrumb = current => {
   let x = nav.parent[current]
   if (x === undefined) return null
