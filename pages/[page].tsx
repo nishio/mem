@@ -4,6 +4,7 @@ import { parse, Page as PageType } from '@progfay/scrapbox-parser'
 import { Page } from '../components/Page'
 import { generate_links } from '../utils/generate_links'
 import { Prev, Next } from '../utils/book_navigation'
+import Link from 'next/link'
 
 type Props = {
   date: number
@@ -56,7 +57,11 @@ const View = (props: Props) => {
       <Head>
         <title>{title} - NISHIO Hirokazu</title>
       </Head>
-      <div className="header">NISHIO Hirokazu</div>
+      <div className="header">
+        <Link href="/">
+          <a>NISHIO Hirokazu</a>
+        </Link>
+      </div>
       <Page blocks={props.content} hide_title={false}>
         {Prev(title)} {Next(title)}
       </Page>
