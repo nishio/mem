@@ -2,15 +2,15 @@
 # yarn lockfile v1
 
 
-"@next/env@12.0.10":
-  "integrity" "sha512-mQVj0K6wQ5WEk/sL9SZ+mJXJUaG7el8CpZ6io1uFe9GgNTSC7EgUyNGqM6IQovIFc5ukF4O/hqsdh3S/DCgT2g=="
-  "resolved" "https://registry.npmjs.org/@next/env/-/env-12.0.10.tgz"
-  "version" "12.0.10"
+"@next/env@12.1.0":
+  "integrity" "sha512-nrIgY6t17FQ9xxwH3jj0a6EOiQ/WDHUos35Hghtr+SWN/ntHIQ7UpuvSi0vaLzZVHQWaDupKI+liO5vANcDeTQ=="
+  "resolved" "https://registry.npmjs.org/@next/env/-/env-12.1.0.tgz"
+  "version" "12.1.0"
 
-"@next/swc-darwin-x64@12.0.10":
-  "integrity" "sha512-Qykcu/gVC5oTvOQoRBhyuS5GYm5SbcgrFTsaLFkGBmEkg9eMQRiaCswk4IafpDXVzITkVFurzSM28q3tLW2qUw=="
-  "resolved" "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-12.0.10.tgz"
-  "version" "12.0.10"
+"@next/swc-darwin-x64@12.1.0":
+  "integrity" "sha512-ieAz0/J0PhmbZBB8+EA/JGdhRHBogF8BWaeqR7hwveb6SYEIJaDNQy0I+ZN8gF8hLj63bEDxJAs/cEhdnTq+ug=="
+  "resolved" "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-12.1.0.tgz"
+  "version" "12.1.0"
 
 "@progfay/scrapbox-parser@^7.2.0":
   "integrity" "sha512-8b6jReJhSHVyoAkpzu4mO0hDN1qMl5j6NXhDxTd7C6AFeVjawVxudwCAM/2x0QQkI8K/L+wnaAv1w2fy0BiKSw=="
@@ -63,27 +63,27 @@
   "version" "3.2.0"
 
 "next@^12.0.10":
-  "integrity" "sha512-1y3PpGzpb/EZzz1jgne+JfZXKAVJUjYXwxzrADf/LWN+8yi9o79vMLXpW3mevvCHkEF2sBnIdjzNn16TJrINUw=="
-  "resolved" "https://registry.npmjs.org/next/-/next-12.0.10.tgz"
-  "version" "12.0.10"
+  "integrity" "sha512-s885kWvnIlxsUFHq9UGyIyLiuD0G3BUC/xrH0CEnH5lHEWkwQcHOORgbDF0hbrW9vr/7am4ETfX4A7M6DjrE7Q=="
+  "resolved" "https://registry.npmjs.org/next/-/next-12.1.0.tgz"
+  "version" "12.1.0"
   dependencies:
-    "@next/env" "12.0.10"
+    "@next/env" "12.1.0"
     "caniuse-lite" "^1.0.30001283"
     "postcss" "8.4.5"
     "styled-jsx" "5.0.0"
     "use-subscription" "1.5.1"
   optionalDependencies:
-    "@next/swc-android-arm64" "12.0.10"
-    "@next/swc-darwin-arm64" "12.0.10"
-    "@next/swc-darwin-x64" "12.0.10"
-    "@next/swc-linux-arm-gnueabihf" "12.0.10"
-    "@next/swc-linux-arm64-gnu" "12.0.10"
-    "@next/swc-linux-arm64-musl" "12.0.10"
-    "@next/swc-linux-x64-gnu" "12.0.10"
-    "@next/swc-linux-x64-musl" "12.0.10"
-    "@next/swc-win32-arm64-msvc" "12.0.10"
-    "@next/swc-win32-ia32-msvc" "12.0.10"
-    "@next/swc-win32-x64-msvc" "12.0.10"
+    "@next/swc-android-arm64" "12.1.0"
+    "@next/swc-darwin-arm64" "12.1.0"
+    "@next/swc-darwin-x64" "12.1.0"
+    "@next/swc-linux-arm-gnueabihf" "12.1.0"
+    "@next/swc-linux-arm64-gnu" "12.1.0"
+    "@next/swc-linux-arm64-musl" "12.1.0"
+    "@next/swc-linux-x64-gnu" "12.1.0"
+    "@next/swc-linux-x64-musl" "12.1.0"
+    "@next/swc-win32-arm64-msvc" "12.1.0"
+    "@next/swc-win32-ia32-msvc" "12.1.0"
+    "@next/swc-win32-x64-msvc" "12.1.0"
 
 "object-assign@^4.1.1":
   "integrity" "sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM="
