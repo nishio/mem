@@ -7,7 +7,11 @@ import '../assets/app.css'
 const App = ({ Component, pageProps }: AppProps) => (
   <>
     <Head>
-      <meta name="robots" content="noindex, nofollow" />
+      <link
+        id="favicon"
+        rel="icon"
+        href="https://gyazo.com/03051565f03a70a83b182fda5965e187/max_size/200"
+      />
     </Head>
     <Component {...pageProps} />
 
