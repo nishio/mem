@@ -14,7 +14,7 @@ export const generate_links = projects => {
     const url = title_to_url(titleLc)
     return (
       <Link href={`/${url}`} key={titleLc}>
-        <a style={{ marginRight: '1em' }}>[{title}]</a>
+        <a>[{title}]</a>
       </Link>
     )
   }
@@ -22,7 +22,8 @@ export const generate_links = projects => {
     if (lc_to_title[key] !== undefined) {
       return _to_link(lc_to_title[key], key)
     }
-    return key
+    const title = key.replace(/_/g, ' ')
+    return <span>[{title}]</span>
   }
 
   projects.forEach(props => {
@@ -34,17 +35,28 @@ export const generate_links = projects => {
     props.json.relatedPages.links2hop.forEach(x => {
       lc_to_title[x.titleLc] = x.title
 
-      if (two_hops[x.linksLc] === undefined) {
-        two_hops[x.linksLc] = [x.titleLc]
+      const key = x.linksLc.join('\t')
+      if (two_hops[key] === undefined) {
+        two_hops[key] = [x.titleLc]
       } else {
-        two_hops[x.linksLc].push(x.titleLc)
+        two_hops[key].push(x.titleLc)
       }
     })
   })
   Object.keys(two_hops).forEach(key => {
+    const key_to_link = key => {
+      const keys = key.split('\t')
+      const links = []
+      keys.forEach(x => {
+        links.push('×')
+        links.push(to_link(x))
+      })
+      links.shift()
+      return links
+    }
     two_hops_links.push(
       <li key={key}>
-        → {to_link(key)} → {two_hops[key].map(to_link)}
+        → {key_to_link(key)} → {two_hops[key].map(to_link)}
       </li>,
     )
   })
