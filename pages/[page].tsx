@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { parse, Page as PageType } from '@progfay/scrapbox-parser'
 import { Page } from '../components/Page'
 import { generate_links } from '../utils/generate_links'
-import { Prev, Next, Breadcrumb } from '../utils/book_navigation'
+import { Prev, Next, Breadcrumb, PrevNext } from '../utils/book_navigation'
 import Link from 'next/link'
 
 type Props = {
@@ -78,6 +78,8 @@ const View = (props: Props) => {
         </a>
       </div>
       <Page blocks={props.content} hide_title={false}>
+        {PrevNext(title)}
+        {Breadcrumb(title)}
         {/* <Tweet page={props.page} /> */}
       </Page>
       {toHideRelatedPages.has(title) ? null : (
@@ -103,21 +105,23 @@ const View = (props: Props) => {
         <img src="https://gyazo.com/9ae63458a8653dd1fc31c864f5f9acf4/max_size/400"></img>
       </div>
       <hr></hr>
-      (C)NISHIO Hirokazu / Converted from{' '}
-      <a
-        href={`https://scrapbox.io/${props.project}/${props.page}`}
-        target="_blank"
-      >
-        [Scrapbox]
-      </a>{' '}
-      at <time>{new Date(props.date).toLocaleString()}</time>
-      <a
-        href={`sbporter://scrapbox.io/${props.project}/${props.page}`}
-        target="_blank"
-        id="porter"
-      >
-        [Porter]
-      </a>
+      <div>
+        (C)NISHIO Hirokazu / Converted from{' '}
+        <a
+          href={`https://scrapbox.io/${props.project}/${props.page}`}
+          target="_blank"
+        >
+          [Scrapbox]
+        </a>{' '}
+        at <time>{new Date(props.date).toLocaleString()}</time>
+        <a
+          href={`sbporter://scrapbox.io/${props.project}/${props.page}`}
+          target="_blank"
+          id="porter"
+        >
+          [Edit]
+        </a>
+      </div>
     </>
   )
 }
