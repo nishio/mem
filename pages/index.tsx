@@ -2,24 +2,19 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import { parse, Page as PageType } from '@progfay/scrapbox-parser'
 import { Page } from '../components/Page'
+import { TScrapboxPageJSON } from './TScrapboxPageJSON'
 
 type Props = {
   date: number
   content: PageType
   exists: boolean
-  json: {
-    links: string[]
-    relatedPages: {
-      links1hop: { title: string; titleLc: string }[]
-      links2hop: { title: string; linksLc: string }[]
-    }
-  }
+  json: TScrapboxPageJSON
 }
 
 export const getStaticProps: GetStaticProps<Props> = async ctx => {
   const url = `https://scrapbox.io/api/pages/nishio/INDEX_FOR_VERCEL`
   const response = await fetch(url)
-  const json = await response.json()
+  const json: TScrapboxPageJSON = await response.json()
   const text = json.lines.map(line => line.text).join('\n')
 
   return {

@@ -24,6 +24,7 @@ for x in lines:
         parent[x] = index[m.group(1)]
 
 
-data = "export const nav = " + \
-    json.dumps({"prev": prev, "next": next, "parent": parent}, indent=2)
-open("book_navigation.js", "w").write(data)
+json.dump(
+    {"prev": prev, "next": next, "parent": parent},
+    open("book_navigation.json", "w"),
+    indent=2)

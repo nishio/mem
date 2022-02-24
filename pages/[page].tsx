@@ -1,32 +1,19 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
-import { parse, Page as PageType } from '@progfay/scrapbox-parser'
+import { parse } from '@progfay/scrapbox-parser'
 import { Page } from '../components/Page'
 import { generate_links } from '../utils/generate_links'
-import { Prev, Next, Breadcrumb, PrevNext } from '../utils/book_navigation'
+import { Breadcrumb, PrevNext } from '../utils/book_navigation'
 import Link from 'next/link'
+import { TScrapboxPageJSON } from './TScrapboxPageJSON'
+import { TPageProps } from './TPageProps'
 
-type Props = {
-  date: number
-  content: PageType
-  exists: boolean
-  project: string
-  page: string
-  json: {
-    links: string[]
-    relatedPages: {
-      links1hop: { title: string; titleLc: string }[]
-      links2hop: { title: string; linksLc: string }[]
-    }
-  }
-}
-
-export const getStaticProps: GetStaticProps<Props> = async ctx => {
+export const getStaticProps: GetStaticProps<TPageProps> = async ctx => {
   const project = 'nishio'
-  const page = encodeURIComponent(ctx.params.page as string)
+  const page = encodeURIComponent(ctx.params!!.page as string)
   const url = `https://scrapbox.io/api/pages/${project}/${page}`
   const response = await fetch(url)
-  const json = await response.json()
+  const json: TScrapboxPageJSON = await response.json()
   const text = json.lines.map(line => line.text).join('\n')
 
   return {
@@ -35,7 +22,7 @@ export const getStaticProps: GetStaticProps<Props> = async ctx => {
       content: parse(text),
       exists: response.ok,
       project,
-      page: ctx.params.page as string,
+      page: ctx.params!!.page as string,
       json: json,
     },
     revalidate: 30,
@@ -60,7 +47,7 @@ const Tweet = (props: { page: string }) => {
     </a>
   )
 }
-const View = (props: Props) => {
+const View = (props: TPageProps) => {
   const { links, two_hops_links } = generate_links([props])
   const title = decodeURIComponent(props.page).replace(/_/g, ' ')
   const trans_url = `https://mem-nhiro-org.translate.goog/${props.page}?_x_tr_sl=en&_x_tr_tl=zh-CN&_x_tr_hl=en&_x_tr_pto=wapp`

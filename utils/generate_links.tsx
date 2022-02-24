@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { TPageProps } from '../pages/TPageProps'
 
 /*
  from https://github.com/takker99/scrapbox-userscript-std/blob/0.8.5/title.ts#L28
@@ -21,13 +22,13 @@ export const title_to_url = (title: string) => {
 const noEncodeChars = '@$&+=:;",'
 const noTailChars = ':;",'
 
-export const generate_links = projects => {
-  const links = []
-  const lc_to_title = {}
-  const two_hops = {}
-  const two_hops_links = []
+export const generate_links = (projects: TPageProps[]) => {
+  const links: unknown[] = []
+  const lc_to_title: { [key: string]: string } = {}
+  const two_hops: { [key: string]: string[] } = {}
+  const two_hops_links: unknown[] = []
 
-  const _to_link = (title, titleLc) => {
+  const _to_link = (title: string, titleLc: string) => {
     const url = title_to_url(titleLc)
     return (
       <Link href={`/${url}`} key={titleLc}>
@@ -35,7 +36,7 @@ export const generate_links = projects => {
       </Link>
     )
   }
-  const to_link = key => {
+  const to_link = (key: string) => {
     if (lc_to_title[key] !== undefined) {
       return _to_link(lc_to_title[key], key)
     }
@@ -61,9 +62,9 @@ export const generate_links = projects => {
     })
   })
   Object.keys(two_hops).forEach(key => {
-    const key_to_link = key => {
+    const key_to_link = (key: string) => {
       const keys = key.split('\t')
-      const links = []
+      const links: (string | JSX.Element)[] = []
       keys.forEach(x => {
         links.push('×')
         links.push(to_link(x))

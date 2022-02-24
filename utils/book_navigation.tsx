@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import React from 'react'
-import { nav } from '../book_navigation.js'
 import { title_to_url } from './generate_links'
+import nav from '../book_navigation.json'
 
-export const Prev = current => {
+export const Prev = (current: string) => {
+  // @ts-ignore
   const title = nav.prev[current]
   if (title) {
     const url = title_to_url(title)
@@ -20,7 +21,8 @@ export const Prev = current => {
   return null
 }
 
-export const Next = current => {
+export const Next = (current: string) => {
+  // @ts-ignore
   const title = nav.next[current]
   if (title) {
     const url = title_to_url(title)
@@ -37,7 +39,7 @@ export const Next = current => {
   return null
 }
 
-export const PrevNext = current => {
+export const PrevNext = (current: string) => {
   const prev = Prev(current)
   const next = Next(current)
   if (prev || next) {
@@ -50,13 +52,15 @@ export const PrevNext = current => {
   return null
 }
 
-export const Breadcrumb = current => {
+export const Breadcrumb = (current: string) => {
+  // @ts-ignore
   let x = nav.parent[current]
   if (x === undefined) return null
 
   const parents = []
   while (x !== undefined) {
     parents.unshift(x)
+    // @ts-ignore
     x = nav.parent[x]
   }
   const root = "Engineer's way of creating knowledge"
