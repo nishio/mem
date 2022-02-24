@@ -254,6 +254,7 @@
 (6.1.2.2) Jiro Kawakita's HASSOUHOU
 (6.1.2.3) Otto Scharmer's patterns of change
 (6.1.2.4) We can not manage seedling
+(6.2) Collect information first
 (6.2.1) Explore inside you
 (6.2.2) How to promote verbalization
 (6.2.2.3) Creation is subjective
@@ -299,6 +300,7 @@
 (7.2.4.3) An example Strategy for new employees
 (7.2.5) A trader strategy to trade knowledge crossing the boundary of the organization
 (7.3) Creating knowledge
+
 (Column) 7 Habits
 (Column) Consistency of knowledge
 (Column) Do you need the ability to find information ten years later?

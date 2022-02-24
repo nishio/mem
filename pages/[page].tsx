@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { parse, Page as PageType } from '@progfay/scrapbox-parser'
 import { Page } from '../components/Page'
 import { generate_links } from '../utils/generate_links'
-import { Prev, Next } from '../utils/book_navigation'
+import { Prev, Next, Breadcrumb } from '../utils/book_navigation'
 import Link from 'next/link'
 
 type Props = {
@@ -70,7 +70,7 @@ const View = (props: Props) => {
         </a>
       </div>
       <Page blocks={props.content} hide_title={false}>
-        {Prev(title)} {Next(title)}
+        {Prev(title)} {Next(title)} {Breadcrumb(title)}
       </Page>
       {toHideRelatedPages.has(title) ? null : (
         <div className="page">
