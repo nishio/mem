@@ -55,6 +55,7 @@ toHideRelatedPages.add("Engineer's way of creating knowledge")
 const View = (props: Props) => {
   const { links, two_hops_links } = generate_links([props])
   const title = decodeURIComponent(props.page).replace(/_/g, ' ')
+  const trans_url = `https://mem-nhiro-org.translate.goog/${props.page}?_x_tr_sl=en&_x_tr_tl=zh-CN&_x_tr_hl=en&_x_tr_pto=wapp`
   return (
     <>
       <Head>
@@ -64,6 +65,7 @@ const View = (props: Props) => {
         <Link href="/">
           <a>NISHIO Hirokazu</a>
         </Link>
+        <a href={trans_url}>Google Trans</a>
       </div>
       <Page blocks={props.content} hide_title={false}>
         {Prev(title)} {Next(title)}
