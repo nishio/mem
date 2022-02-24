@@ -49,6 +49,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
+const toHideRelatedPages = new Set()
+toHideRelatedPages.add("Engineer's way of creating knowledge")
+
 const View = (props: Props) => {
   const { links, two_hops_links } = generate_links([props])
   const title = decodeURIComponent(props.page).replace(/_/g, ' ')
@@ -65,14 +68,19 @@ const View = (props: Props) => {
       <Page blocks={props.content} hide_title={false}>
         {Prev(title)} {Next(title)}
       </Page>
-      <div className="page">
-        <h3>Related Pages</h3>
-        <p>Direct Links: {links}</p>
-        <div>
-          <p>2-hop links</p>
-          <ul>{two_hops_links}</ul>
+      {toHideRelatedPages.has(title) ? null : (
+        <div className="page">
+          <h3>Related Pages</h3>
+
+          <p>Direct Links: {links}</p>
+          {two_hops_links.length > 0 && (
+            <div>
+              <p>2-hop links</p>
+              <ul>{two_hops_links}</ul>
+            </div>
+          )}
         </div>
-      </div>
+      )}
       <hr></hr>
       (C)NISHIO Hirokazu / Converted from{' '}
       <a
