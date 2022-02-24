@@ -1,8 +1,25 @@
 import Link from 'next/link'
 
+/*
+ from https://github.com/takker99/scrapbox-userscript-std/blob/0.8.5/title.ts#L28
+*/
 export const title_to_url = (title: string) => {
-  return encodeURIComponent(title.replace(/ /g, '_'))
+  return title
+    .split('')
+    .map((char, index) => {
+      if (char === ' ') return '_'
+      if (
+        !noEncodeChars.includes(char) ||
+        (index === title.length - 1 && noTailChars.includes(char))
+      ) {
+        return encodeURIComponent(char)
+      }
+      return char
+    })
+    .join('')
 }
+const noEncodeChars = '@$&+=:;",'
+const noTailChars = ':;",'
 
 export const generate_links = projects => {
   const links = []
