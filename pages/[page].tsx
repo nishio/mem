@@ -52,6 +52,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const toHideRelatedPages = new Set()
 toHideRelatedPages.add("Engineer's way of creating knowledge")
 
+const Tweet = (props: { page: string }) => {
+  const tweet_url = `https://twitter.com/intent/tweet`
+  return (
+    <a className="twitter-share-button" href={tweet_url}>
+      Tweet
+    </a>
+  )
+}
 const View = (props: Props) => {
   const { links, two_hops_links } = generate_links([props])
   const title = decodeURIComponent(props.page).replace(/_/g, ' ')
@@ -70,7 +78,7 @@ const View = (props: Props) => {
         </a>
       </div>
       <Page blocks={props.content} hide_title={false}>
-        {Prev(title)} {Next(title)} {Breadcrumb(title)}
+        {/* <Tweet page={props.page} /> */}
       </Page>
       {toHideRelatedPages.has(title) ? null : (
         <div className="page">
