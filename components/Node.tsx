@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import type {
   Node as NodeType,
   QuoteNode as QuoteNodeType,
@@ -17,74 +17,74 @@ import type {
   IconNode as IconNodeType,
   HashTagNode as HashTagNodeType,
   PlainNode as PlainNodeType,
-} from '@progfay/scrapbox-parser'
-import { LinkNode } from './LinkNode'
-import NextLink from 'next/link'
+} from "@progfay/scrapbox-parser";
+import { LinkNode } from "./LinkNode";
+import NextLink from "next/link";
 
 export const Node = (props: NodeType) => {
   switch (props.type) {
-    case 'quote':
-      return <Quote {...props} />
-    case 'helpfeel':
-      return <Helpfeel {...props} />
-    case 'strongImage':
-      return <StrongImage {...props} />
-    case 'strongIcon':
-      return <StrongIcon {...props} />
-    case 'strong':
-      return <Strong {...props} />
-    case 'formula':
-      return <Formula {...props} />
-    case 'decoration':
-      return <Decoration {...props} />
-    case 'code':
-      return <Code {...props} />
-    case 'commandLine':
-      return <CommandLine {...props} />
-    case 'blank':
-      return <Blank {...props} />
-    case 'link':
-      return <Link {...props} />
-    case 'image':
-      return <Image {...props} />
-    case 'googleMap':
-      return <GoogleMap {...props} />
-    case 'icon':
-      return <Icon {...props} />
-    case 'hashTag':
-      return <HashTag {...props} />
-    case 'plain':
-      return <Plain {...props} />
+    case "quote":
+      return <Quote {...props} />;
+    case "helpfeel":
+      return <Helpfeel {...props} />;
+    case "strongImage":
+      return <StrongImage {...props} />;
+    case "strongIcon":
+      return <StrongIcon {...props} />;
+    case "strong":
+      return <Strong {...props} />;
+    case "formula":
+      return <Formula {...props} />;
+    case "decoration":
+      return <Decoration {...props} />;
+    case "code":
+      return <Code {...props} />;
+    case "commandLine":
+      return <CommandLine {...props} />;
+    case "blank":
+      return <Blank {...props} />;
+    case "link":
+      return <Link {...props} />;
+    case "image":
+      return <Image {...props} />;
+    case "googleMap":
+      return <GoogleMap {...props} />;
+    case "icon":
+      return <Icon {...props} />;
+    case "hashTag":
+      return <HashTag {...props} />;
+    case "plain":
+      return <Plain {...props} />;
   }
-}
+};
 
 const Quote = (props: QuoteNodeType) => (
   <blockquote className="quote">
-    <span className="tag">{'>'}</span>
-    {props.nodes.map(node => (
+    <span className="tag">{">"}</span>
+    {props.nodes.map((node) => (
       <Node {...node} />
     ))}
   </blockquote>
-)
+);
 
 const Helpfeel = (props: HelpfeelNodeType) => (
   <code className="helpfeel">
-    <span className="prefix">?</span>{' '}
+    <span className="prefix">?</span>{" "}
     <span className="entry">{props.text}</span>
   </code>
-)
+);
 
 const StrongImage = (props: StrongImageNodeType) => (
   <a href={props.src} rel="noopener noreferrer" target="_blank">
     <img src={props.src} className="strong-image" />
   </a>
-)
+);
 
 const StrongIcon = (props: StrongIconNodeType) => {
-  const project = 'nishio'
+  const project = "nishio";
   const path =
-    props.pathType === 'relative' ? `/${project}/${props.path}` : props.path
-  const name = path.split('/')[2]
+    props.pathType === "relative" ? `/${project}/${props.path}` : props.path;
+  const name = path.split("/")[2];
 
   return (
     <NextLink href="/[project]/[page]" as={`${path}`}>
@@ -97,30 +97,30 @@ const StrongIcon = (props: StrongIconNodeType) => {
         />
       </a>
     </NextLink>
-  )
-}
+  );
+};
 
 const Strong = (props: StrongNodeType) => (
   <strong>
-    {props.nodes.map(node => (
+    {props.nodes.map((node) => (
       <Node {...node} />
     ))}
   </strong>
-)
+);
 
 const Formula = (props: FormulaNodeType) => (
   <span className="formula">{props.formula}</span>
-)
+);
 
 const Decoration = (props: DecorationNodeType) => (
   <span className="deco">
-    <span className={props.decos.map(deco => `deco-${deco}`).join(' ')}>
+    <span className={props.decos.map((deco) => `deco-${deco}`).join(" ")}>
       {props.nodes.map((node, i) => (
         <Node {...node} key={i} />
       ))}
     </span>
   </span>
-)
+);
 
 const Code = (props: CodeNodeType) => (
   <code className="code">
@@ -128,7 +128,7 @@ const Code = (props: CodeNodeType) => (
     <span>{props.text}</span>
     <span className="backquote"> </span>
   </code>
-)
+);
 
 const CommandLine = (props: CommandLineNodeType) => (
   <code className="cli">
@@ -136,24 +136,24 @@ const CommandLine = (props: CommandLineNodeType) => (
     <span> </span>
     <span className="command">{props.text}</span>
   </code>
-)
+);
 
 const Blank = (props: BlankNodeType) => (
   <span className="blank">{props.text}</span>
-)
+);
 
-const Link = (props: LinkNodeType) => <LinkNode {...props} />
+const Link = (props: LinkNodeType) => <LinkNode {...props} />;
 
 const Image = (props: ImageNodeType) => (
   <a
     href={props.link || props.src}
-    className={props.link ? 'link' : null}
+    className={props.link ? "link" : null}
     rel="noopener noreferrer"
     target="_blank"
   >
     <img src={props.src} className="image" />
   </a>
-)
+);
 
 const GoogleMap = (props: GoogleMapNodeType) => (
   <a
@@ -164,15 +164,15 @@ const GoogleMap = (props: GoogleMapNodeType) => (
   >
     {props.place}
   </a>
-)
+);
 
 const Icon = (props: IconNodeType) => {
-  const project = 'nishio'
+  const project = "nishio";
   const path =
-    props.pathType === 'relative' ? `/${project}/${props.path}` : props.path
-  const name = path.split('/')[2]
+    props.pathType === "relative" ? `/${project}/${props.path}` : props.path;
+  const name = path.split("/")[2];
 
-  if (props.pathType === 'relative') {
+  if (props.pathType === "relative") {
     return (
       <NextLink href="/[project]/[page]" as={`${path}`}>
         <a className="link icon">
@@ -184,11 +184,11 @@ const Icon = (props: IconNodeType) => {
           />
         </a>
       </NextLink>
-    )
+    );
   }
 
   // it is link to another scrapbox project
-  const url = `https://scrapbox.io${path}`
+  const url = `https://scrapbox.io${path}`;
   return (
     <a
       className="link icon"
@@ -203,12 +203,12 @@ const Icon = (props: IconNodeType) => {
         className="icon"
       />
     </a>
-  )
-}
+  );
+};
 
 const HashTag = (props: HashTagNodeType) => {
-  const project = 'nishio'
-  const href = `/${project}/${props.href}`
+  const project = "nishio";
+  const href = `/${project}/${props.href}`;
 
   return (
     <NextLink href="/[project]/[page]" as={href}>
@@ -216,7 +216,7 @@ const HashTag = (props: HashTagNodeType) => {
         #{props.href}
       </a>
     </NextLink>
-  )
-}
+  );
+};
 
-const Plain = (props: PlainNodeType) => <>{props.text}</>
+const Plain = (props: PlainNodeType) => <>{props.text}</>;

@@ -1,8 +1,8 @@
-import { AppProps } from 'next/app'
-import Head from 'next/head'
-import Script from 'next/script'
+import { AppProps } from "next/app";
+import Head from "next/head";
+import Script from "next/script";
 
-import '../assets/app.css'
+import "../assets/app.css";
 
 const App = ({ Component, pageProps }: AppProps) => (
   <>
@@ -49,6 +49,6 @@ const App = ({ Component, pageProps }: AppProps) => (
     }(document, "script", "twitter-wjs"));`}
     </Script> */}
   </>
-)
+);
 
-export default App
+export default App;

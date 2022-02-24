@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i');
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i");
 
 body {
   background-color: #88cc88;
@@ -43,7 +43,7 @@ a.header-util {
   padding: 16px;
   font-size: 15px;
   line-height: 28px;
-  font-family: 'Roboto', Helvetica, Arial, 'Hiragino Sans', sans-serif;
+  font-family: "Roboto", Helvetica, Arial, "Hiragino Sans", sans-serif;
   background-color: #fefefe;
 }
 
@@ -146,7 +146,7 @@ a.header-util {
 }
 
 code {
-  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .line code {

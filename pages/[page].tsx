@@ -1,20 +1,20 @@
-import { GetStaticProps, GetStaticPaths } from 'next'
-import Head from 'next/head'
-import { parse } from '@progfay/scrapbox-parser'
-import { Page } from '../components/Page'
-import { generate_links } from '../utils/generate_links'
-import { Breadcrumb, PrevNext } from '../utils/book_navigation'
-import Link from 'next/link'
-import { TScrapboxPageJSON } from './TScrapboxPageJSON'
-import { TPageProps } from './TPageProps'
+import { GetStaticProps, GetStaticPaths } from "next";
+import Head from "next/head";
+import { parse } from "@progfay/scrapbox-parser";
+import { Page } from "../components/Page";
+import { generate_links } from "../utils/generate_links";
+import { Breadcrumb, PrevNext } from "../utils/book_navigation";
+import Link from "next/link";
+import { TScrapboxPageJSON } from "./TScrapboxPageJSON";
+import { TPageProps } from "./TPageProps";
 
-export const getStaticProps: GetStaticProps<TPageProps> = async ctx => {
-  const project = 'nishio'
-  const page = encodeURIComponent(ctx.params!!.page as string)
-  const url = `https://scrapbox.io/api/pages/${project}/${page}`
-  const response = await fetch(url)
-  const json: TScrapboxPageJSON = await response.json()
-  const text = json.lines.map(line => line.text).join('\n')
+export const getStaticProps: GetStaticProps<TPageProps> = async (ctx) => {
+  const project = "nishio";
+  const page = encodeURIComponent(ctx.params!!.page as string);
+  const url = `https://scrapbox.io/api/pages/${project}/${page}`;
+  const response = await fetch(url);
+  const json: TScrapboxPageJSON = await response.json();
+  const text = json.lines.map((line) => line.text).join("\n");
 
   return {
     props: {
@@ -26,31 +26,31 @@ export const getStaticProps: GetStaticProps<TPageProps> = async ctx => {
       json: json,
     },
     revalidate: 30,
-  }
-}
+  };
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],
-    fallback: 'blocking',
-  }
-}
+    fallback: "blocking",
+  };
+};
 
-const toHideRelatedPages = new Set()
-toHideRelatedPages.add("Engineer's way of creating knowledge")
+const toHideRelatedPages = new Set();
+toHideRelatedPages.add("Engineer's way of creating knowledge");
 
 const Tweet = (props: { page: string }) => {
-  const tweet_url = `https://twitter.com/intent/tweet`
+  const tweet_url = `https://twitter.com/intent/tweet`;
   return (
     <a className="twitter-share-button" href={tweet_url}>
       Tweet
     </a>
-  )
-}
+  );
+};
 const View = (props: TPageProps) => {
-  const { links, two_hops_links } = generate_links([props])
-  const title = decodeURIComponent(props.page).replace(/_/g, ' ')
-  const trans_url = `https://mem-nhiro-org.translate.goog/${props.page}?_x_tr_sl=en&_x_tr_tl=zh-CN&_x_tr_hl=en&_x_tr_pto=wapp`
+  const { links, two_hops_links } = generate_links([props]);
+  const title = decodeURIComponent(props.page).replace(/_/g, " ");
+  const trans_url = `https://mem-nhiro-org.translate.goog/${props.page}?_x_tr_sl=en&_x_tr_tl=zh-CN&_x_tr_hl=en&_x_tr_pto=wapp`;
   return (
     <>
       <Head>
@@ -84,7 +84,7 @@ const View = (props: TPageProps) => {
       )}
       <div className="page">
         "<strong>Engineer's way of creating knowledge</strong>" the English
-        version of my book is now available on{' '}
+        version of my book is now available on{" "}
         <Link href="/Engineer's_way_of_creating_knowledge">
           [Engineer's way of creating knowledge]
         </Link>
@@ -93,13 +93,13 @@ const View = (props: TPageProps) => {
       </div>
       <hr></hr>
       <div>
-        (C)NISHIO Hirokazu / Converted from{' '}
+        (C)NISHIO Hirokazu / Converted from{" "}
         <a
           href={`https://scrapbox.io/${props.project}/${props.page}`}
           target="_blank"
         >
           [Scrapbox]
-        </a>{' '}
+        </a>{" "}
         at <time>{new Date(props.date).toLocaleString()}</time>
         <a
           href={`sbporter://scrapbox.io/${props.project}/${props.page}`}
@@ -110,7 +110,7 @@ const View = (props: TPageProps) => {
         </a>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default View
+export default View;

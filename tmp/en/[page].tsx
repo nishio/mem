@@ -1,60 +1,60 @@
-import { GetStaticProps, GetStaticPaths } from 'next'
-import Head from 'next/head'
-import { parse, Page as PageType } from '@progfay/scrapbox-parser'
-import { Page } from '../../components/Page'
-import { generate_links } from '../../utils/generate_links'
+import { GetStaticProps, GetStaticPaths } from "next";
+import Head from "next/head";
+import { parse, Page as PageType } from "@progfay/scrapbox-parser";
+import { Page } from "../../components/Page";
+import { generate_links } from "../../utils/generate_links";
 
 type TDataFromScrapbox = {
-  content: PageType
-  exists: boolean
-  project: string
-  page: string
+  content: PageType;
+  exists: boolean;
+  project: string;
+  page: string;
   json: {
-    links: string[]
+    links: string[];
     relatedPages: {
-      links1hop: { title: string; titleLc: string }[]
-      links2hop: { title: string; titleLc: string; linksLc: string }[]
-    }
-  }
-}
+      links1hop: { title: string; titleLc: string }[];
+      links2hop: { title: string; titleLc: string; linksLc: string }[];
+    };
+  };
+};
 type Props = {
-  date: number
-  en: TDataFromScrapbox
-  ja: TDataFromScrapbox
-}
+  date: number;
+  en: TDataFromScrapbox;
+  ja: TDataFromScrapbox;
+};
 
 const deepl = async (text: string) => {
-  const secret = undefined
-  if (secret === undefined) throw new Error('secret is undefined')
+  const secret = undefined;
+  if (secret === undefined) throw new Error("secret is undefined");
   const data = {
     auth_key: secret,
     text,
-    source_lang: 'JA',
-    target_lang: 'EN-US',
-  }
-  const trans = await fetch('https://api-free.deepl.com/v2/translate', {
-    method: 'POST',
+    source_lang: "JA",
+    target_lang: "EN-US",
+  };
+  const trans = await fetch("https://api-free.deepl.com/v2/translate", {
+    method: "POST",
     headers: {
-      'Content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
+      "Content-type": "application/x-www-form-urlencoded;charset=UTF-8",
     },
     body: new URLSearchParams(data),
-  })
-  const transJson = await trans.json()
-  return transJson.translations.map(x => x.text).join('\n\n')
-}
+  });
+  const transJson = await trans.json();
+  return transJson.translations.map((x) => x.text).join("\n\n");
+};
 
 const getData = async (project: string, page: string) => {
-  const url = `https://scrapbox.io/api/pages/${project}/${page}`
-  const response = await fetch(url)
-  const json = await response.json()
-  let content = null
+  const url = `https://scrapbox.io/api/pages/${project}/${page}`;
+  const response = await fetch(url);
+  const json = await response.json();
+  let content = null;
   if (json.lines) {
-    const text = json.lines.map(line => line.text).join('\n')
-    const doTrans = false
-    if (project === 'nishio' && doTrans) {
-      content = parse(await deepl(text))
+    const text = json.lines.map((line) => line.text).join("\n");
+    const doTrans = false;
+    if (project === "nishio" && doTrans) {
+      content = parse(await deepl(text));
     } else {
-      content = parse(text)
+      content = parse(text);
     }
   }
 
@@ -64,13 +64,13 @@ const getData = async (project: string, page: string) => {
     project,
     page,
     json,
-  }
-}
+  };
+};
 
-export const getStaticProps: GetStaticProps<Props> = async ctx => {
-  const page = encodeURIComponent(ctx.params.page as string)
-  const en = await getData('intellitech-en', page)
-  const ja = await getData('nishio', page)
+export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
+  const page = encodeURIComponent(ctx.params.page as string);
+  const en = await getData("intellitech-en", page);
+  const ja = await getData("nishio", page);
 
   return {
     props: {
@@ -79,25 +79,25 @@ export const getStaticProps: GetStaticProps<Props> = async ctx => {
       ja,
     },
     revalidate: 30,
-  }
-}
+  };
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],
     fallback: true,
-  }
-}
+  };
+};
 
 const Title = (props: Props) => (
   <Head>
     <title>
       {!props.date
-        ? 'Loading... - Scrapbox Reader'
+        ? "Loading... - Scrapbox Reader"
         : `${props.en.page} - Scrapbox Reader`}
     </title>
   </Head>
-)
+);
 
 const View = (props: Props) => {
   if (!props.date)
@@ -106,10 +106,10 @@ const View = (props: Props) => {
         <Title {...props} />
         loading...
       </>
-    )
+    );
 
-  const projects = [props.en, props.ja]
-  const { links, two_hops_links } = generate_links(projects)
+  const projects = [props.en, props.ja];
+  const { links, two_hops_links } = generate_links(projects);
 
   return (
     <>
@@ -122,8 +122,8 @@ const View = (props: Props) => {
         [Scrapbox]
       </a> */}
       {props.en.exists ? (
-        <div style={{ borderTop: '#888 solid 1px' }}>
-          from{' '}
+        <div style={{ borderTop: "#888 solid 1px" }}>
+          from{" "}
           <a
             href={`https://scrapbox.io/intellitech-en/${props.en.page}`}
             target="_blank"
@@ -140,8 +140,8 @@ const View = (props: Props) => {
         </div>
       ) : null}
       {props.ja.exists ? (
-        <div style={{ borderTop: '#888 solid 1px' }}>
-          from{' '}
+        <div style={{ borderTop: "#888 solid 1px" }}>
+          from{" "}
           <a
             href={`https://scrapbox.io/nishio/${props.ja.page}`}
             target="_blank"
@@ -157,7 +157,7 @@ const View = (props: Props) => {
           <Page blocks={props.ja.content} hide_title={false} />
         </div>
       ) : null}
-      <div style={{ borderTop: '#888 solid 1px' }}>
+      <div style={{ borderTop: "#888 solid 1px" }}>
         <h3>Related Pages</h3>
         <p>Direct Links: {links}</p>
         <div>
@@ -166,7 +166,7 @@ const View = (props: Props) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default View
+export default View;

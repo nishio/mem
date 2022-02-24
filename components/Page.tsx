@@ -1,10 +1,10 @@
-import { Page as PageType } from '@progfay/scrapbox-parser'
-import { Block } from './Block'
+import { Page as PageType } from "@progfay/scrapbox-parser";
+import { Block } from "./Block";
 
 export const Page = (props: {
-  blocks: PageType
-  hide_title: boolean
-  children?: any
+  blocks: PageType;
+  hide_title: boolean;
+  children?: any;
 }) => (
   <div className="page">
     {props.blocks.map((block, i) => (
@@ -12,4 +12,4 @@ export const Page = (props: {
     ))}
     {props.children}
   </div>
-)
+);
