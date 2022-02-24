@@ -85,6 +85,15 @@ const View = (props: Props) => {
           )}
         </div>
       )}
+      <div className="page">
+        "<strong>Engineer's way of creating knowledge</strong>" the English
+        version of my book is now available on{' '}
+        <Link href="/Engineer's_way_of_creating_knowledge">
+          [Engineer's way of creating knowledge]
+        </Link>
+        <br />
+        <img src="https://gyazo.com/9ae63458a8653dd1fc31c864f5f9acf4/max_size/400"></img>
+      </div>
       <hr></hr>
       (C)NISHIO Hirokazu / Converted from{' '}
       <a
