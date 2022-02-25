@@ -1,6 +1,16 @@
 import Head from "next/head";
+import { GetStaticProps, GetStaticPaths } from "next";
 
-export default function TopPage(props: {}) {
+import { getStaticProps as getSRSProps, Props, get_SRS } from "../utils/SRS";
+import { Page } from "../components/Page";
+
+export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
+  return getSRSProps(ctx);
+};
+
+export default function TopPage(props: Props) {
+  const content = get_SRS(props);
+
   return (
     <>
       <Head>
@@ -15,6 +25,7 @@ export default function TopPage(props: {}) {
           Twitter Search
         </a>
       </div>
+      <Page blocks={content} hide_title={false} />
     </>
   );
 }

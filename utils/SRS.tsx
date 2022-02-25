@@ -1,6 +1,49 @@
-import Link from "next/link";
-import { Props } from "../tmp/[project]/SRS";
 import { parse, Page as PageType } from "@progfay/scrapbox-parser";
+import { GetStaticProps, GetStaticPaths } from "next";
+
+export type Props = {
+  done: boolean;
+  project: string | string[];
+  titles: Array<any>;
+};
+
+export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
+  const project = "nishio";
+  const url = `https://scrapbox.io/api/pages/${project}/search/titles`;
+  const response = await fetch(url);
+  let json = (await response.json()) as Array<any>;
+  const titles = [...json];
+
+  for (let i = 0; i < 30; i++) {
+    const last = json.slice(-1)[0];
+    const last_id = last.id;
+    console.log(last_id);
+    const url = `https://scrapbox.io/api/pages/${project}/search/titles?followingId=${last_id}`;
+    const response = await fetch(url);
+    json = (await response.json()) as Array<any>;
+    titles.push(...json.slice(1));
+    if (json.length === 1) {
+      break;
+    }
+  }
+
+  console.log(titles.length);
+  return {
+    props: {
+      project: project,
+      done: true,
+      titles: titles,
+    },
+    revalidate: 60 * 60 * 12,
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: true,
+  };
+};
 
 const LINE_PER_SECTION = 10;
 const day = 60 * 60 * 24 * 1000;
