@@ -58,6 +58,11 @@ const View = (props: TPageProps) => {
     .map((line) => line.replace(/\[.*?\]/g, ""))
     .join(" ");
 
+  const onTweet = () => {
+    const url = document.location.href;
+    const api = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+    window.open(api, "_blank");
+  };
   return (
     <>
       <Head>
@@ -80,6 +85,7 @@ const View = (props: TPageProps) => {
         {PrevNext(title)}
         {Breadcrumb(title)}
         {/* <Tweet page={props.page} /> */}
+        <button onClick={onTweet}>Tweet</button>
       </Page>
       {toHideRelatedPages.has(title) ? null : (
         <div className="page">
