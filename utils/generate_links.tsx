@@ -5,8 +5,7 @@ import { TPageProps } from "./TPageProps";
  from https://github.com/takker99/scrapbox-userscript-std/blob/0.8.5/title.ts#L28
 */
 export const title_to_url = (title: string) => {
-  return title
-    .split("")
+  return Array.from(title)
     .map((char, index) => {
       if (char === " ") return "_";
       if (
