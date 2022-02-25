@@ -11,6 +11,9 @@ import { TPageProps } from "../utils/TPageProps";
 export const getStaticProps: GetStaticProps<TPageProps> = async (ctx) => {
   const project = "nishio";
   const page = encodeURIComponent(ctx.params!!.page as string);
+  if (page === "favicon.ico") {
+    throw new Error("404");
+  }
   const url = `https://scrapbox.io/api/pages/${project}/${page}`;
   const response = await fetch(url);
   const json: TScrapboxPageJSON = await response.json();
@@ -51,10 +54,19 @@ const View = (props: TPageProps) => {
   const { links, two_hops_links } = generate_links([props]);
   const title = decodeURIComponent(props.page).replace(/_/g, " ");
   const trans_url = `https://mem-nhiro-org.translate.goog/${props.page}?_x_tr_sl=en&_x_tr_tl=zh-CN&_x_tr_hl=en&_x_tr_pto=wapp`;
+  const description = props.json.descriptions
+    .map((line) => line.replace(/\[.*?\]/g, ""))
+    .join(" ");
+
   return (
     <>
       <Head>
         <title>{title} - NISHIO Hirokazu</title>
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="nishio" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={props.json.image} />
       </Head>
       <div className="header">
         <Link href="/">

@@ -1,4 +1,6 @@
 export type TScrapboxPageJSON = {
+  image: string;
+  descriptions: string[];
   lines: { text: string }[];
   links: string[];
   relatedPages: {
