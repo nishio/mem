@@ -1,0 +1,131 @@
+/*
+関連ページ一覧を横に移動させる
+https://scrapbox.io/nishio/settings#6219a338aff09e0000bd860a
+*/
+
+.page {
+  max-width: 1200px;
+}
+@media (min-width: 768px) {
+  .related-page-list {
+    flex-basis: 140px !important;
+  }
+}
+@media (min-width: 1240px) {
+  .related-page-list {
+    flex-basis: 285px !important;
+  }
+  .related-page-list .relation-label {
+    width: 285px !important;
+  }
+}
+@media (min-width: 768px) {
+  .page-wrapper {
+    display: flex;
+    justify-content: space-around;
+  }
+  .drag-and-drop-enter {
+    order: 1;
+    margin-right: 20px;
+    flex-basis: 100% !important;
+    min-width: 0;
+  }
+  .related-page-list {
+    order: 2;
+    flex-shrink: 0;
+    margin-top: 0px;
+    background-color: var(--related-page-list-bg);
+  }
+  .related-page-sort-menu {
+    display: none;
+  }
+  .related-page-list .grid li {
+    margin-bottom: 5px !important;
+    margin-right: 5px !important;
+    width: 140px;
+  }
+  .related-page-list .grid .splitter {
+    height: 15px !important;
+  }
+  .related-page-list .relation-label {
+    height: auto !important;
+  }
+
+  .related-page-list .relation-label .arrow {
+    display: none !important;
+  }
+
+  .related-page-list .relation-label a {
+    /* 関連リンク ラベル */
+    padding: 4px !important;
+    /* border-bottom: 2px solid var(--relation-label-bg); */
+  }
+  .related-page-list .relation-label .title {
+    font-size: 12px;
+  }
+  .related-page-list .relation-label .icon-lg {
+    display: none !important;
+  }
+  .related-page-list .page-list-item {
+    /* カードサイズ変更 */
+    height: 50px !important;
+  }
+  .related-page-list .content {
+    /* カードサイズ変更 */
+    height: 100% !important;
+  }
+  .related-page-list .page-list-item .header {
+    border-top-width: 5px !important;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+    z-index: 1;
+    /* background-color: var(--translucent-card-bg)*/
+  }
+  .related-page-list .page-list-item .header .title {
+    font-size: 12px !important;
+    filter: drop-shadow(0px 0px 6px var(--card-bg, #fff))
+      drop-shadow(0px 0px 8px var(--card-bg, #fff))
+      drop-shadow(0px 0px 10px var(--card-bg, #fff))
+      drop-shadow(0px 0px 14px var(--card-bg, #fff));
+  }
+  .related-page-list .page-list-item .description {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    line-height: 1.4 !important;
+    z-index: 1;
+  }
+  .related-page-list .page-list-item .description .line {
+    font-size: 11px !important;
+  }
+  .related-page-list .page-list-item .description .line .inline-icon {
+    font-size: 9px !important;
+  }
+  .related-page-list .page-list-item .icon {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 1;
+    padding: 5px !important;
+  }
+
+  .related-page-list .page-list-item .icon img {
+    width: 100% !important;
+    height: 150% !important;
+    width: auto !important;
+    margin-right: 0 !important;
+    object-fit: contain;
+  }
+  .related-page-list .ellipsis {
+    height: 30px !important;
+  }
+
+  .related-page-list .ellipsis a {
+    padding: 2px !important;
+  }
+
+  .related-page-list .ellipsis .circle {
+    width: 30px !important;
+    height: 30px !important;
+  }
+}

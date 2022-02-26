@@ -42,14 +42,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const toHideRelatedPages = new Set();
 toHideRelatedPages.add("Engineer's way of creating knowledge");
 
-const Tweet = (props: { page: string }) => {
-  const tweet_url = `https://twitter.com/intent/tweet`;
-  return (
-    <a className="twitter-share-button" href={tweet_url}>
-      Tweet
-    </a>
-  );
+const Tweet = (props: { title: string }) => {
+  const onTweet = () => {
+    const url = document.location.href;
+    const api = `https://twitter.com/intent/tweet?url=${url}&text=${props.title}`;
+    window.open(api, "_blank");
+  };
+  return <button onClick={onTweet}>Tweet</button>;
 };
+
 const View = (props: TPageProps) => {
   const { links, two_hops_links } = generate_links([props]);
   const title = decodeURIComponent(props.page).replace(/_/g, " ");
@@ -58,11 +59,6 @@ const View = (props: TPageProps) => {
     .map((line) => line.replace(/\[.*?\]/g, ""))
     .join(" ");
 
-  const onTweet = () => {
-    const url = document.location.href;
-    const api = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
-    window.open(api, "_blank");
-  };
   return (
     <>
       <Head>
@@ -81,25 +77,26 @@ const View = (props: TPageProps) => {
           [Translate]
         </a>
       </div>
-      <Page blocks={props.content} hide_title={false}>
-        {PrevNext(title)}
-        {Breadcrumb(title)}
-        {/* <Tweet page={props.page} /> */}
-        <button onClick={onTweet}>Tweet</button>
-      </Page>
-      {toHideRelatedPages.has(title) ? null : (
-        <div className="page">
-          <h3>Related Pages</h3>
+      <div style={{ display: "flex" }}>
+        <Page blocks={props.content} hide_title={false}>
+          {PrevNext(title)}
+          {Breadcrumb(title)}
+          <Tweet title={title} />
+        </Page>
+        {toHideRelatedPages.has(title) ? null : (
+          <div className="page related-page-list">
+            <h3>Related Pages</h3>
 
-          <p>Direct Links: {links}</p>
-          {two_hops_links.length > 0 && (
-            <div>
-              <p>2-hop links</p>
-              <ul>{two_hops_links}</ul>
-            </div>
-          )}
-        </div>
-      )}
+            <p>Direct Links: {links}</p>
+            {two_hops_links.length > 0 && (
+              <div>
+                <p>2-hop links</p>
+                <ul>{two_hops_links}</ul>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
       <div className="page">
         "<strong>Engineer's way of creating knowledge</strong>" the English
         version of my book is now available on{" "}
