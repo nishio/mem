@@ -51,8 +51,28 @@ const Tweet = (props: { title: string }) => {
   return <button onClick={onTweet}>Tweet</button>;
 };
 
+const RelatedPages = (props: { props: TPageProps; title: string }) => {
+  const { links, two_hops_links } = generate_links([props.props]);
+
+  if (toHideRelatedPages.has(props.title)) {
+    return null;
+  }
+  return (
+    <div className="page related-page-list">
+      <h3>Related Pages</h3>
+
+      <p>Direct Links: {links}</p>
+      {two_hops_links.length > 0 && (
+        <div>
+          <p>2-hop links</p>
+          <ul>{two_hops_links}</ul>
+        </div>
+      )}
+    </div>
+  );
+};
+
 const View = (props: TPageProps) => {
-  const { links, two_hops_links } = generate_links([props]);
   const title = decodeURIComponent(props.page).replace(/_/g, " ");
   const trans_url = `https://mem-nhiro-org.translate.goog/${props.page}?_x_tr_sl=en&_x_tr_tl=zh-CN&_x_tr_hl=en&_x_tr_pto=wapp`;
   const description = props.json.descriptions
@@ -83,19 +103,7 @@ const View = (props: TPageProps) => {
           {Breadcrumb(title)}
           <Tweet title={title} />
         </Page>
-        {toHideRelatedPages.has(title) ? null : (
-          <div className="page related-page-list">
-            <h3>Related Pages</h3>
-
-            <p>Direct Links: {links}</p>
-            {two_hops_links.length > 0 && (
-              <div>
-                <p>2-hop links</p>
-                <ul>{two_hops_links}</ul>
-              </div>
-            )}
-          </div>
-        )}
+        <RelatedPages title={title} props={props} />
       </div>
       <div className="page">
         "<strong>Engineer's way of creating knowledge</strong>" the English
