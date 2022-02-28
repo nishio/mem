@@ -34,7 +34,7 @@ export default function TopPage(props: Props) {
       <Head>
         <title>NISHIO Hirokazu</title>
       </Head>
-      <div className="header">NISHIO Hirokazu</div>
+      <div className="document-header">NISHIO Hirokazu</div>
 
       <Page blocks={props.content} hide_title={true} />
     </>

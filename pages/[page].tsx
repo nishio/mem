@@ -2,11 +2,11 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
 import { parse } from "@progfay/scrapbox-parser";
 import { Page } from "../components/Page";
-import { generate_links } from "../utils/generate_links";
 import { Breadcrumb, PrevNext } from "../utils/book_navigation";
 import Link from "next/link";
 import { TScrapboxPageJSON } from "../utils/TScrapboxPageJSON";
 import { TPageProps } from "../utils/TPageProps";
+import { RelatedPages } from "../components/RelatedPages";
 
 export const getStaticProps: GetStaticProps<TPageProps> = async (ctx) => {
   const project = "nishio";
@@ -39,7 +39,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-const toHideRelatedPages = new Set();
+export const toHideRelatedPages = new Set();
 toHideRelatedPages.add("Engineer's way of creating knowledge");
 
 const Tweet = (props: { title: string }) => {
@@ -49,27 +49,6 @@ const Tweet = (props: { title: string }) => {
     window.open(api, "_blank");
   };
   return <button onClick={onTweet}>Tweet</button>;
-};
-
-const RelatedPages = (props: { props: TPageProps; title: string }) => {
-  const { links, two_hops_links } = generate_links([props.props]);
-
-  if (toHideRelatedPages.has(props.title)) {
-    return null;
-  }
-  return (
-    <div className="page related-page-list">
-      <h3>Related Pages</h3>
-
-      <p>Direct Links: {links}</p>
-      {two_hops_links.length > 0 && (
-        <div>
-          <p>2-hop links</p>
-          <ul>{two_hops_links}</ul>
-        </div>
-      )}
-    </div>
-  );
 };
 
 const View = (props: TPageProps) => {
@@ -89,7 +68,7 @@ const View = (props: TPageProps) => {
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={props.json.image} />
       </Head>
-      <div className="header">
+      <div className="document-header">
         <Link href="/">
           <a id="to-top">NISHIO Hirokazu</a>
         </Link>

@@ -16,7 +16,7 @@ export default function TopPage(props: Props) {
       <Head>
         <title>Dashboard NISHIO Hirokazu</title>
       </Head>
-      <div className="header">mem.nhiro.org: Dashboard</div>
+      <div className="document-header">mem.nhiro.org: Dashboard</div>
       <div className="page">
         <a
           href="https://twitter.com/search?q=mem.nhiro.org&src=typed_query&f=live"
