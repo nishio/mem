@@ -21,6 +21,8 @@ export const title_to_url = (title: string) => {
 const noEncodeChars = '@$&+=:;",';
 const noTailChars = ':;",';
 
+const Arrow = <span className="two-hop-symbol">→</span>;
+const Cross = <span className="two-hop-symbol">×</span>;
 type TLink = { titleLc: string; title: string; image?: string };
 const link_to_dom = (link: TLink): JSX.Element => {
   const url = title_to_url(link.titleLc);
@@ -98,7 +100,7 @@ export const generate_links = (props: TPageProps) => {
       const links: (string | JSX.Element)[] = [];
 
       keys.forEach((lc) => {
-        links.push("×");
+        links.push(Cross);
         links.push(lc_to_dom(lc));
       });
       links.shift();
@@ -108,7 +110,11 @@ export const generate_links = (props: TPageProps) => {
     two_hops_links.push(
       <ul className="grid" key={key}>
         <li className="relation-label">
-          <div className="header">→{key_to_link(key)}→</div>
+          <div className="header">
+            {Arrow}
+            {key_to_link(key)}
+            {Arrow}
+          </div>
         </li>
         {two_hops[key].map(lc_to_card)}
       </ul>
