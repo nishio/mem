@@ -30,11 +30,25 @@ export const generate_links = (projects: TPageProps[]) => {
   const _to_link = (title: string, titleLc: string) => {
     const url = title_to_url(titleLc);
     return (
-      <Link href={`/${url}`} key={titleLc}>
-        <a>[{title}]</a>
-      </Link>
+      <li className="page-list-item" key={title}>
+        <Link href={`/${url}`} key={titleLc}>
+          <a>[{title}]</a>
+        </Link>
+      </li>
     );
   };
+  const direct_to_link = (key: string) => {
+    if (lc_to_title[key] !== undefined) {
+      return _to_link(lc_to_title[key], key);
+    }
+    const title = key.replace(/_/g, " ");
+    return (
+      <li className="grid related-page-list" key={title}>
+        [{title}]
+      </li>
+    );
+  };
+
   const to_link = (key: string) => {
     if (lc_to_title[key] !== undefined) {
       return _to_link(lc_to_title[key], key);
@@ -45,9 +59,10 @@ export const generate_links = (projects: TPageProps[]) => {
 
   projects.forEach((props) => {
     if (!props.exists) return;
+
     props.json.relatedPages.links1hop.forEach((x) => {
       lc_to_title[x.titleLc] = x.title;
-      links.push(to_link(x.titleLc));
+      links.push(direct_to_link(x.titleLc));
     });
     props.json.relatedPages.links2hop.forEach((x) => {
       lc_to_title[x.titleLc] = x.title;

@@ -2,7 +2,22 @@
 関連ページ一覧を横に移動させる
 https://scrapbox.io/nishio/settings#6219a338aff09e0000bd860a
 */
+.related-page-list ul.grid {
+  list-style: none;
+  padding-inline-start: 0px;
+}
 
+.grid li {
+  display: block;
+  float: left;
+  position: relative;
+  margin: 0 16px 18px 0;
+  font-family: "Roboto", Helvetica, Arial, "Hiragino Sans", sans-serif;
+  overflow: hidden;
+  background: white;
+  border-radius: 8px;
+}
+/* --- */
 .page {
   max-width: 1200px;
 }
@@ -41,7 +56,7 @@ https://scrapbox.io/nishio/settings#6219a338aff09e0000bd860a
   }
   .related-page-list .grid li {
     margin-bottom: 5px !important;
-    margin-right: 5px !important;
+    margin-right: 2px !important;
     width: 140px;
   }
   .related-page-list .grid .splitter {
