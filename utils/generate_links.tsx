@@ -38,7 +38,7 @@ export const generate_links = (props: TPageProps) => {
   const two_hops: { [key: string]: string[] } = {};
   const two_hops_links: unknown[] = [];
 
-  const build_link1hop = (x: TLink) => {
+  const link_to_card = (x: TLink) => {
     const url = title_to_url(x.titleLc);
     const img = x.image ? (
       <div className="icon">
@@ -60,7 +60,7 @@ export const generate_links = (props: TPageProps) => {
   props.json.relatedPages.links1hop.forEach((x) => {
     lc_to_title[x.titleLc] = x.title;
     lc_to_linkobj[x.titleLc] = x;
-    links.push(build_link1hop(x));
+    links.push(link_to_card(x));
   });
 
   const lc_to_dom = (lc: string): JSX.Element | string => {
@@ -75,11 +75,7 @@ export const generate_links = (props: TPageProps) => {
   const lc_to_card = (lc: string): JSX.Element | null => {
     const linkobj = lc_to_linkobj[lc];
     if (linkobj !== undefined) {
-      return (
-        <li className="page-list-item" key={lc}>
-          <div className="header">{link_to_dom(linkobj)}</div>
-        </li>
-      );
+      return link_to_card(linkobj);
     }
     return null;
   };
@@ -110,8 +106,8 @@ export const generate_links = (props: TPageProps) => {
     };
 
     two_hops_links.push(
-      <ul className="grid">
-        <li className="relation-label" key={key}>
+      <ul className="grid" key={key}>
+        <li className="relation-label">
           <div className="header">→{key_to_link(key)}→</div>
         </li>
         {two_hops[key].map(lc_to_card)}
