@@ -52,6 +52,10 @@ https://scrapbox.io/nishio/settings#6219a338aff09e0000bd860a
 h4 {
   margin-bottom: -1em;
 }
+
+.no-page {
+  color: #777;
+}
 /* --- */
 .page {
   max-width: 1200px;

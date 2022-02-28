@@ -69,7 +69,7 @@ export const generate_links = (props: TPageProps) => {
       return link_to_dom(linkobj);
     }
     const title = lc_to_title[lc] || lc;
-    return `[${title}]`;
+    return <span className="no-page">{title}</span>;
   };
 
   const lc_to_card = (lc: string): JSX.Element | null => {
