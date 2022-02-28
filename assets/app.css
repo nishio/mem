@@ -6,7 +6,7 @@ body {
   margin: 0;
   font-size: 15px;
 }
-.header {
+.document-header {
   background-color: rgba(91, 165, 111, 0.8);
   padding: 8px;
   font-weight: bold;

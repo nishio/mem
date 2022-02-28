@@ -6,7 +6,7 @@ import { Breadcrumb, PrevNext } from "../utils/book_navigation";
 import Link from "next/link";
 import { TScrapboxPageJSON } from "../utils/TScrapboxPageJSON";
 import { TPageProps } from "../utils/TPageProps";
-import { RelatedPages } from "./RelatedPages";
+import { RelatedPages } from "../components/RelatedPages";
 
 export const getStaticProps: GetStaticProps<TPageProps> = async (ctx) => {
   const project = "nishio";
@@ -68,7 +68,7 @@ const View = (props: TPageProps) => {
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={props.json.image} />
       </Head>
-      <div className="header">
+      <div className="document-header">
         <Link href="/">
           <a id="to-top">NISHIO Hirokazu</a>
         </Link>

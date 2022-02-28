@@ -17,6 +17,32 @@ https://scrapbox.io/nishio/settings#6219a338aff09e0000bd860a
   background: white;
   border-radius: 8px;
 }
+.related-page-list .page-list-item .icon {
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 1;
+  padding: 5px !important;
+}
+
+.related-page-list .page-list-item .header {
+  top: 0;
+  position: absolute;
+  border-top-width: 5px !important;
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+  z-index: 1;
+  filter: drop-shadow(0px 0px 6px var(--card-bg, #fff))
+    drop-shadow(0px 0px 8px var(--card-bg, #fff))
+    drop-shadow(0px 0px 10px var(--card-bg, #fff))
+    drop-shadow(0px 0px 14px var(--card-bg, #fff));
+}
+.related-page-list .page-list-item .header a {
+  color: #000;
+  text-decoration: none;
+}
 /* --- */
 .page {
   max-width: 1200px;
