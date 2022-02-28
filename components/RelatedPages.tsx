@@ -10,15 +10,9 @@ export const RelatedPages = (props: { props: TPageProps; title: string }) => {
   }
   return (
     <div className="related-page-list">
-      {/* <h3>Related Pages</h3> */}
+      <h3>Related Pages</h3>
       <ul className="grid">{links}</ul>
-
-      {/* {two_hops_links.length > 0 && (
-              <div>
-                <p>2-hop links</p>
-                <ul className="grid">{two_hops_links}</ul>
-              </div>
-            )} */}
+      {two_hops_links}
     </div>
   );
 };
