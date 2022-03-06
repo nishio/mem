@@ -64,6 +64,14 @@ a.header-util {
   vertical-align: bottom;
 }
 
+.line .image {
+  margin: 3px 0;
+  max-width: 100%;
+  max-height: 300px;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
 .deco .deco-\*-1 {
   font-weight: bold;
 }
