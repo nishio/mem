@@ -1,6 +1,5 @@
 import React from "react";
 import type { LinkNode as LinkNodeType } from "@progfay/scrapbox-parser";
-import { useRouter } from "next/router";
 import Link from "next/link";
 import { title_to_url } from "../utils/generate_links";
 
