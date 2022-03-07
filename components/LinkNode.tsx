@@ -2,6 +2,7 @@ import React from "react";
 import type { LinkNode as LinkNodeType } from "@progfay/scrapbox-parser";
 import Link from "next/link";
 import { title_to_url } from "../utils/generate_links";
+import { YouTube } from "./YouTube";
 
 export const LinkNode = (props: LinkNodeType) => {
   switch (props.pathType) {
@@ -38,13 +39,20 @@ const InternalLink = (props: LinkNodeType) => {
   );
 };
 
-const ExternalLink = (props: LinkNodeType) => (
-  <a
-    href={props.href}
-    rel="noopener noreferrer"
-    target="_blank"
-    key={props.href}
-  >
-    {props.content || props.href}
-  </a>
-);
+const ExternalLink = (props: LinkNodeType) => {
+  if (props.href.startsWith("https://youtu.be/")) {
+    const id = props.href.match(/https:\/\/youtu.be\/(.*)/)![1];
+    return <YouTube id={id} />;
+  }
+
+  return (
+    <a
+      href={props.href}
+      rel="noopener noreferrer"
+      target="_blank"
+      key={props.href}
+    >
+      {props.content || props.href}
+    </a>
+  );
+};
