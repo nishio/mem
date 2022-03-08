@@ -24,6 +24,7 @@ const noTailChars = ':;",';
 const Arrow = <span className="two-hop-symbol">→</span>;
 const Cross = <span className="two-hop-symbol">×</span>;
 type TLink = { titleLc: string; title: string; image?: string };
+
 const link_to_dom = (link: TLink): JSX.Element => {
   const url = title_to_url(link.titleLc);
   return (
@@ -40,22 +41,27 @@ export const generate_links = (props: TPageProps) => {
   const two_hops: { [key: string]: string[] } = {};
   const two_hops_links: unknown[] = [];
 
-  const link_to_card = (x: TLink) => {
-    const url = title_to_url(x.titleLc);
-    const img = x.image ? (
+  const link_to_card = (link: TLink) => {
+    const url = title_to_url(link.titleLc);
+    const img = link.image ? (
       <div className="icon">
         <img
           loading="lazy"
           // src="https://gyazo.com/0a767996e1e70b9c8447940ae3533226/max_size/400"
-          src={x.image}
+          src={link.image}
         />
       </div>
     ) : null;
+
     return (
-      <li className="page-list-item" key={x.title}>
-        <div className="header">{link_to_dom(x)}</div>
-        {img}
-      </li>
+      <Link href={`/${url}`} key={link.titleLc}>
+        <li className="page-list-item">
+          <div className="header">
+            <a>{link.title}</a>
+          </div>
+          {img}
+        </li>
+      </Link>
     );
   };
 

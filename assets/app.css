@@ -23,6 +23,10 @@ a#to-top:focus {
   cursor: pointer;
 }
 
+.page-list-item {
+  cursor: pointer;
+}
+
 a.header-util {
   color: #000;
   margin-left: auto;
