@@ -122,12 +122,7 @@ export const generate_links = (props: TPageProps) => {
   });
 
   const two_hops_links_dom =
-    two_hops_links.length > 0 ? (
-      <div>
-        <h4>2-hop links</h4>
-        {two_hops_links}
-      </div>
-    ) : null;
+    two_hops_links.length > 0 ? <div>{two_hops_links}</div> : null;
 
   return { links, two_hops_links: two_hops_links_dom };
 };
