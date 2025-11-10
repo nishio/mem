@@ -26,9 +26,14 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const lang = ctx.params!!.lang as string;
   const page = ctx.params!!.page as string;
 
-  // Validate language
+  // Validate language - redirect to /nishio/<lang> if not en or ja
   if (lang !== "ja" && lang !== "en") {
-    return { notFound: true };
+    return {
+      redirect: {
+        destination: `/nishio/${lang}`,
+        permanent: false,
+      },
+    };
   }
 
   // Build file path
