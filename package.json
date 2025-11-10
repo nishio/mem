@@ -5,6 +5,7 @@
   },
   "scripts": {
     "dev": "next dev",
+    "prebuild": "bash -c 'if [ ! -d data/ja/pages ]; then rm -rf data/ja data/en && git clone --depth 1 https://github.com/nishio/external_brain_in_markdown data/ja && git clone --depth 1 https://github.com/nishio/external_brain_in_markdown_english data/en; fi'",
     "build": "next build",
     "start": "next start"
   },
