@@ -1,6 +1,6 @@
 import { generate_links } from "../utils/generate_links";
 import { TPageProps } from "../utils/TPageProps";
-import { toHideRelatedPages } from "../pages/[page]";
+import { toHideRelatedPages } from "../pages/nishio/[page]";
 
 export const RelatedPages = (props: { props: TPageProps; title: string }) => {
   const { links, two_hops_links } = generate_links(props.props);

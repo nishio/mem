@@ -14,21 +14,6 @@ type Props = {
   exists: boolean;
 };
 
-// Custom renderer for markdown links
-const renderer = new marked.Renderer();
-const originalLinkRenderer = renderer.link.bind(renderer);
-
-renderer.link = (href, title, text) => {
-  // Convert [[wiki-style links]] to proper links
-  const wikiLinkMatch = text.match(/^\[\[(.*?)\]\]$/);
-  if (wikiLinkMatch) {
-    const linkTarget = wikiLinkMatch[1];
-    const lang = (href as any).lang || 'ja'; // Get lang from context
-    return `<a href="/${lang}/${encodeURIComponent(linkTarget)}">${linkTarget}</a>`;
-  }
-  return originalLinkRenderer(href, title, text);
-};
-
 // Process wiki-style links in markdown
 function processWikiLinks(markdown: string, lang: string): string {
   // Replace [[link]] with [link](/lang/link)

@@ -1,12 +1,12 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 import Head from "next/head";
 import { parse } from "@progfay/scrapbox-parser";
-import { Page } from "../components/Page";
-import { Breadcrumb, PrevNext } from "../utils/book_navigation";
+import { Page } from "../../components/Page";
+import { Breadcrumb, PrevNext } from "../../utils/book_navigation";
 import Link from "next/link";
-import { TScrapboxPageJSON } from "../utils/TScrapboxPageJSON";
-import { TPageProps } from "../utils/TPageProps";
-import { RelatedPages } from "../components/RelatedPages";
+import { TScrapboxPageJSON } from "../../utils/TScrapboxPageJSON";
+import { TPageProps } from "../../utils/TPageProps";
+import { RelatedPages } from "../../components/RelatedPages";
 
 export const getStaticProps: GetStaticProps<TPageProps> = async (ctx) => {
   const project = "nishio";
