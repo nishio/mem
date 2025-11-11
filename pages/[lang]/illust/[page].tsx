@@ -423,10 +423,28 @@ export default function IllustPage(props: Props) {
               font-size: 1rem;
             }
           }
+
+          .footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+          }
+
+          .footer a {
+            color: #0070f3;
+            text-decoration: none;
+          }
+
+          .footer a:hover {
+            text-decoration: underline;
+          }
         `}</style>
       </div>
-      <hr />
-      <div>
+      <div className="footer">
         (C)NISHIO Hirokazu / Illustration View
         <br />
         Source:{" "}

@@ -110,21 +110,25 @@ export default function IllustIndexPage(props: Props) {
   return (
     <>
       <Head>
-        <title>Illustrations - NISHIO Hirokazu</title>
+        <title>NISHIO Hirokazu - Visual Thinking</title>
       </Head>
       <div className="document-header">
         <Link href="/">
           <a id="to-top">NISHIO Hirokazu</a>
         </Link>
-        <span className="header-util">
+        <span style={{ margin: "0 0.5em" }}> &gt; </span>
+        <Link href={`/${props.lang}/illust`}>
+          <a id="to-top">Visual Thinking</a>
+        </Link>
+        {/* <span className="header-util">
           [{props.lang === "ja" ? "日本語" : "English"}]
-        </span>
+        </span> */}
         <Link href={`/${otherLang}/illust`}>
           <a className="header-util">
             [{otherLang === "ja" ? "日本語" : "English"}]
           </a>
         </Link>
-      </div>
+      </div >
       <div className="page">
         <h1>{props.lang === "ja" ? "イラスト一覧" : "Illustrations"}</h1>
 
@@ -181,10 +185,18 @@ export default function IllustIndexPage(props: Props) {
             height: auto;
             object-fit: contain;
           }
+
+          .footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+          }
         `}</style>
       </div>
-      <hr />
-      <div>(C)NISHIO Hirokazu / Illustration View</div>
+      <div className="footer">(C)NISHIO Hirokazu / CC-BY-3.0</div>
     </>
   );
 }
