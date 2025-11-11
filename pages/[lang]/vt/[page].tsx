@@ -8,7 +8,7 @@ import { marked } from "marked";
 
 type IllustConfig = {
   illusts: Array<{
-    id: string;
+    id: number;
     page_ja: string;
     page_en: string | null;
     tags: string[];
@@ -24,7 +24,7 @@ type Props = {
   page: string;
   exists: boolean;
   pageName: string;
-  illustId: string;
+  illustId: number;
   hasEnVersion: boolean;
   totalIllusts: number;
   currentIndex: number;
@@ -80,11 +80,11 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
     };
   }
 
-  const configPath = path.join(process.cwd(), "illust_config.json");
+  const configPath = path.join(process.cwd(), "vt_config.json");
   const configContent = fs.readFileSync(configPath, "utf-8");
   const config: IllustConfig = JSON.parse(configContent);
 
-  const illustItem = config.illusts.find((item) => item.id === page);
+  const illustItem = config.illusts.find((item) => item.id === parseInt(page, 10));
 
   if (!illustItem) {
     return {
@@ -115,7 +115,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
     if (!illustItem.page_en) {
       return {
         redirect: {
-          destination: `/ja/illust/${page}`,
+          destination: `/ja/vt/${page}`,
           permanent: false,
         },
       };
@@ -148,7 +148,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
         illustId: illustItem.id,
         hasEnVersion,
         totalIllusts: config.illusts.length,
-        currentIndex: config.illusts.findIndex((item) => item.id === page),
+        currentIndex: config.illusts.findIndex((item) => item.id === parseInt(page, 10)),
       },
     };
   }
@@ -166,7 +166,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   // Convert markdown to HTML
   const htmlContent = await marked.parse(processedContent);
 
-  const currentIndex = config.illusts.findIndex((item) => item.id === page);
+  const currentIndex = config.illusts.findIndex((item) => item.id === parseInt(page, 10));
 
   return {
     props: {
@@ -213,8 +213,8 @@ export default function IllustPage(props: Props) {
             language.
           </p>
           <p>
-            <Link href={`/${props.lang}/illust`}>
-              <a>Back to illustration list</a>
+            <Link href={`/${props.lang}/vt`}>
+              <a>Back to Visual Thinking list</a>
             </Link>
           </p>
         </div>
@@ -224,22 +224,18 @@ export default function IllustPage(props: Props) {
 
   const otherLang = props.lang === "ja" ? "en" : "ja";
 
-  const getFirstId = () => "001";
-  const getLastId = () => {
-    const paddedNum = String(props.totalIllusts).padStart(3, "0");
-    return paddedNum;
-  };
+  const getFirstId = () => 1;
+  const getLastId = () => props.totalIllusts;
   const getPrevId = () => {
     if (props.currentIndex <= 0) return null;
-    return String(props.currentIndex).padStart(3, "0");
+    return props.currentIndex; // currentIndex is 0-based, but we need the ID of previous item
   };
   const getNextId = () => {
     if (props.currentIndex >= props.totalIllusts - 1) return null;
-    return String(props.currentIndex + 2).padStart(3, "0");
+    return props.currentIndex + 2; // currentIndex is 0-based, next item is currentIndex + 1, so ID is currentIndex + 2
   };
   const getRandomId = () => {
-    const randomIndex = Math.floor(Math.random() * props.totalIllusts) + 1;
-    return String(randomIndex).padStart(3, "0");
+    return Math.floor(Math.random() * props.totalIllusts) + 1;
   };
 
   return (
@@ -255,7 +251,7 @@ export default function IllustPage(props: Props) {
           [{props.lang === "ja" ? "日本語" : "English"}]
         </span>
         {props.hasEnVersion && (
-          <Link href={`/${otherLang}/illust/${props.page}`}>
+          <Link href={`/${otherLang}/vt/${props.page}`}>
             <a className="header-util">
               [{otherLang === "ja" ? "日本語" : "English"}]
             </a>
@@ -277,33 +273,33 @@ export default function IllustPage(props: Props) {
 
         <div className="illust-nav">
           <div className="nav-buttons">
-            <Link href={`/${props.lang}/illust/${getFirstId()}`}>
+            <Link href={`/${props.lang}/vt/${getFirstId()}`}>
               <a className="nav-link">|&lt;</a>
             </Link>
             {getPrevId() ? (
-              <Link href={`/${props.lang}/illust/${getPrevId()}`}>
+              <Link href={`/${props.lang}/vt/${getPrevId()}`}>
                 <a className="nav-link">&lt; Prev</a>
               </Link>
             ) : (
               <span className="nav-link disabled">&lt; Prev</span>
             )}
-            <Link href={`/${props.lang}/illust/${getRandomId()}`}>
+            <Link href={`/${props.lang}/vt/${getRandomId()}`}>
               <a className="nav-link">Random</a>
             </Link>
             {getNextId() ? (
-              <Link href={`/${props.lang}/illust/${getNextId()}`}>
+              <Link href={`/${props.lang}/vt/${getNextId()}`}>
                 <a className="nav-link">Next &gt;</a>
               </Link>
             ) : (
               <span className="nav-link disabled">Next &gt;</span>
             )}
-            <Link href={`/${props.lang}/illust/${getLastId()}`}>
+            <Link href={`/${props.lang}/vt/${getLastId()}`}>
               <a className="nav-link">&gt;|</a>
             </Link>
           </div>
           <div className="nav-all">
-            <Link href={`/${props.lang}/illust`}>
-              <a>All Illustrations</a>
+            <Link href={`/${props.lang}/vt`}>
+              <a>All Visual Thinking</a>
             </Link>
           </div>
         </div>
@@ -445,7 +441,7 @@ export default function IllustPage(props: Props) {
         `}</style>
       </div>
       <div className="footer">
-        (C)NISHIO Hirokazu / Illustration View
+        (C)NISHIO Hirokazu / Visual Thinking
         <br />
         Source:{" "}
         <a

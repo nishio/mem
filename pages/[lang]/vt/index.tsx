@@ -7,7 +7,7 @@ import matter from "gray-matter";
 
 type IllustConfig = {
   illusts: Array<{
-    id: string;
+    id: number;
     page_ja: string;
     page_en: string | null;
     tags: string[];
@@ -15,7 +15,7 @@ type IllustConfig = {
 };
 
 type IllustItem = {
-  id: string;
+  id: number;
   title: string;
   pageName: string;
   imageUrl: string | null;
@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
     };
   }
 
-  const configPath = path.join(process.cwd(), "illust_config.json");
+  const configPath = path.join(process.cwd(), "vt_config.json");
   const configContent = fs.readFileSync(configPath, "utf-8");
   const config: IllustConfig = JSON.parse(configContent);
 
@@ -117,13 +117,13 @@ export default function IllustIndexPage(props: Props) {
           <a id="to-top">NISHIO Hirokazu</a>
         </Link>
         <span style={{ margin: "0 0.5em" }}> &gt; </span>
-        <Link href={`/${props.lang}/illust`}>
+        <Link href={`/${props.lang}/vt`}>
           <a id="to-top">Visual Thinking</a>
         </Link>
         {/* <span className="header-util">
           [{props.lang === "ja" ? "日本語" : "English"}]
         </span> */}
-        <Link href={`/${otherLang}/illust`}>
+        <Link href={`/${otherLang}/vt`}>
           <a className="header-util">
             [{otherLang === "ja" ? "日本語" : "English"}]
           </a>
@@ -134,7 +134,7 @@ export default function IllustIndexPage(props: Props) {
 
         <div className="illust-grid">
           {props.illusts.map((illust) => (
-            <Link key={illust.id} href={`/${props.lang}/illust/${illust.id}`}>
+            <Link key={illust.id} href={`/${props.lang}/vt/${illust.id}`}>
               <a className="illust-tile">
                 {illust.imageUrl && (
                   <img
