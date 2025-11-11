@@ -97,7 +97,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
         page,
         exists: false,
         pageName: "",
-        illustId: page,
+        illustId: parseInt(page, 10),
         hasEnVersion: false,
         totalIllusts: config.illusts.length,
         currentIndex: -1,
