@@ -262,62 +262,46 @@ export default function IllustPage(props: Props) {
           </Link>
         )}
       </div>
-      <div className="page">
-        <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
-          {props.title}
-        </h1>
+      <div className="page illust-page">
+        <h1 className="illust-title">{props.title}</h1>
 
         {props.imageUrl && (
-          <div style={{ textAlign: "center", margin: "0 auto 2rem" }}>
+          <div className="illust-image-container">
             <img
               src={props.imageUrl}
               alt={props.title}
-              style={{ maxWidth: "100%", height: "auto", maxHeight: "600px" }}
+              className="illust-image"
             />
           </div>
         )}
 
-        <div style={{ textAlign: "center", margin: "2rem 0" }}>
-          <div
-            style={{
-              fontSize: "1.2rem",
-              fontFamily: "monospace",
-              marginBottom: "1rem",
-            }}
-          >
+        <div className="illust-nav">
+          <div className="nav-buttons">
             <Link href={`/${props.lang}/illust/${getFirstId()}`}>
-              <a style={{ margin: "0 0.5rem" }}>|&lt;</a>
+              <a className="nav-link">|&lt;</a>
             </Link>
             {getPrevId() ? (
               <Link href={`/${props.lang}/illust/${getPrevId()}`}>
-                <a style={{ margin: "0 0.5rem" }}>&lt; Prev</a>
+                <a className="nav-link">&lt; Prev</a>
               </Link>
             ) : (
-              <span
-                style={{ margin: "0 0.5rem", color: "#ccc", cursor: "default" }}
-              >
-                &lt; Prev
-              </span>
+              <span className="nav-link disabled">&lt; Prev</span>
             )}
             <Link href={`/${props.lang}/illust/${getRandomId()}`}>
-              <a style={{ margin: "0 0.5rem" }}>Random</a>
+              <a className="nav-link">Random</a>
             </Link>
             {getNextId() ? (
               <Link href={`/${props.lang}/illust/${getNextId()}`}>
-                <a style={{ margin: "0 0.5rem" }}>Next &gt;</a>
+                <a className="nav-link">Next &gt;</a>
               </Link>
             ) : (
-              <span
-                style={{ margin: "0 0.5rem", color: "#ccc", cursor: "default" }}
-              >
-                Next &gt;
-              </span>
+              <span className="nav-link disabled">Next &gt;</span>
             )}
             <Link href={`/${props.lang}/illust/${getLastId()}`}>
-              <a style={{ margin: "0 0.5rem" }}>&gt;|</a>
+              <a className="nav-link">&gt;|</a>
             </Link>
           </div>
-          <div>
+          <div className="nav-all">
             <Link href={`/${props.lang}/illust`}>
               <a>All Illustrations</a>
             </Link>
@@ -325,40 +309,121 @@ export default function IllustPage(props: Props) {
         </div>
 
         {props.shortDescription && (
-          <div
-            style={{
-              maxWidth: "600px",
-              margin: "2rem auto",
-              padding: "1rem",
-              backgroundColor: "#f9f9f9",
-              borderRadius: "8px",
-              lineHeight: "1.6",
-            }}
-          >
-            <p style={{ margin: 0, whiteSpace: "pre-wrap" }}>
-              {props.shortDescription}
-            </p>
+          <div className="illust-description">
+            <p>{props.shortDescription}</p>
           </div>
         )}
 
-        <div style={{ textAlign: "center", margin: "2rem 0" }}>
+        <div className="illust-cta">
           <Link href={`/${props.lang}/${props.pageName}`}>
-            <a
-              style={{
-                display: "inline-block",
-                padding: "0.75rem 1.5rem",
-                backgroundColor: "#0070f3",
-                color: "white",
-                borderRadius: "8px",
-                textDecoration: "none",
-                fontSize: "1.1rem",
-                fontWeight: "bold",
-              }}
-            >
+            <a className="read-more-button">
               {props.lang === "ja" ? "詳細を読む →" : "Read More →"}
             </a>
           </Link>
         </div>
+
+        <style jsx>{`
+          .illust-page {
+            max-width: 1400px !important;
+            margin: 16px auto !important;
+          }
+
+          .illust-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+          }
+
+          .illust-image-container {
+            text-align: center;
+            margin: 0 auto 2rem;
+          }
+
+          .illust-image {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+          }
+
+          .illust-nav {
+            text-align: center;
+            margin: 2rem 0;
+          }
+
+          .nav-buttons {
+            font-size: 1.2rem;
+            font-family: monospace;
+            margin-bottom: 1rem;
+          }
+
+          .nav-link {
+            margin: 0 0.5rem;
+            text-decoration: none;
+          }
+
+          .nav-link.disabled {
+            color: #ccc;
+            cursor: default;
+          }
+
+          .nav-all {
+            margin-top: 1rem;
+          }
+
+          .illust-description {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            line-height: 1.8;
+            font-size: 1.05rem;
+          }
+
+          .illust-description p {
+            margin: 0;
+            white-space: pre-wrap;
+          }
+
+          .illust-cta {
+            text-align: center;
+            margin: 2rem 0;
+          }
+
+          .read-more-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #0070f3;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background-color 0.2s;
+          }
+
+          .read-more-button:hover {
+            background-color: #0051cc;
+          }
+
+          @media (max-width: 768px) {
+            .illust-title {
+              font-size: 1.5rem;
+            }
+
+            .illust-description {
+              max-width: 100%;
+              padding: 1rem;
+              font-size: 1rem;
+            }
+
+            .nav-buttons {
+              font-size: 1rem;
+            }
+          }
+        `}</style>
       </div>
       <hr />
       <div>
