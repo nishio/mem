@@ -157,6 +157,13 @@ export default function MarkdownPage(props: Props) {
         >
           [GitHub]
         </a>
+        {" / "}
+        <a
+          href={`https://scrapbox.io/${props.lang === "ja" ? "nishio" : "nishio-en"}/${props.page}`}
+          target="_blank"
+        >
+          [Scrapbox]
+        </a>
       </div>
     </>
   );

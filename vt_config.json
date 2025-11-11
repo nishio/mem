@@ -27,6 +27,60 @@
         "communication",
         "misunderstanding"
       ]
+    },
+    {
+      "id": 4,
+      "page_ja": "3つのイデオロギーの間に2つの対立軸がある",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 5,
+      "page_ja": "AIにまず語らせる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 6,
+      "page_ja": "AI時代の技術力獲得プロセス",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 7,
+      "page_ja": "AはBよりX",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 8,
+      "page_ja": "AがBを包んでいる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 9,
+      "page_ja": "Aから見てBがXだが、Bから見てAもX",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 10,
+      "page_ja": "Aかnot Aかの議論",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 11,
+      "page_ja": "FLAT-STEP→NAMERAKA",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 12,
+      "page_ja": "FitとDevelopは誤った二項対立",
+      "page_en": null,
+      "tags": []
     }
   ],
   "skipped": [
