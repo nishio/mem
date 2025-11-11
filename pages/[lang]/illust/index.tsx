@@ -127,65 +127,47 @@ export default function IllustIndexPage(props: Props) {
       </div>
       <div className="page">
         <h1>{props.lang === "ja" ? "イラスト一覧" : "Illustrations"}</h1>
-        <p>
-          {props.lang === "ja"
-            ? "xkcd風のイラストをまとめて表示しています。"
-            : "A collection of xkcd-style illustrations."}
-        </p>
 
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-            gap: "2rem",
+            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+            gap: "1rem",
             marginTop: "2rem",
           }}
         >
           {props.illusts.map((illust) => (
-            <div
-              key={illust.id}
-              style={{
-                border: "1px solid #ddd",
-                borderRadius: "8px",
-                padding: "1rem",
-                textAlign: "center",
-              }}
-            >
-              <Link href={`/${props.lang}/illust/${illust.id}`}>
-                <a>
-                  <h3 style={{ marginTop: 0 }}>{illust.title}</h3>
-                  {illust.imageUrl && (
-                    <img
-                      src={illust.imageUrl}
-                      alt={illust.title}
-                      style={{
-                        maxWidth: "100%",
-                        height: "auto",
-                        maxHeight: "200px",
-                        objectFit: "contain",
-                      }}
-                    />
-                  )}
-                </a>
-              </Link>
-              <div style={{ marginTop: "0.5rem", fontSize: "0.9rem" }}>
-                {illust.tags.map((tag) => (
-                  <span
-                    key={tag}
+            <Link key={illust.id} href={`/${props.lang}/illust/${illust.id}`}>
+              <a
+                style={{
+                  display: "block",
+                  position: "relative",
+                  paddingBottom: "100%",
+                  overflow: "hidden",
+                  border: "1px solid #ddd",
+                  borderRadius: "8px",
+                  backgroundColor: "#f9f9f9",
+                }}
+              >
+                {illust.imageUrl && (
+                  <img
+                    src={illust.imageUrl}
+                    alt={illust.title}
                     style={{
-                      display: "inline-block",
-                      background: "#f0f0f0",
-                      padding: "0.2rem 0.5rem",
-                      margin: "0.2rem",
-                      borderRadius: "4px",
-                      fontSize: "0.8rem",
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      transform: "translate(-50%, -50%)",
+                      maxWidth: "100%",
+                      maxHeight: "100%",
+                      width: "auto",
+                      height: "auto",
+                      objectFit: "contain",
                     }}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
+                  />
+                )}
+              </a>
+            </Link>
           ))}
         </div>
       </div>
