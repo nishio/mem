@@ -147,8 +147,9 @@ export default function IllustIndexPage(props: Props) {
         <style jsx>{`
           .illust-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, 184px);
             gap: 1rem;
+            justify-content: center;
             margin-top: 2rem;
           }
 
