@@ -1,0 +1,22 @@
+{
+  "illusts": [
+    {
+      "id": "001",
+      "page_ja": "ブロードリスニング",
+      "page_en": null,
+      "tags": ["xkcd", "communication", "democracy"]
+    },
+    {
+      "id": "002",
+      "page_ja": "ツリーとリゾーム",
+      "page_en": null,
+      "tags": ["philosophy", "structure"]
+    },
+    {
+      "id": "003",
+      "page_ja": "単語を変えると誤解が拡大する",
+      "page_en": null,
+      "tags": ["communication", "misunderstanding"]
+    }
+  ]
+}
