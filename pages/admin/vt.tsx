@@ -29,16 +29,17 @@ export default function AdminVTPage() {
 
   const handleScan = async () => {
     setLoading(true);
-    setMessage("");
+    setMessage("🔍 Scanning pages...");
+    setResults([]); // Clear previous results
     try {
       const response = await fetch("/api/vt/scan", {
         method: "POST",
       });
       const data = await response.json();
       setResults(data.results || []);
-      setMessage(`Found ${data.results?.length || 0} candidates`);
+      setMessage(`✅ Found ${data.results?.length || 0} candidates`);
     } catch (error) {
-      setMessage("Error scanning pages");
+      setMessage("❌ Error scanning pages");
       console.error(error);
     } finally {
       setLoading(false);
@@ -95,8 +96,15 @@ export default function AdminVTPage() {
         <h1>Visual Thinking Admin</h1>
 
         <div className="controls">
-          <button onClick={handleScan} disabled={loading}>
-            {loading ? "Scanning..." : "Scan Pages"}
+          <button onClick={handleScan} disabled={loading} className="scan-button">
+            {loading ? (
+              <>
+                <span className="spinner"></span>
+                Scanning...
+              </>
+            ) : (
+              "Scan Pages"
+            )}
           </button>
           <input
             type="text"
@@ -107,18 +115,31 @@ export default function AdminVTPage() {
           />
         </div>
 
-        {message && <div className="message">{message}</div>}
+        {message && (
+          <div className={`message ${loading ? "loading" : ""}`}>{message}</div>
+        )}
 
-        <div className="stats">
-          Showing {filteredResults.length} / {results.length} candidates
-        </div>
+        {!loading && (
+          <div className="stats">
+            Showing {filteredResults.length} / {results.length} candidates
+          </div>
+        )}
 
         <div className="grid">
           {filteredResults.map((result) => (
             <div key={result.pageName} className="card">
               <img src={result.imageUrl} alt={result.title} />
               <div className="card-info">
-                <h3>{result.title}</h3>
+                <h3>
+                  <a
+                    href={`https://scrapbox.io/nishio/${encodeURIComponent(result.pageName)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="title-link"
+                  >
+                    {result.title}
+                  </a>
+                </h3>
                 <p className="page-name">{result.pageName}</p>
                 <div className="card-actions">
                   <button
@@ -176,6 +197,27 @@ export default function AdminVTPage() {
             cursor: not-allowed;
           }
 
+          .scan-button {
+            position: relative;
+          }
+
+          .spinner {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            margin-right: 0.5rem;
+          }
+
+          @keyframes spin {
+            to {
+              transform: rotate(360deg);
+            }
+          }
+
           .search-input {
             flex: 1;
             padding: 0.75rem;
@@ -190,6 +232,23 @@ export default function AdminVTPage() {
             border: 1px solid #2196f3;
             border-radius: 8px;
             margin-bottom: 1rem;
+            font-weight: 500;
+          }
+
+          .message.loading {
+            background-color: #fff3e0;
+            border-color: #ff9800;
+            animation: pulse 1.5s ease-in-out infinite;
+          }
+
+          @keyframes pulse {
+            0%,
+            100% {
+              opacity: 1;
+            }
+            50% {
+              opacity: 0.7;
+            }
           }
 
           .stats {
@@ -224,6 +283,15 @@ export default function AdminVTPage() {
           .card-info h3 {
             margin: 0 0 0.5rem 0;
             font-size: 1.1rem;
+          }
+
+          .title-link {
+            color: #0070f3;
+            text-decoration: none;
+          }
+
+          .title-link:hover {
+            text-decoration: underline;
           }
 
           .page-name {

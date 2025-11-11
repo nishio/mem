@@ -4,20 +4,35 @@
       "id": 1,
       "page_ja": "ブロードリスニング",
       "page_en": null,
-      "tags": ["xkcd", "communication", "democracy"]
+      "tags": [
+        "xkcd",
+        "communication",
+        "democracy"
+      ]
     },
     {
       "id": 2,
       "page_ja": "ツリーとリゾーム",
       "page_en": null,
-      "tags": ["philosophy", "structure"]
+      "tags": [
+        "philosophy",
+        "structure"
+      ]
     },
     {
       "id": 3,
       "page_ja": "単語を変えると誤解が拡大する",
       "page_en": null,
-      "tags": ["communication", "misunderstanding"]
+      "tags": [
+        "communication",
+        "misunderstanding"
+      ]
     }
   ],
-  "skipped": []
+  "skipped": [
+    "#Ｚ世代的価値観",
+    "'cy' is not defined",
+    "1%の革命",
+    "01VERSE"
+  ]
 }
