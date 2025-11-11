@@ -18,6 +18,7 @@ type IllustConfig = {
 type Props = {
   title: string;
   content: string;
+  shortDescription: string;
   imageUrl: string | null;
   lang: string;
   page: string;
@@ -33,6 +34,30 @@ function extractGyazoImage(markdown: string): string | null {
   const gyazoPattern = /!\[.*?\]\((https:\/\/gyazo\.com\/[a-f0-9]+(?:\/thumb\/\d+)?)\)/i;
   const match = markdown.match(gyazoPattern);
   return match ? match[1] : null;
+}
+
+function extractShortDescription(markdown: string): string {
+  let text = markdown.replace(/^---[\s\S]*?---\n/, "");
+  text = text.replace(/!\[.*?\]\(.*?\)/g, "");
+  
+  const lines = text.split("\n").filter((line) => line.trim().length > 0);
+  let description = "";
+  let paragraphCount = 0;
+  
+  for (const line of lines) {
+    if (line.startsWith("#") || line.startsWith("-") || line.startsWith("*")) {
+      continue; // Skip headers and list items
+    }
+    description += line + "\n";
+    if (line.trim().length > 0) {
+      paragraphCount++;
+    }
+    if (paragraphCount >= 2 || description.length > 300) {
+      break;
+    }
+  }
+  
+  return description.trim();
 }
 
 // Process wiki-style links in markdown
@@ -66,6 +91,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
       props: {
         title: page,
         content: "",
+        shortDescription: "",
         imageUrl: null,
         lang,
         page,
@@ -113,6 +139,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
       props: {
         title: pageName,
         content: "",
+        shortDescription: "",
         imageUrl: null,
         lang,
         page,
@@ -131,6 +158,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const { data, content } = matter(fileContent);
 
   const imageUrl = extractGyazoImage(content);
+  const shortDescription = extractShortDescription(content);
 
   // Process wiki-style links
   const processedContent = processWikiLinks(content, lang);
@@ -144,6 +172,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
     props: {
       title: data.title || pageName,
       content: htmlContent,
+      shortDescription,
       imageUrl,
       lang,
       page,
@@ -234,24 +263,28 @@ export default function IllustPage(props: Props) {
         )}
       </div>
       <div className="page">
-        <h1>{props.title}</h1>
+        <h1 style={{ textAlign: "center", marginBottom: "2rem" }}>
+          {props.title}
+        </h1>
 
         {props.imageUrl && (
-          <div style={{ textAlign: "center", margin: "2rem 0" }}>
+          <div style={{ textAlign: "center", margin: "0 auto 2rem" }}>
             <img
               src={props.imageUrl}
               alt={props.title}
-              style={{ maxWidth: "100%", height: "auto" }}
+              style={{ maxWidth: "100%", height: "auto", maxHeight: "600px" }}
             />
           </div>
         )}
 
-        <div dangerouslySetInnerHTML={{ __html: props.content }} />
-
-        <hr />
-
         <div style={{ textAlign: "center", margin: "2rem 0" }}>
-          <div style={{ fontSize: "1.2rem", fontFamily: "monospace" }}>
+          <div
+            style={{
+              fontSize: "1.2rem",
+              fontFamily: "monospace",
+              marginBottom: "1rem",
+            }}
+          >
             <Link href={`/${props.lang}/illust/${getFirstId()}`}>
               <a style={{ margin: "0 0.5rem" }}>|&lt;</a>
             </Link>
@@ -284,22 +317,53 @@ export default function IllustPage(props: Props) {
               <a style={{ margin: "0 0.5rem" }}>&gt;|</a>
             </Link>
           </div>
-          <div style={{ marginTop: "1rem" }}>
+          <div>
             <Link href={`/${props.lang}/illust`}>
               <a>All Illustrations</a>
             </Link>
           </div>
+        </div>
+
+        {props.shortDescription && (
+          <div
+            style={{
+              maxWidth: "600px",
+              margin: "2rem auto",
+              padding: "1rem",
+              backgroundColor: "#f9f9f9",
+              borderRadius: "8px",
+              lineHeight: "1.6",
+            }}
+          >
+            <p style={{ margin: 0, whiteSpace: "pre-wrap" }}>
+              {props.shortDescription}
+            </p>
+          </div>
+        )}
+
+        <div style={{ textAlign: "center", margin: "2rem 0" }}>
+          <Link href={`/${props.lang}/${props.pageName}`}>
+            <a
+              style={{
+                display: "inline-block",
+                padding: "0.75rem 1.5rem",
+                backgroundColor: "#0070f3",
+                color: "white",
+                borderRadius: "8px",
+                textDecoration: "none",
+                fontSize: "1.1rem",
+                fontWeight: "bold",
+              }}
+            >
+              {props.lang === "ja" ? "詳細を読む →" : "Read More →"}
+            </a>
+          </Link>
         </div>
       </div>
       <hr />
       <div>
         (C)NISHIO Hirokazu / Illustration View
         <br />
-        Original page:{" "}
-        <Link href={`/${props.lang}/${props.pageName}`}>
-          <a>[{props.pageName}]</a>
-        </Link>
-        {" | "}
         Source:{" "}
         <a
           href={`https://github.com/nishio/external_brain_in_markdown${
