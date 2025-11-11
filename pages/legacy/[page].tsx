@@ -17,6 +17,29 @@ export const getStaticProps: GetStaticProps<TPageProps> = async (ctx) => {
   const url = `https://scrapbox.io/api/pages/${project}/${page}`;
   const response = await fetch(url);
   const json: TScrapboxPageJSON = await response.json();
+
+  // Handle case when page doesn't exist or API returns invalid data
+  if (!json || !json.lines || !Array.isArray(json.lines)) {
+    return {
+      props: {
+        date: Date.now(),
+        content: parse(""),
+        exists: false,
+        project,
+        page: ctx.params!!.page as string,
+        json: {
+          id: "",
+          title: ctx.params!!.page as string,
+          lines: [],
+          descriptions: [],
+          image: "",
+          relatedPages: { links1hop: [], links2hop: [] },
+        },
+      },
+      revalidate: 30,
+    };
+  }
+
   const text = json.lines.map((line) => line.text).join("\n");
 
   return {
