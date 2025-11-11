@@ -152,16 +152,10 @@ export default function IllustIndexPage(props: Props) {
             margin-top: 2rem;
           }
 
-          @media (max-width: 480px) {
-            .illust-grid {
-              grid-template-columns: repeat(2, 1fr);
-              gap: 0.75rem;
-            }
-          }
-
-          @media (min-width: 481px) and (max-width: 768px) {
+          @media (max-width: 768px) {
             .illust-grid {
               grid-template-columns: repeat(3, 1fr);
+              gap: 0.5rem;
             }
           }
 
