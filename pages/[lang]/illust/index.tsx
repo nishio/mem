@@ -128,48 +128,65 @@ export default function IllustIndexPage(props: Props) {
       <div className="page">
         <h1>{props.lang === "ja" ? "イラスト一覧" : "Illustrations"}</h1>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-            gap: "1rem",
-            marginTop: "2rem",
-          }}
-        >
+        <div className="illust-grid">
           {props.illusts.map((illust) => (
             <Link key={illust.id} href={`/${props.lang}/illust/${illust.id}`}>
-              <a
-                style={{
-                  display: "block",
-                  position: "relative",
-                  paddingBottom: "100%",
-                  overflow: "hidden",
-                  border: "1px solid #ddd",
-                  borderRadius: "8px",
-                  backgroundColor: "#f9f9f9",
-                }}
-              >
+              <a className="illust-tile">
                 {illust.imageUrl && (
                   <img
                     src={illust.imageUrl}
                     alt={illust.title}
-                    style={{
-                      position: "absolute",
-                      top: "50%",
-                      left: "50%",
-                      transform: "translate(-50%, -50%)",
-                      maxWidth: "100%",
-                      maxHeight: "100%",
-                      width: "auto",
-                      height: "auto",
-                      objectFit: "contain",
-                    }}
+                    className="illust-image"
                   />
                 )}
               </a>
             </Link>
           ))}
         </div>
+
+        <style jsx>{`
+          .illust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+          }
+
+          @media (max-width: 480px) {
+            .illust-grid {
+              grid-template-columns: repeat(2, 1fr);
+              gap: 0.75rem;
+            }
+          }
+
+          @media (min-width: 481px) and (max-width: 768px) {
+            .illust-grid {
+              grid-template-columns: repeat(3, 1fr);
+            }
+          }
+
+          .illust-tile {
+            display: block;
+            position: relative;
+            padding-bottom: 100%;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+          }
+
+          .illust-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+          }
+        `}</style>
       </div>
       <hr />
       <div>(C)NISHIO Hirokazu / Illustration View</div>
