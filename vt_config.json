@@ -81,6 +81,96 @@
       "page_ja": "FitとDevelopは誤った二項対立",
       "page_en": null,
       "tags": []
+    },
+    {
+      "id": 14,
+      "page_ja": "共通部分を共有する絵",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 15,
+      "page_ja": "DRYと疎結合のトレードオフ",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 16,
+      "page_ja": "世界のちぎれ",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 17,
+      "page_ja": "まだらな未来が拡大しない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 18,
+      "page_ja": "世界がちぎれた後",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 19,
+      "page_ja": "規模と質のジレンマ",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 20,
+      "page_ja": "辺縁が育てばそれが中心",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 21,
+      "page_ja": "辺縁での湧き出しを中とするか外とするか",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 22,
+      "page_ja": "湧き出すひとの移動",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 23,
+      "page_ja": "遅延のある系",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 24,
+      "page_ja": "分布の中央から削減される",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 25,
+      "page_ja": "みんなもっと知るべき→もう知ってる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 26,
+      "page_ja": "情報の価値は人によって異なる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 27,
+      "page_ja": "分布を観察して気づくこと",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 28,
+      "page_ja": "壁の外に出ることを無意識に避けてみずから囚われる",
+      "page_en": null,
+      "tags": []
     }
   ],
   "skipped": [

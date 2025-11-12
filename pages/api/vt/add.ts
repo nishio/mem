@@ -16,6 +16,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const configContent = fs.readFileSync(configPath, "utf-8");
   const config = JSON.parse(configContent);
 
+  // Check for duplicates
+  const existingPage = config.illusts.find((i: any) => i.page_ja === pageName);
+  if (existingPage) {
+    return res.status(400).json({
+      error: "Page already registered",
+      existingId: existingPage.id
+    });
+  }
+
   // Generate next ID
   const maxId = Math.max(...config.illusts.map((i: any) => i.id), 0);
   const nextId = maxId + 1;
