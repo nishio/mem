@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { ReactElement } from "react";
 import { TPageProps } from "./TPageProps";
 
 /*
@@ -25,7 +26,7 @@ const Arrow = <span className="two-hop-symbol">→</span>;
 const Cross = <span className="two-hop-symbol">×</span>;
 type TLink = { titleLc: string; title: string; image?: string };
 
-const link_to_dom = (link: TLink): JSX.Element => {
+const link_to_dom = (link: TLink): ReactElement => {
   const url = title_to_url(link.titleLc);
   return (
     <Link href={`/${url}`} key={link.titleLc}>
@@ -35,11 +36,11 @@ const link_to_dom = (link: TLink): JSX.Element => {
 };
 
 export const generate_links = (props: TPageProps) => {
-  const links: unknown[] = [];
+  const links: ReactElement[] = [];
   const lc_to_title: { [key: string]: string } = {};
   const lc_to_linkobj: { [key: string]: TLink } = {};
   const two_hops: { [key: string]: string[] } = {};
-  const two_hops_links: unknown[] = [];
+  const two_hops_links: ReactElement[] = [];
 
   const link_to_card = (link: TLink) => {
     const url = title_to_url(link.titleLc);
@@ -71,7 +72,7 @@ export const generate_links = (props: TPageProps) => {
     links.push(link_to_card(x));
   });
 
-  const lc_to_dom = (lc: string): JSX.Element | string => {
+  const lc_to_dom = (lc: string): ReactElement | string => {
     const linkobj = lc_to_linkobj[lc];
     if (linkobj !== undefined) {
       return link_to_dom(linkobj);
@@ -80,7 +81,7 @@ export const generate_links = (props: TPageProps) => {
     return <span className="no-page">{title}</span>;
   };
 
-  const lc_to_card = (lc: string): JSX.Element | null => {
+  const lc_to_card = (lc: string): ReactElement | null => {
     const linkobj = lc_to_linkobj[lc];
     if (linkobj !== undefined) {
       return link_to_card(linkobj);
@@ -103,7 +104,7 @@ export const generate_links = (props: TPageProps) => {
   Object.keys(two_hops).forEach((key) => {
     const key_to_link = (key: string) => {
       const keys = key.split("\t");
-      const links: (string | JSX.Element)[] = [];
+      const links: (string | ReactElement)[] = [];
 
       keys.forEach((lc) => {
         links.push(Cross);
