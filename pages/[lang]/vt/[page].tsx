@@ -5,6 +5,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
+import { extractDescription } from "../../../utils/extractDescription";
 
 type IllustConfig = {
   illusts: Array<{
@@ -34,30 +35,6 @@ function extractGyazoImage(markdown: string): string | null {
   const gyazoPattern = /!\[.*?\]\((https:\/\/gyazo\.com\/[a-f0-9]+(?:\/thumb\/\d+)?)\)/i;
   const match = markdown.match(gyazoPattern);
   return match ? match[1] : null;
-}
-
-function extractShortDescription(markdown: string): string {
-  let text = markdown.replace(/^---[\s\S]*?---\n/, "");
-  text = text.replace(/!\[.*?\]\(.*?\)/g, "");
-  
-  const lines = text.split("\n").filter((line) => line.trim().length > 0);
-  let description = "";
-  let paragraphCount = 0;
-  
-  for (const line of lines) {
-    if (line.startsWith("#") || line.startsWith("-") || line.startsWith("*")) {
-      continue; // Skip headers and list items
-    }
-    description += line + "\n";
-    if (line.trim().length > 0) {
-      paragraphCount++;
-    }
-    if (paragraphCount >= 2 || description.length > 300) {
-      break;
-    }
-  }
-  
-  return description.trim();
 }
 
 // Process wiki-style links in markdown
@@ -158,7 +135,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const { data, content } = matter(fileContent);
 
   const imageUrl = extractGyazoImage(content);
-  const shortDescription = extractShortDescription(content);
+  const shortDescription = extractDescription(content);
 
   // Process wiki-style links
   const processedContent = processWikiLinks(content, lang);
