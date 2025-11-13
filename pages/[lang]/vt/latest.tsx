@@ -134,18 +134,16 @@ export default function IllustLatestPage(props: Props) {
 
         <div className="illust-grid">
           {props.illusts.map((illust) => (
-            <Link
-              key={illust.id}
-              href={`/${props.lang}/vt/${illust.id}`}
-              className="illust-tile"
-            >
-              {illust.imageUrl && (
-                <img
-                  src={illust.imageUrl}
-                  alt={illust.title}
-                  className="illust-image"
-                />
-              )}
+            <Link key={illust.id} href={`/${props.lang}/vt/${illust.id}`}>
+              <div className="illust-tile">
+                {illust.imageUrl && (
+                  <img
+                    src={illust.imageUrl}
+                    alt={illust.title}
+                    className="illust-image"
+                  />
+                )}
+              </div>
             </Link>
           ))}
         </div>
