@@ -4,6 +4,7 @@ import Link from "next/link";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import type { FC } from "react";
 
 type IllustConfig = {
   illusts: Array<{
@@ -25,6 +26,44 @@ type IllustItem = {
 type Props = {
   lang: string;
   illusts: IllustItem[];
+};
+
+type IntroSectionProps = {
+  lang: string;
+};
+
+const IntroSection: FC<IntroSectionProps> = ({ lang }) => {
+  if (lang === "ja") {
+    return (
+      <div className="intro">
+        <p>
+          西尾泰和の言語非依存な図解を集めた美術館へようこそ。
+        </p>
+        <p>
+          ここでは、言語的な説明よりも先に図解を見る体験を提供しています。
+          図解のタイトルや解説はクリックするまで表示されないようになっています。まず図解を見て、あなた自身が何かをイメージしてください。
+          それが作者の意図と違っていても構いません――その違いこそが、予期しないつながりを発見する機会になります。
+        </p>
+      </div>
+    );
+  }
+
+  if (lang === "en") {
+    return (
+      <div className="intro">
+        <p>
+          Welcome to a gallery of language-independent visual thinking by NISHIO Hirokazu.
+        </p>
+        <p>
+          Here, we provide an experience of viewing diagrams before linguistic explanations.
+          Titles and descriptions are hidden until you click. First, look at the diagram and imagine something for yourself.
+          Even if it differs from the author's intent, that difference may become an opportunity to discover unexpected connections.
+        </p>
+      </div>
+    );
+  }
+
+  return null;
 };
 
 function extractGyazoImage(markdown: string): string | null {
@@ -128,9 +167,11 @@ export default function IllustIndexPage(props: Props) {
         </Link>
       </div >
       <div className="page">
-        <h1>{props.lang === "ja" ? "イラスト一覧" : "Illustrations"}</h1>
+        <h1>{props.lang === "ja" ? "ビジュアルシンキング" : "Visual Thinking"}</h1>
 
-        <p style={{ textAlign: "center", marginBottom: "1rem" }}>
+        <IntroSection lang={props.lang} />
+
+        <p style={{ marginBottom: "1rem" }}>
           <Link
             href={`/${props.lang}/vt/latest`}
             style={{ color: "#0066cc", textDecoration: "underline" }}
@@ -156,6 +197,32 @@ export default function IllustIndexPage(props: Props) {
         </div>
 
         <style jsx>{`
+          .intro {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            line-height: 1.8;
+            font-size: 1.05rem;
+          }
+
+          .intro p {
+            margin: 0 0 1rem 0;
+          }
+
+          .intro p:last-child {
+            margin-bottom: 0;
+          }
+
+          @media (max-width: 768px) {
+            .intro {
+              margin: 1rem auto;
+              padding: 1rem;
+              font-size: 0.95rem;
+            }
+          }
+
           .illust-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, 184px);

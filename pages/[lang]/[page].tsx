@@ -96,8 +96,8 @@ export default function MarkdownPage(props: Props) {
           <title>Page Not Found - NISHIO Hirokazu</title>
         </Head>
         <div className="document-header">
-          <Link href="/">
-            <a id="to-top">NISHIO Hirokazu</a>
+          <Link href="/" id="to-top">
+            NISHIO Hirokazu
           </Link>
         </div>
         <div className="page">
@@ -106,11 +106,11 @@ export default function MarkdownPage(props: Props) {
           <p>
             {props.lang === "ja" ? (
               <Link href={`/en/${props.page}`}>
-                <a>Try English version</a>
+                Try English version
               </Link>
             ) : (
               <Link href={`/ja/${props.page}`}>
-                <a>Try Japanese version</a>
+                Try Japanese version
               </Link>
             )}
           </p>
@@ -128,16 +128,14 @@ export default function MarkdownPage(props: Props) {
         <title>{props.title} - NISHIO Hirokazu</title>
       </Head>
       <div className="document-header">
-        <Link href="/">
-          <a id="to-top">NISHIO Hirokazu</a>
+        <Link href="/" id="to-top">
+          NISHIO Hirokazu
         </Link>
         <span className="header-util">
           [{props.lang === "ja" ? "日本語" : "English"}]
         </span>
-        <Link href={`/${otherLang}/${props.page}`}>
-          <a className="header-util">
-            [{otherLang === "ja" ? "日本語" : "English"}]
-          </a>
+        <Link href={`/${otherLang}/${props.page}`} className="header-util">
+          [{otherLang === "ja" ? "日本語" : "English"}]
         </Link>
       </div>
       <div className="page">

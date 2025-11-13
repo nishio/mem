@@ -6,6 +6,7 @@ import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
 import { extractDescription } from "../../../utils/extractDescription";
+import { useState } from "react";
 
 type IllustConfig = {
   illusts: Array<{
@@ -172,6 +173,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export default function IllustPage(props: Props) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   if (!props.exists) {
     return (
       <>
@@ -234,17 +237,25 @@ export default function IllustPage(props: Props) {
         )}
       </div>
       <div className="page illust-page">
-        <h1 className="illust-title">{props.title}</h1>
-
         {props.imageUrl && (
           <div className="illust-image-container">
             <img
               src={props.imageUrl}
-              alt={props.title}
+              alt="Visual Thinking"
               className="illust-image"
             />
           </div>
         )}
+
+        <div className="description-button-container">
+          <button
+            type="button"
+            onClick={() => setIsModalOpen(true)}
+            className="description-button"
+          >
+            {props.lang === "ja" ? "説明を見る" : "Show Description"}
+          </button>
+        </div>
 
         <div className="illust-nav">
           <div className="nav-buttons">
@@ -279,20 +290,33 @@ export default function IllustPage(props: Props) {
           </div>
         </div>
 
-        {props.shortDescription && (
-          <div className="illust-description">
-            <p>{props.shortDescription}</p>
+        {/* Modal */}
+        {isModalOpen && (
+          <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+              <button
+                type="button"
+                className="modal-close"
+                onClick={() => setIsModalOpen(false)}
+                aria-label="Close"
+              >
+                ×
+              </button>
+              <h2 className="modal-title">{props.title}</h2>
+              {props.shortDescription && (
+                <p className="modal-description">{props.shortDescription}</p>
+              )}
+              <a
+                href={`/${props.lang}/${props.pageName}`}
+                className="modal-link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {props.lang === "ja" ? "詳細を読む →" : "Read More →"}
+              </a>
+            </div>
           </div>
         )}
-
-        <div className="illust-cta">
-          <Link
-            href={`/${props.lang}/${props.pageName}`}
-            className="read-more-button"
-          >
-            {props.lang === "ja" ? "詳細を読む →" : "Read More →"}
-          </Link>
-        </div>
 
         <style jsx>{`
           .illust-page {
@@ -300,15 +324,9 @@ export default function IllustPage(props: Props) {
             margin: 16px auto !important;
           }
 
-          .illust-title {
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 2rem;
-          }
-
           .illust-image-container {
             text-align: center;
-            margin: 0 auto 2rem;
+            margin: 0 auto 1.5rem;
           }
 
           .illust-image {
@@ -317,6 +335,27 @@ export default function IllustPage(props: Props) {
             height: auto;
             max-height: 80vh;
             object-fit: contain;
+          }
+
+          .description-button-container {
+            text-align: center;
+            margin: 1.5rem 0 2rem;
+          }
+
+          .description-button {
+            padding: 0.75rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background-color: #0070f3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+          }
+
+          .description-button:hover {
+            background-color: #0051cc;
           }
 
           .illust-nav {
@@ -344,27 +383,63 @@ export default function IllustPage(props: Props) {
             margin-top: 1rem;
           }
 
-          .illust-description {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 1.5rem;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            line-height: 1.8;
-            font-size: 1.05rem;
+          .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
           }
 
-          .illust-description p {
-            margin: 0;
+          .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+          }
+
+          .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #666;
+            line-height: 1;
+            padding: 0;
+            width: 2rem;
+            height: 2rem;
+          }
+
+          .modal-close:hover {
+            color: #000;
+          }
+
+          .modal-title {
+            margin: 0 0 1.5rem 0;
+            font-size: 1.75rem;
+            padding-right: 2rem;
+          }
+
+          .modal-description {
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
             white-space: pre-wrap;
           }
 
-          .illust-cta {
-            text-align: center;
-            margin: 2rem 0;
-          }
-
-          .read-more-button {
+          .modal-link {
             display: inline-block;
             padding: 0.75rem 1.5rem;
             background-color: #0070f3;
@@ -376,22 +451,29 @@ export default function IllustPage(props: Props) {
             transition: background-color 0.2s;
           }
 
-          .read-more-button:hover {
+          .modal-link:hover {
             background-color: #0051cc;
           }
 
           @media (max-width: 768px) {
-            .illust-title {
-              font-size: 1.5rem;
-            }
-
-            .illust-description {
-              max-width: 100%;
-              padding: 1rem;
+            .nav-buttons {
               font-size: 1rem;
             }
 
-            .nav-buttons {
+            .description-button {
+              font-size: 1rem;
+              padding: 0.6rem 1.5rem;
+            }
+
+            .modal-content {
+              padding: 1.5rem;
+            }
+
+            .modal-title {
+              font-size: 1.5rem;
+            }
+
+            .modal-description {
               font-size: 1rem;
             }
           }
