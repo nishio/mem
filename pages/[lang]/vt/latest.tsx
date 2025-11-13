@@ -88,6 +88,9 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
     });
   }
 
+  // Sort by ID descending (latest first)
+  illusts.sort((a, b) => b.id - a.id);
+
   return {
     props: {
       lang,
@@ -104,13 +107,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default function IllustIndexPage(props: Props) {
+export default function IllustLatestPage(props: Props) {
   const otherLang = props.lang === "ja" ? "en" : "ja";
 
   return (
     <>
       <Head>
-        <title>NISHIO Hirokazu - Visual Thinking</title>
+        <title>NISHIO Hirokazu - Visual Thinking (Latest)</title>
       </Head>
       <div className="document-header">
         <Link href="/">
@@ -120,25 +123,16 @@ export default function IllustIndexPage(props: Props) {
         <Link href={`/${props.lang}/vt`}>
           <a id="to-top">Visual Thinking</a>
         </Link>
-        {/* <span className="header-util">
-          [{props.lang === "ja" ? "日本語" : "English"}]
-        </span> */}
-        <Link href={`/${otherLang}/vt`}>
+        <span style={{ margin: "0 0.5em" }}> &gt; </span>
+        <span>Latest</span>
+        <Link href={`/${otherLang}/vt/latest`}>
           <a className="header-util">
             [{otherLang === "ja" ? "日本語" : "English"}]
           </a>
         </Link>
       </div >
       <div className="page">
-        <h1>{props.lang === "ja" ? "イラスト一覧" : "Illustrations"}</h1>
-
-        <p style={{ textAlign: "center", marginBottom: "1rem" }}>
-          <Link href={`/${props.lang}/vt/latest`}>
-            <a style={{ color: "#0066cc", textDecoration: "underline" }}>
-              {props.lang === "ja" ? "最新順で見る" : "View Latest First"}
-            </a>
-          </Link>
-        </p>
+        <h1>{props.lang === "ja" ? "イラスト一覧（最新順）" : "Illustrations (Latest)"}</h1>
 
         <div className="illust-grid">
           {props.illusts.map((illust) => (
