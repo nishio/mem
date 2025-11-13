@@ -179,8 +179,8 @@ export default function IllustPage(props: Props) {
           <title>Illustration Not Found - NISHIO Hirokazu</title>
         </Head>
         <div className="document-header">
-          <Link href="/">
-            <a id="to-top">NISHIO Hirokazu</a>
+          <Link href="/" id="to-top">
+            NISHIO Hirokazu
           </Link>
         </div>
         <div className="page">
@@ -191,7 +191,7 @@ export default function IllustPage(props: Props) {
           </p>
           <p>
             <Link href={`/${props.lang}/vt`}>
-              <a>Back to Visual Thinking list</a>
+              Back to Visual Thinking list
             </Link>
           </p>
         </div>
@@ -221,17 +221,15 @@ export default function IllustPage(props: Props) {
         <title>{props.title} - NISHIO Hirokazu</title>
       </Head>
       <div className="document-header">
-        <Link href="/">
-          <a id="to-top">NISHIO Hirokazu</a>
+        <Link href="/" id="to-top">
+          NISHIO Hirokazu
         </Link>
         <span className="header-util">
           [{props.lang === "ja" ? "日本語" : "English"}]
         </span>
         {props.hasEnVersion && (
-          <Link href={`/${otherLang}/vt/${props.page}`}>
-            <a className="header-util">
-              [{otherLang === "ja" ? "日本語" : "English"}]
-            </a>
+          <Link href={`/${otherLang}/vt/${props.page}`} className="header-util">
+            [{otherLang === "ja" ? "日本語" : "English"}]
           </Link>
         )}
       </div>
@@ -250,33 +248,33 @@ export default function IllustPage(props: Props) {
 
         <div className="illust-nav">
           <div className="nav-buttons">
-            <Link href={`/${props.lang}/vt/${getFirstId()}`}>
-              <a className="nav-link">|&lt;</a>
+            <Link href={`/${props.lang}/vt/${getFirstId()}`} className="nav-link">
+              |&lt;
             </Link>
             {getPrevId() ? (
-              <Link href={`/${props.lang}/vt/${getPrevId()}`}>
-                <a className="nav-link">&lt; Prev</a>
+              <Link href={`/${props.lang}/vt/${getPrevId()}`} className="nav-link">
+                &lt; Prev
               </Link>
             ) : (
               <span className="nav-link disabled">&lt; Prev</span>
             )}
-            <Link href={`/${props.lang}/vt/${getRandomId()}`}>
-              <a className="nav-link">Random</a>
+            <Link href={`/${props.lang}/vt/${getRandomId()}`} className="nav-link">
+              Random
             </Link>
             {getNextId() ? (
-              <Link href={`/${props.lang}/vt/${getNextId()}`}>
-                <a className="nav-link">Next &gt;</a>
+              <Link href={`/${props.lang}/vt/${getNextId()}`} className="nav-link">
+                Next &gt;
               </Link>
             ) : (
               <span className="nav-link disabled">Next &gt;</span>
             )}
-            <Link href={`/${props.lang}/vt/${getLastId()}`}>
-              <a className="nav-link">&gt;|</a>
+            <Link href={`/${props.lang}/vt/${getLastId()}`} className="nav-link">
+              &gt;|
             </Link>
           </div>
           <div className="nav-all">
             <Link href={`/${props.lang}/vt`}>
-              <a>All Visual Thinking</a>
+              All Visual Thinking
             </Link>
           </div>
         </div>
@@ -288,10 +286,11 @@ export default function IllustPage(props: Props) {
         )}
 
         <div className="illust-cta">
-          <Link href={`/${props.lang}/${props.pageName}`}>
-            <a className="read-more-button">
-              {props.lang === "ja" ? "詳細を読む →" : "Read More →"}
-            </a>
+          <Link
+            href={`/${props.lang}/${props.pageName}`}
+            className="read-more-button"
+          >
+            {props.lang === "ja" ? "詳細を読む →" : "Read More →"}
           </Link>
         </div>
 

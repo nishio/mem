@@ -116,19 +116,17 @@ export default function IllustLatestPage(props: Props) {
         <title>NISHIO Hirokazu - Visual Thinking (Latest)</title>
       </Head>
       <div className="document-header">
-        <Link href="/">
-          <a id="to-top">NISHIO Hirokazu</a>
+        <Link href="/" id="to-top">
+          NISHIO Hirokazu
         </Link>
         <span style={{ margin: "0 0.5em" }}> &gt; </span>
-        <Link href={`/${props.lang}/vt`}>
-          <a id="to-top">Visual Thinking</a>
+        <Link href={`/${props.lang}/vt`} id="to-top">
+          Visual Thinking
         </Link>
         <span style={{ margin: "0 0.5em" }}> &gt; </span>
         <span>Latest</span>
-        <Link href={`/${otherLang}/vt/latest`}>
-          <a className="header-util">
-            [{otherLang === "ja" ? "日本語" : "English"}]
-          </a>
+        <Link href={`/${otherLang}/vt/latest`} className="header-util">
+          [{otherLang === "ja" ? "日本語" : "English"}]
         </Link>
       </div >
       <div className="page">
@@ -136,16 +134,18 @@ export default function IllustLatestPage(props: Props) {
 
         <div className="illust-grid">
           {props.illusts.map((illust) => (
-            <Link key={illust.id} href={`/${props.lang}/vt/${illust.id}`}>
-              <a className="illust-tile">
-                {illust.imageUrl && (
-                  <img
-                    src={illust.imageUrl}
-                    alt={illust.title}
-                    className="illust-image"
-                  />
-                )}
-              </a>
+            <Link
+              key={illust.id}
+              href={`/${props.lang}/vt/${illust.id}`}
+              className="illust-tile"
+            >
+              {illust.imageUrl && (
+                <img
+                  src={illust.imageUrl}
+                  alt={illust.title}
+                  className="illust-image"
+                />
+              )}
             </Link>
           ))}
         </div>
