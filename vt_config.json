@@ -3,7 +3,7 @@
     {
       "id": 1,
       "page_ja": "ブロードリスニング",
-      "page_en": null,
+      "page_en": "broad listening",
       "tags": [
         "xkcd",
         "communication",
@@ -13,7 +13,7 @@
     {
       "id": 2,
       "page_ja": "ツリーとリゾーム",
-      "page_en": null,
+      "page_en": "Tree and Rhizome",
       "tags": [
         "philosophy",
         "structure"
@@ -22,7 +22,7 @@
     {
       "id": 3,
       "page_ja": "単語を変えると誤解が拡大する",
-      "page_en": null,
+      "page_en": "Changing words magnifies misunderstandings.",
       "tags": [
         "communication",
         "misunderstanding"
@@ -31,115 +31,115 @@
     {
       "id": 4,
       "page_ja": "3つのイデオロギーの間に2つの対立軸がある",
-      "page_en": null,
+      "page_en": "There are two opposing axes between the three ideologies.",
       "tags": []
     },
     {
       "id": 5,
       "page_ja": "AIにまず語らせる",
-      "page_en": null,
+      "page_en": "Let AI speak first",
       "tags": []
     },
     {
       "id": 6,
       "page_ja": "AI時代の技術力獲得プロセス",
-      "page_en": null,
+      "page_en": "The process of acquiring technical skills in the age of AI",
       "tags": []
     },
     {
       "id": 7,
       "page_ja": "AはBよりX",
-      "page_en": null,
+      "page_en": "A is more X than B",
       "tags": []
     },
     {
       "id": 8,
       "page_ja": "AがBを包んでいる",
-      "page_en": null,
+      "page_en": "A wraps around B.",
       "tags": []
     },
     {
       "id": 9,
       "page_ja": "Aから見てBがXだが、Bから見てAもX",
-      "page_en": null,
+      "page_en": "B is X from A's point of view, but A is also X from B's point of view",
       "tags": []
     },
     {
       "id": 10,
       "page_ja": "Aかnot Aかの議論",
-      "page_en": null,
+      "page_en": "The A or not A argument",
       "tags": []
     },
     {
       "id": 11,
       "page_ja": "FLAT-STEP→NAMERAKA",
-      "page_en": null,
+      "page_en": "Flat_Step to Nameraka: A Japanese Perspective on Plurality",
       "tags": []
     },
     {
       "id": 12,
       "page_ja": "FitとDevelopは誤った二項対立",
-      "page_en": null,
+      "page_en": "Fit and Develop is a false dichotomy",
       "tags": []
     },
     {
       "id": 14,
       "page_ja": "共通部分を共有する絵",
-      "page_en": null,
+      "page_en": "Picture sharing common areas",
       "tags": []
     },
     {
       "id": 15,
       "page_ja": "DRYと疎結合のトレードオフ",
-      "page_en": null,
+      "page_en": "Trade-off between DRY and loosely coupled",
       "tags": []
     },
     {
       "id": 16,
       "page_ja": "世界のちぎれ",
-      "page_en": null,
+      "page_en": "Torn of the world",
       "tags": []
     },
     {
       "id": 17,
       "page_ja": "まだらな未来が拡大しない",
-      "page_en": null,
+      "page_en": "The speckled future does not expand.",
       "tags": []
     },
     {
       "id": 18,
       "page_ja": "世界がちぎれた後",
-      "page_en": null,
+      "page_en": "After the world is torn apart",
       "tags": []
     },
     {
       "id": 19,
       "page_ja": "規模と質のジレンマ",
-      "page_en": null,
+      "page_en": "dilemma of scale and quality",
       "tags": []
     },
     {
       "id": 20,
       "page_ja": "辺縁が育てばそれが中心",
-      "page_en": null,
+      "page_en": "When the Periphery Grows, It Becomes the Center",
       "tags": []
     },
     {
       "id": 21,
       "page_ja": "辺縁での湧き出しを中とするか外とするか",
-      "page_en": null,
+      "page_en": "Determining If Emergence at the Periphery Is Inside or Outside",
       "tags": []
     },
     {
       "id": 22,
       "page_ja": "湧き出すひとの移動",
-      "page_en": null,
+      "page_en": "The Movement of Erupting Individuals",
       "tags": []
     },
     {
       "id": 23,
       "page_ja": "遅延のある系",
-      "page_en": null,
+      "page_en": "A system with a delay",
       "tags": []
     },
     {
@@ -151,25 +151,25 @@
     {
       "id": 25,
       "page_ja": "みんなもっと知るべき→もう知ってる",
-      "page_en": null,
+      "page_en": "Everyone should know more -> they already know.",
       "tags": []
     },
     {
       "id": 26,
       "page_ja": "情報の価値は人によって異なる",
-      "page_en": null,
+      "page_en": "The Value of Information Varies by Person",
       "tags": []
     },
     {
       "id": 27,
       "page_ja": "分布を観察して気づくこと",
-      "page_en": null,
+      "page_en": "Observations and Insights from Distribution Analysis",
       "tags": []
     },
     {
       "id": 28,
       "page_ja": "壁の外に出ることを無意識に避けてみずから囚われる",
-      "page_en": null,
+      "page_en": "Unconsciously avoiding going outside the walls and being trapped by oneself",
       "tags": []
     }
   ],
