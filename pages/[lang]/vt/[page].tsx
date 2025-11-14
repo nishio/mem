@@ -235,9 +235,10 @@ export default function IllustPage(props: Props) {
         <Link href="/" id="to-top">
           NISHIO Hirokazu
         </Link>
-        <span className="header-util">
-          [{props.lang === "ja" ? "日本語" : "English"}]
-        </span>
+        <span style={{ margin: "0 0.5em" }}> &gt; </span>
+        <Link href={`/${props.lang}/vt`} id="to-top">
+          Visual Thinking
+        </Link>
         {props.hasEnVersion && (
           <Link href={`/${otherLang}/vt/${props.page}`} className="header-util">
             [{otherLang === "ja" ? "日本語" : "English"}]
@@ -293,8 +294,12 @@ export default function IllustPage(props: Props) {
           </div>
           <div className="nav-all">
             <Link href={`/${props.lang}/vt`}>
-              All Visual Thinking
+              Visual Thinking
             </Link>
+            <Link href={`/${props.lang}/vt/latest`}>
+              Latest
+            </Link>
+
           </div>
         </div>
 
@@ -398,8 +403,12 @@ export default function IllustPage(props: Props) {
           }
 
           .nav-link {
-            margin: 0 0.5rem;
             text-decoration: none;
+          }
+
+          .nav-buttons :global(a),
+          .nav-buttons :global(span) {
+            margin: 0 0.5rem;
           }
 
           .nav-link.disabled {
@@ -409,6 +418,11 @@ export default function IllustPage(props: Props) {
 
           .nav-all {
             margin-top: 1rem;
+          }
+
+          .nav-all :global(a) {
+            margin: 0 0.75rem;
+            text-decoration: none;
           }
 
           .modal-overlay {
@@ -531,9 +545,8 @@ export default function IllustPage(props: Props) {
         <br />
         Source:{" "}
         <a
-          href={`https://github.com/nishio/external_brain_in_markdown${
-            props.lang === "en" ? "_english" : ""
-          }/blob/main/pages/${props.pageName}.md`}
+          href={`https://github.com/nishio/external_brain_in_markdown${props.lang === "en" ? "_english" : ""
+            }/blob/main/pages/${props.pageName}.md`}
           target="_blank"
         >
           [GitHub]

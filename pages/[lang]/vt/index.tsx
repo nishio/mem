@@ -197,6 +197,10 @@ export default function IllustIndexPage(props: Props) {
         </div>
 
         <style jsx>{`
+          .page {
+            max-width: 1600px !important;
+          }
+
           .intro {
             max-width: 800px;
             margin: 2rem auto;
@@ -225,10 +229,10 @@ export default function IllustIndexPage(props: Props) {
 
           .illust-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, 184px);
-            gap: 1rem;
-            justify-content: center;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
             margin-top: 2rem;
+            max-width: 100%;
           }
 
           @media (max-width: 768px) {
