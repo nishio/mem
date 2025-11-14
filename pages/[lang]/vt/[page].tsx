@@ -30,6 +30,8 @@ type Props = {
   hasEnVersion: boolean;
   totalIllusts: number;
   currentIndex: number;
+  noEnglishVersion: boolean;
+  jaPageName: string;
 };
 
 function extractGyazoImage(markdown: string): string | null {
@@ -79,34 +81,37 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
         hasEnVersion: false,
         totalIllusts: config.illusts.length,
         currentIndex: -1,
+        noEnglishVersion: false,
+        jaPageName: "",
       },
     };
   }
 
   let pageName: string;
   let hasEnVersion = false;
+  let noEnglishVersion = false;
 
   if (lang === "ja") {
     pageName = illustItem.page_ja;
     hasEnVersion = illustItem.page_en !== null;
   } else {
     if (!illustItem.page_en) {
-      return {
-        redirect: {
-          destination: `/ja/vt/${page}`,
-          permanent: false,
-        },
-      };
+      // English version not available - use Japanese page to get image
+      noEnglishVersion = true;
+      pageName = illustItem.page_ja;
+      hasEnVersion = false;
+    } else {
+      pageName = illustItem.page_en;
+      hasEnVersion = true;
     }
-    pageName = illustItem.page_en;
-    hasEnVersion = true;
   }
 
-  // Build file path
+  // Build file path - use Japanese file if English version not available
+  const filePathLang = noEnglishVersion ? "ja" : lang;
   const filePath = path.join(
     process.cwd(),
     "data",
-    lang,
+    filePathLang,
     "pages",
     `${pageName}.md`
   );
@@ -127,6 +132,8 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
         hasEnVersion,
         totalIllusts: config.illusts.length,
         currentIndex: config.illusts.findIndex((item) => item.id === parseInt(page, 10)),
+        noEnglishVersion,
+        jaPageName: illustItem.page_ja,
       },
     };
   }
@@ -136,19 +143,19 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const { data, content } = matter(fileContent);
 
   const imageUrl = extractGyazoImage(content);
-  const shortDescription = extractDescription(content);
+  const shortDescription = noEnglishVersion ? "" : extractDescription(content);
 
-  // Process wiki-style links
-  const processedContent = processWikiLinks(content, lang);
+  // Process wiki-style links (only if not noEnglishVersion)
+  const processedContent = noEnglishVersion ? "" : processWikiLinks(content, lang);
 
-  // Convert markdown to HTML
-  const htmlContent = await marked.parse(processedContent);
+  // Convert markdown to HTML (only if not noEnglishVersion)
+  const htmlContent = noEnglishVersion ? "" : await marked.parse(processedContent);
 
   const currentIndex = config.illusts.findIndex((item) => item.id === parseInt(page, 10));
 
   return {
     props: {
-      title: data.title || pageName,
+      title: noEnglishVersion ? illustItem.page_ja : (data.title || pageName),
       content: htmlContent,
       shortDescription,
       imageUrl,
@@ -160,6 +167,8 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
       hasEnVersion,
       totalIllusts: config.illusts.length,
       currentIndex,
+      noEnglishVersion,
+      jaPageName: illustItem.page_ja,
     },
     revalidate: 30,
   };
@@ -189,8 +198,7 @@ export default function IllustPage(props: Props) {
         <div className="page">
           <h1>Illustration Not Found</h1>
           <p>
-            The illustration "{props.page}" does not exist in {props.lang}{" "}
-            language.
+            The illustration "{props.page}" does not exist.
           </p>
           <p>
             <Link href={`/${props.lang}/vt`}>
@@ -302,18 +310,38 @@ export default function IllustPage(props: Props) {
               >
                 ×
               </button>
-              <h2 className="modal-title">{props.title}</h2>
-              {props.shortDescription && (
-                <p className="modal-description">{props.shortDescription}</p>
+              {props.noEnglishVersion ? (
+                <>
+                  <h2 className="modal-title">English Version Not Available Yet</h2>
+                  <p className="modal-description">
+                    This visual thinking illustration does not have an English description yet.
+                    You can view the Japanese version instead.
+                  </p>
+                  <a
+                    href={`/ja/${props.jaPageName}`}
+                    className="modal-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Japanese Version →
+                  </a>
+                </>
+              ) : (
+                <>
+                  <h2 className="modal-title">{props.title}</h2>
+                  {props.shortDescription && (
+                    <p className="modal-description">{props.shortDescription}</p>
+                  )}
+                  <a
+                    href={`/${props.lang}/${props.pageName}`}
+                    className="modal-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {props.lang === "ja" ? "詳細を読む →" : "Read More →"}
+                  </a>
+                </>
               )}
-              <a
-                href={`/${props.lang}/${props.pageName}`}
-                className="modal-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {props.lang === "ja" ? "詳細を読む →" : "Read More →"}
-              </a>
             </div>
           </div>
         )}

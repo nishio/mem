@@ -148,6 +148,129 @@ yarn build
 2. GitHubのActionsログを確認
 3. Vercelのデプロイログを確認
 
+### vendor-chunksエラー（Next.js dev環境）
+
+**エラー例:**
+```
+Error: Cannot find module './chunks/vendor-chunks/next@15.5.6_react-dom@18.3.1_react@18.3.1__react@18.3.1.js'
+```
+
+**原因:**
+- 複数のNext.js devプロセスが同時に動いている
+- 異なるバージョンのNext.jsが同じ`.next`ディレクトリを共有している
+
+**解決手順:**
+
+1. **プロセス確認**
+```bash
+ps aux | grep "next dev" | grep -v grep
+```
+
+2. **全プロセスを停止**
+```bash
+kill <PID1> <PID2> ...
+```
+
+3. **ビルドキャッシュを削除**
+```bash
+rm -rf .next .turbo
+```
+
+4. **単一プロセスで再起動**
+```bash
+pnpm next dev
+# または yarn dev / npm run dev
+```
+
+## 開発サーバーのベストプラクティス
+
+### ⚠️ 重要：単一プロセスの原則
+
+**必須ルール:**
+- **1つのプロジェクトにつき、Next.js devプロセスは1つだけ起動する**
+- 新しいdevサーバーを起動する前に、既存のプロセスを確認すること
+- ポートが変わったとき（例: 3000 → 3001）は、別プロセスが動いている可能性がある
+
+### 起動前のチェック
+
+```bash
+# 既存のプロセスを確認
+ps aux | grep "next dev" | grep -v grep
+
+# もしプロセスが見つかったら停止
+kill <PID>
+```
+
+### よくある問題と原因
+
+**複数プロセスが起動してしまうケース:**
+
+1. **monorepo環境**: 親ディレクトリと子ディレクトリで別々にdevを起動
+2. **ターミナル多重起動**: 別ターミナルでdevを重複起動
+3. **バックグラウンド実行**: 過去に起動したプロセスが残っている
+
+**結果として起こる問題:**
+- vendor-chunksエラー（モジュールが見つからない）
+- ビルドキャッシュの競合
+- CPU使用率の異常な上昇
+- ホットリロードの不安定化
+
+### 復旧テンプレート
+
+開発環境が不安定になった場合の標準手順：
+
+```bash
+# 1. 全devプロセスを停止
+ps aux | grep "next dev" | grep -v grep
+kill <全てのPID>
+
+# 2. ビルドキャッシュを完全削除
+cd /path/to/mem
+rm -rf .next .turbo
+
+# 3. 依存関係を確認（必要なら）
+pnpm install
+
+# 4. 単一プロセスで再起動
+pnpm next dev
+```
+
+### バージョン確認
+
+vendor-chunksエラーが頻発する場合、依存関係のバージョン混在を確認：
+
+```bash
+pnpm list next react react-dom
+```
+
+全てのバージョンが統一されているか確認し、複数バージョンが存在する場合は：
+
+```bash
+pnpm up next react react-dom
+```
+
+### Turbopack vs Webpack
+
+Next.js 15はデフォルトでTurbopackを使用します。不安定な場合は、どちらかに明示的に固定すると安定しやすい：
+
+**Webpackに固定:**
+```json
+// package.json
+"scripts": {
+  "dev": "next dev --webpack"
+}
+```
+
+**Turbopackに固定:**
+```json
+// package.json
+"scripts": {
+  "dev": "next dev --turbopack"
+}
+```
+
+固定後は `.next` を削除してから再起動すること。
+
 ## 多言語コンテンツの作成プロセス
 
 ### ⚠️ 重要：段階的なレビュープロセス
