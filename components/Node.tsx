@@ -87,15 +87,13 @@ const StrongIcon = (props: StrongIconNodeType) => {
   const name = path.split("/")[2];
 
   return (
-    <NextLink href="/[project]/[page]" as={`${path}`}>
-      <a className="link icon">
-        <img
-          src={`https://scrapbox.io/api/pages${path}/icon`}
-          alt={name}
-          title={name}
-          className="icon strong-icon"
-        />
-      </a>
+    <NextLink href="/[project]/[page]" as={`${path}`} className="link icon">
+      <img
+        src={`https://scrapbox.io/api/pages${path}/icon`}
+        alt={name}
+        title={name}
+        className="icon strong-icon"
+      />
     </NextLink>
   );
 };
@@ -174,15 +172,13 @@ const Icon = (props: IconNodeType) => {
 
   if (props.pathType === "relative") {
     return (
-      <NextLink href="/[project]/[page]" as={`${path}`}>
-        <a className="link icon">
-          <img
-            src={`https://scrapbox.io/api/pages${path}/icon`}
-            alt={name}
-            title={name}
-            className="icon"
-          />
-        </a>
+      <NextLink href="/[project]/[page]" as={`${path}`} className="link icon">
+        <img
+          src={`https://scrapbox.io/api/pages${path}/icon`}
+          alt={name}
+          title={name}
+          className="icon"
+        />
       </NextLink>
     );
   }
@@ -211,10 +207,8 @@ const HashTag = (props: HashTagNodeType) => {
   const href = `/${project}/${props.href}`;
 
   return (
-    <NextLink href="/[project]/[page]" as={href}>
-      <a type="hashTag" className="page-link">
-        #{props.href}
-      </a>
+    <NextLink href="/[project]/[page]" as={href} className="page-link">
+      #{props.href}
     </NextLink>
   );
 };

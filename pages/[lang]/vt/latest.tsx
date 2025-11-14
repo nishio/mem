@@ -149,6 +149,10 @@ export default function IllustLatestPage(props: Props) {
         </div>
 
         <style jsx>{`
+          .page {
+            max-width: 1600px !important;
+          }
+
           .illust-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, 184px);

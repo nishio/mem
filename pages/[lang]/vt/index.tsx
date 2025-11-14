@@ -229,10 +229,10 @@ export default function IllustIndexPage(props: Props) {
 
           .illust-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, 184px);
+            gap: 1rem;
+            justify-content: center;
             margin-top: 2rem;
-            max-width: 100%;
           }
 
           @media (max-width: 768px) {
