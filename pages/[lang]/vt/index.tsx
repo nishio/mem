@@ -116,7 +116,19 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
 
     const fileContent = fs.readFileSync(filePath, "utf-8");
     const { data, content } = matter(fileContent);
-    const imageUrl = extractGyazoImage(content);
+
+    // Always extract image from Japanese version (language-independent)
+    const jaFilePath = path.join(
+      process.cwd(),
+      "data",
+      "ja",
+      "pages",
+      `${item.page_ja}.md`
+    );
+    const jaFileContent = fs.existsSync(jaFilePath)
+      ? fs.readFileSync(jaFilePath, "utf-8")
+      : "";
+    const imageUrl = jaFileContent ? extractGyazoImage(jaFileContent) : null;
 
     illusts.push({
       id: item.id,

@@ -138,11 +138,23 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
     };
   }
 
-  // Read and parse markdown file
+  // Always extract image from Japanese version (language-independent)
+  const jaFilePath = path.join(
+    process.cwd(),
+    "data",
+    "ja",
+    "pages",
+    `${illustItem.page_ja}.md`
+  );
+  const jaFileContent = fs.existsSync(jaFilePath)
+    ? fs.readFileSync(jaFilePath, "utf-8")
+    : "";
+  const imageUrl = jaFileContent ? extractGyazoImage(jaFileContent) : null;
+
+  // Read and parse markdown file for description and content (language-specific)
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(fileContent);
 
-  const imageUrl = extractGyazoImage(content);
   const shortDescription = noEnglishVersion ? "" : extractDescription(content);
 
   // Process wiki-style links (only if not noEnglishVersion)

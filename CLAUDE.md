@@ -314,6 +314,71 @@ URL構造の変更は破壊的変更になるため慎重に：
 - **親リポジトリでの更新**: `git add modules/mem && git commit && git push`
 - **サブモジュール内での作業後**: 必ず親リポジトリのポインタも更新
 
+## Visual Thinking翻訳の更新手順
+
+### ⚠️ 重要：日本語版が更新されたら英語版も更新する
+
+日本語版Visual ThinkingページがScrapboxで更新された場合、**英語版の高品質翻訳も必ず更新すること**。
+
+**更新プロセス：**
+
+1. **vt_config.jsonで該当ページのpage_enを一時的にnullに設定**
+   ```json
+   {
+     "id": 11,
+     "page_ja": "FLAT-STEP→NAMERAKA",
+     "page_en": null,  // 一時的にnullにする
+     "tags": []
+   }
+   ```
+
+2. **翻訳スクリプトを実行**
+   ```bash
+   cd modules/mem
+   pnpm tsx scripts/translate_vt_pages.ts
+   ```
+   - OpenAI gpt-4oで高品質翻訳を生成
+   - `translations/vt/` ディレクトリに出力
+
+3. **翻訳結果をレビュー**
+   - `translations/vt/<id>_<page_ja>.md` を確認
+   - 必要に応じて手動修正
+
+4. **翻訳ファイルを移動**
+   ```bash
+   pnpm tsx scripts/move_vt_translations.ts
+   ```
+   - `../external_brain_in_markdown_english/pages/` にコピー
+
+5. **external_brain_in_markdown_englishでコミット**
+   ```bash
+   cd ../external_brain_in_markdown_english
+   git add "pages/<英語タイトル>.md"
+   git commit -m "Update <page_ja> translation"
+   git push
+   ```
+
+6. **vt_config.jsonを手動更新**
+   - `page_en` フィールドに英語タイトルを設定
+   - 自動検出スクリプト（find_en_pages_fast.js）は遅いため手動推奨
+
+7. **memでコミット**
+   ```bash
+   git add vt_config.json
+   git commit -m "Update vt_config.json with new translation for ID <id>"
+   git push
+   ```
+
+**重要な注意点:**
+- Visual Thinkingは画像が言語非依存なので、画像は常に日本語版から取得
+- 説明文のみ英語版から取得するため、翻訳更新が必須
+- フッター「This page is a high-quality translation from...」が自動追加される
+
+**なぜこの手順が必要か:**
+- Scrapboxの日本語版が更新されても、external_brain_in_markdown_englishは自動更新されない
+- 手動で翻訳を再実行しないと、古い説明文が表示され続ける
+- ユーザーは最新の情報を期待しているため、翻訳の鮮度維持が重要
+
 ## 参考資料
 
 - [PLAN_ILLUST_IMPROVEMENT.md](./PLAN_ILLUST_IMPROVEMENT.md) - Visual Thinking実装計画

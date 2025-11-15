@@ -12,6 +12,13 @@ export function extractDescription(markdown: string): string {
   // Remove frontmatter if present
   let text = markdown.replace(/^---[\s\S]*?---\n/, "");
 
+  // Remove footer section (anything after horizontal rule ---)
+  // This removes translation attribution like "This page is a high-quality translation from..."
+  const hrIndex = text.indexOf("\n---\n");
+  if (hrIndex !== -1) {
+    text = text.substring(0, hrIndex);
+  }
+
   const lines = text.split("\n");
 
   // Pattern B: Check for indented image (説明 → インデント画像)
