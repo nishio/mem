@@ -7,6 +7,14 @@ import matter from "gray-matter";
 import { marked } from "marked";
 import { extractDescription } from "../../../utils/extractDescription";
 import { useState } from "react";
+import {
+  buildVtGraph,
+  getDirectVtLinks,
+  getSharedReferenceVtLinks,
+  loadVtConfig,
+  DirectVtLink,
+  SharedRefGroup,
+} from "../../../utils/vt_graph";
 
 type IllustConfig = {
   illusts: Array<{
@@ -15,6 +23,11 @@ type IllustConfig = {
     page_en: string | null;
     tags: string[];
   }>;
+};
+
+type VtLinkItem = {
+  id: number;
+  imageUrl: string | null;
 };
 
 type Props = {
@@ -32,6 +45,11 @@ type Props = {
   currentIndex: number;
   noEnglishVersion: boolean;
   jaPageName: string;
+  directVtLinks: VtLinkItem[];
+  sharedRefGroups: Array<{
+    via: string;
+    vtLinks: VtLinkItem[];
+  }>;
 };
 
 function extractGyazoImage(markdown: string): string | null {
@@ -83,6 +101,8 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
         currentIndex: -1,
         noEnglishVersion: false,
         jaPageName: "",
+        directVtLinks: [],
+        sharedRefGroups: [],
       },
     };
   }
@@ -134,6 +154,8 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
         currentIndex: config.illusts.findIndex((item) => item.id === parseInt(page, 10)),
         noEnglishVersion,
         jaPageName: illustItem.page_ja,
+        directVtLinks: [],
+        sharedRefGroups: [],
       },
     };
   }
@@ -165,6 +187,57 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
 
   const currentIndex = config.illusts.findIndex((item) => item.id === parseInt(page, 10));
 
+  const vtGraph = buildVtGraph(config.illusts);
+  
+  const directLinks = getDirectVtLinks(illustItem.id, vtGraph);
+  const directVtLinks: VtLinkItem[] = directLinks.map((link) => {
+    const linkPageJa = vtGraph.idToPageJa.get(link.id) || "";
+    const linkJaFilePath = path.join(
+      process.cwd(),
+      "data",
+      "ja",
+      "pages",
+      `${linkPageJa}.md`
+    );
+    const linkJaFileContent = fs.existsSync(linkJaFilePath)
+      ? fs.readFileSync(linkJaFilePath, "utf-8")
+      : "";
+    const linkImageUrl = linkJaFileContent ? extractGyazoImage(linkJaFileContent) : null;
+    
+    return {
+      id: link.id,
+      imageUrl: linkImageUrl,
+    };
+  });
+
+  const sharedGroups = getSharedReferenceVtLinks(illustItem.id, vtGraph);
+  const sharedRefGroups = sharedGroups.map((group) => {
+    const vtLinks: VtLinkItem[] = group.vtIds.map((vtId) => {
+      const vtPageJa = vtGraph.idToPageJa.get(vtId) || "";
+      const vtJaFilePath = path.join(
+        process.cwd(),
+        "data",
+        "ja",
+        "pages",
+        `${vtPageJa}.md`
+      );
+      const vtJaFileContent = fs.existsSync(vtJaFilePath)
+        ? fs.readFileSync(vtJaFilePath, "utf-8")
+        : "";
+      const vtImageUrl = vtJaFileContent ? extractGyazoImage(vtJaFileContent) : null;
+      
+      return {
+        id: vtId,
+        imageUrl: vtImageUrl,
+      };
+    });
+    
+    return {
+      via: group.via,
+      vtLinks,
+    };
+  });
+
   return {
     props: {
       title: noEnglishVersion ? illustItem.page_ja : (data.title || pageName),
@@ -181,6 +254,8 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
       currentIndex,
       noEnglishVersion,
       jaPageName: illustItem.page_ja,
+      directVtLinks,
+      sharedRefGroups,
     },
     revalidate: 30,
   };
@@ -360,6 +435,56 @@ export default function IllustPage(props: Props) {
                 </>
               )}
             </div>
+          </div>
+        )}
+
+        {props.directVtLinks.length > 0 && (
+          <div className="vt-links-section">
+            <h2 className="section-title">
+              {props.lang === "ja" ? "関連するVisual Thinking" : "Related Visual Thinking"}
+            </h2>
+            <div className="illust-grid">
+              {props.directVtLinks.map((link) => (
+                <Link key={link.id} href={`/${props.lang}/vt/${link.id}`}>
+                  <div className="illust-tile">
+                    {link.imageUrl && (
+                      <img
+                        src={link.imageUrl}
+                        alt={`VT ${link.id}`}
+                        className="illust-image"
+                      />
+                    )}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {props.sharedRefGroups.length > 0 && (
+          <div className="vt-links-section">
+            <h2 className="section-title">
+              {props.lang === "ja" ? "共通の参照を持つVisual Thinking" : "Visual Thinking with Shared References"}
+            </h2>
+            {props.sharedRefGroups.map((group, groupIndex) => (
+              <div key={groupIndex} className="shared-group">
+                <div className="illust-grid">
+                  {group.vtLinks.map((link) => (
+                    <Link key={link.id} href={`/${props.lang}/vt/${link.id}`}>
+                      <div className="illust-tile">
+                        {link.imageUrl && (
+                          <img
+                            src={link.imageUrl}
+                            alt={`VT ${link.id}`}
+                            className="illust-image"
+                          />
+                        )}
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         )}
 
@@ -549,6 +674,66 @@ export default function IllustPage(props: Props) {
 
           .footer a:hover {
             text-decoration: underline;
+          }
+
+          .vt-links-section {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+          }
+
+          .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+          }
+
+          .shared-group {
+            margin-bottom: 2rem;
+          }
+
+          .illust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 184px);
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+          }
+
+          @media (max-width: 768px) {
+            .illust-grid {
+              grid-template-columns: repeat(3, 1fr);
+              gap: 0.5rem;
+            }
+          }
+
+          .illust-tile {
+            display: block;
+            position: relative;
+            padding-bottom: 100%;
+            overflow: hidden;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+          }
+
+          .illust-tile:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          }
+
+          .illust-grid .illust-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
           }
         `}</style>
       </div>
