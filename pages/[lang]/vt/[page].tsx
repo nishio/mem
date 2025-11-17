@@ -440,9 +440,6 @@ export default function IllustPage(props: Props) {
 
         {props.directVtLinks.length > 0 && (
           <div className="vt-links-section">
-            <h2 className="section-title">
-              {props.lang === "ja" ? "関連するVisual Thinking" : "Related Visual Thinking"}
-            </h2>
             <div className="illust-grid">
               {props.directVtLinks.map((link) => (
                 <Link key={link.id} href={`/${props.lang}/vt/${link.id}`}>
@@ -463,9 +460,6 @@ export default function IllustPage(props: Props) {
 
         {props.sharedRefGroups.length > 0 && (
           <div className="vt-links-section">
-            <h2 className="section-title">
-              {props.lang === "ja" ? "共通の参照を持つVisual Thinking" : "Visual Thinking with Shared References"}
-            </h2>
             {props.sharedRefGroups.map((group, groupIndex) => (
               <div key={groupIndex} className="shared-group">
                 <div className="illust-grid">
@@ -677,8 +671,8 @@ export default function IllustPage(props: Props) {
           }
 
           .vt-links-section {
-            margin-top: 3rem;
-            padding-top: 2rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
             border-top: 1px solid #e0e0e0;
           }
 
@@ -689,15 +683,15 @@ export default function IllustPage(props: Props) {
           }
 
           .shared-group {
-            margin-bottom: 2rem;
+            margin-bottom: 0.5rem;
           }
 
           .illust-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, 184px);
-            gap: 1rem;
+            gap: 0.5rem;
             justify-content: center;
-            margin-top: 1rem;
+            margin-top: 0.5rem;
           }
 
           @media (max-width: 768px) {
