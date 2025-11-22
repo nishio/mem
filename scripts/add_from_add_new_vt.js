@@ -64,8 +64,27 @@ if (gaps.length > 0) {
   console.log(`Found ${gaps.length} gap(s): ${gaps.join(', ')}\n`);
 }
 
-// Add new pages
+// Check if markdown file exists
+const JA_PAGES_DIR = path.join(__dirname, '../data/ja/pages');
+
+function markdownFileExists(pageName) {
+  const filePath = path.join(JA_PAGES_DIR, `${pageName}.md`);
+  return fs.existsSync(filePath);
+}
+
+// Add new pages (only if markdown file exists)
+let skippedCount = 0;
+const skippedPages = [];
+
 for (const pageName of newPages) {
+  // Check if markdown file exists
+  if (!markdownFileExists(pageName)) {
+    console.log(`  [SKIP] ${pageName} (markdown file not found)`);
+    skippedPages.push(pageName);
+    skippedCount++;
+    continue;
+  }
+
   let nextId;
 
   if (gaps.length > 0) {
