@@ -314,6 +314,141 @@ URL構造の変更は破壊的変更になるため慎重に：
 - **親リポジトリでの更新**: `git add modules/mem && git commit && git push`
 - **サブモジュール内での作業後**: 必ず親リポジトリのポインタも更新
 
+## 新しいVisual Thinkingページの追加手順
+
+新しいVisual Thinking（VT）ページを追加する方法は2つあります。用途に応じて使い分けてください。
+
+### 方法A: 管理画面経由（推奨・少数追加向け）
+
+**特徴:**
+- 1ページずつ確認しながら追加できる
+- UIで視覚的に確認しながら操作
+- 少数のページを追加する場合に便利
+
+**手順:**
+
+1. **ローカル開発サーバーを起動**
+   ```bash
+   cd modules/mem
+   pnpm next dev
+   # または yarn dev / npm run dev
+   ```
+
+2. **管理画面にアクセス**
+   - ブラウザで http://localhost:3000/admin/vt を開く
+   - 本番環境では404になる（開発環境専用）
+
+3. **ページをスキャン**
+   - 「Scan」ボタンをクリック
+   - Gyazo画像を含むページが自動検出される
+   - 既に登録済み・スキップ済みのページは除外される
+
+4. **候補ページを確認して追加**
+   - 検索・フィルター機能で候補を絞り込み
+   - 「Add」ボタン: vt_config.jsonのillustsに追加
+   - 「Skip」ボタン: vt_config.jsonのskippedに追加（今後スキャン対象外）
+   - 自動的にIDが採番される（欠番があれば優先的に埋める）
+
+5. **変更をコミット**
+   ```bash
+   git add vt_config.json
+   git commit -m "Add new VT pages via admin UI"
+   git push
+   ```
+
+### 方法B: テキストファイル経由（一括追加向け）
+
+**特徴:**
+- 複数ページを一括で追加できる
+- 欠番を自動的に埋める
+- ファイル存在チェックで不完全なデータを防ぐ
+
+**手順:**
+
+1. **add_new_vt.txtにページリストを追加**
+
+   親リポジトリの `add_new_vt.txt` にページを追記：
+   ```
+   ページ名1 https://scrapbox.io/nishio/エンコード済みページ名1
+   ページ名2 https://scrapbox.io/nishio/エンコード済みページ名2
+   ```
+
+2. **スクリプトを実行**
+   ```bash
+   cd modules/mem
+   node scripts/add_from_add_new_vt.js
+   ```
+
+3. **実行結果を確認**
+   - 新規追加されたページ数
+   - 欠番が埋まったかどうか（"filling gap" の表示）
+   - スキップされたページ（Markdownファイル未同期）
+   - 最終的な総ページ数
+
+4. **変更をコミット**
+   ```bash
+   git add vt_config.json
+   git commit -m "Add new VT pages from add_new_vt.txt"
+   git push
+   ```
+
+### 共通の注意事項
+
+**⚠️ Markdownファイルの同期ラグ**
+
+- Scrapboxのページは `external_brain_in_markdown` に**1日1回**自動同期される
+- 最新のScrapboxページを追加しようとしても、Markdownファイルがまだ存在しない場合がある
+- **対策**: スクリプトは自動的にファイル存在チェックを行い、存在しないページはスキップする
+- スキップされたページは、翌日の同期後に再度追加すればOK
+
+**欠番の自動埋め**
+
+- 過去にページを削除した場合、IDに欠番（例: 36, 43, 44, 47）が生じる
+- スクリプトは**欠番を優先的に使う**ため、ID sequence が連続に保たれる
+- 例: 欠番 [36, 43] がある状態で2ページ追加 → ID 36, 43 が埋まる
+
+**ファイル存在チェック**
+
+- `scripts/add_from_add_new_vt.js` は自動的に以下をチェック：
+  - `data/ja/pages/<ページ名>.md` が存在するか
+  - 存在しない場合は `[SKIP]` として追加せずにスキップ
+- これにより「画像がない時に追加することは適切ではない」という原則を守る
+
+### 翻訳の実行（新規追加後）
+
+新しいVTページを追加した後は、英語翻訳を実行します。
+
+1. **翻訳スクリプトを実行**
+   ```bash
+   cd modules/mem
+   pnpm tsx scripts/translate_vt_pages.ts
+   ```
+   - `page_en === null` のページのみ翻訳
+   - OpenAI gpt-4oで高品質翻訳を生成
+   - `translations/vt/` に出力
+
+2. **翻訳結果を確認**
+   - `translations/vt/<id>_<page_ja>.md` の内容をレビュー
+   - 必要に応じて手動修正
+
+3. **翻訳ファイルを移動**
+   ```bash
+   pnpm tsx scripts/move_vt_translations.ts
+   ```
+   - `../external_brain_in_markdown_english/pages/` にコピー
+
+4. **external_brain_in_markdown_englishでコミット**
+   ```bash
+   cd ../external_brain_in_markdown_english
+   git add pages/*.md
+   git commit -m "Add VT translations for pages X, Y, Z"
+   git push
+   ```
+
+5. **vt_config.jsonを手動更新**
+   - 各ページの `page_en` フィールドに英語タイトルを設定
+   - memでコミット・プッシュ
+
 ## Visual Thinking翻訳の更新手順
 
 ### ⚠️ 重要：日本語版が更新されたら英語版も更新する

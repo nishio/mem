@@ -221,6 +221,12 @@
       "tags": []
     },
     {
+      "id": 36,
+      "page_ja": "次元の呪い",
+      "page_en": null,
+      "tags": []
+    },
+    {
       "id": 37,
       "page_ja": "拡大していくプロセスの不確実性",
       "page_en": null,
@@ -257,6 +263,18 @@
       "tags": []
     },
     {
+      "id": 43,
+      "page_ja": "平均的集団が多数派とは限らない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 44,
+      "page_ja": "「動かない」は「安全な中央」ではなく「取り残される端」",
+      "page_en": null,
+      "tags": []
+    },
+    {
       "id": 45,
       "page_ja": "濃いところだけ見る",
       "page_en": null,
@@ -265,6 +283,12 @@
     {
       "id": 46,
       "page_ja": "濃い薄い円の図",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 47,
+      "page_ja": "知識労働者と市場での値付け",
       "page_en": null,
       "tags": []
     },
@@ -289,6 +313,24 @@
     {
       "id": 51,
       "page_ja": "辺縁は移動コストが高い",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 52,
+      "page_ja": "2属性のトレードオフ",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 53,
+      "page_ja": "メジャーな方で呼ばれる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 54,
+      "page_ja": "ツールによる競争条件の変化",
       "page_en": null,
       "tags": []
     }
