@@ -83,6 +83,12 @@
       "tags": []
     },
     {
+      "id": 13,
+      "page_ja": "改善の解像度",
+      "page_en": null,
+      "tags": []
+    },
+    {
       "id": 14,
       "page_ja": "共通部分を共有する絵",
       "page_en": "Picture sharing common areas",
@@ -170,6 +176,144 @@
       "id": 28,
       "page_ja": "壁の外に出ることを無意識に避けてみずから囚われる",
       "page_en": "Unconsciously avoiding going outside the walls and being trapped by oneself",
+      "tags": []
+    },
+    {
+      "id": 29,
+      "page_ja": "パレート改善に幅がある",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 30,
+      "page_ja": "フォークできるなら熟議支援は不要",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 31,
+      "page_ja": "船のメタファー",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 32,
+      "page_ja": "コミュニティのフォークの実例",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 33,
+      "page_ja": "政策の修正",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 34,
+      "page_ja": "一時的に悪かったが結果的に良かった",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 35,
+      "page_ja": "他人が何を知っているかの全体を知ることはできない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 36,
+      "page_ja": "異なる観測範囲の複数の視点に支えられた判断]",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 37,
+      "page_ja": "拡大していくプロセスの不確実性",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 38,
+      "page_ja": "短期的減少と長期的増加",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 39,
+      "page_ja": "回して切る",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 40,
+      "page_ja": "落ちてるものを拾う",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 41,
+      "page_ja": "自他境界",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 42,
+      "page_ja": "木に感情移入している",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 43,
+      "page_ja": "締め切り前ブーストが近すぎる締切でぶつかる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 44,
+      "page_ja": "自分と価値観が違う他者がいる状況",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 45,
+      "page_ja": "濃いところだけ見る",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 46,
+      "page_ja": "濃い薄い円の図",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 47,
+      "page_ja": "重なる濃い薄い円の図",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 48,
+      "page_ja": "曖昧な対立の境界が動く",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 49,
+      "page_ja": "狭義と広義",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 50,
+      "page_ja": "一つの概念だと思っていたものが入れ子の二つの概念",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 51,
+      "page_ja": "辺縁は移動コストが高い",
+      "page_en": null,
       "tags": []
     }
   ],
