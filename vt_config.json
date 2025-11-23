@@ -333,12 +333,1032 @@
       "page_ja": "ツールによる競争条件の変化",
       "page_en": null,
       "tags": []
+    },
+    {
+      "id": 55,
+      "page_ja": "盲点",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 56,
+      "page_ja": "トップダウンとボトムアップ",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 57,
+      "page_ja": "失敗確率が高いが平均的に良い",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 58,
+      "page_ja": "バラツキが多い方がよいとき",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 59,
+      "page_ja": "円であるという思い込み",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 60,
+      "page_ja": "量が減らなくても割合は減る",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 61,
+      "page_ja": "直交しない2軸",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 62,
+      "page_ja": "湖にコップ一杯の水を入れる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 63,
+      "page_ja": "インタラクションの属性",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 64,
+      "page_ja": "対立しているものを分割する",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 65,
+      "page_ja": "上が単一という思い込み",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 66,
+      "page_ja": "バーベル",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 67,
+      "page_ja": "解が一つとは限らない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 68,
+      "page_ja": "大きな石だけが水面から顔を出す",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 69,
+      "page_ja": "「Xである」と「Xでない」が両立する",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 70,
+      "page_ja": "家族的類似性",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 71,
+      "page_ja": "妥協の方法は複数ある",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 72,
+      "page_ja": "良いものを移動させる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 73,
+      "page_ja": "要素ではなく集合",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 74,
+      "page_ja": "集合ではなく軸",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 75,
+      "page_ja": "対立は一つだけではない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 76,
+      "page_ja": "描きやすい絵のバイアス",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 77,
+      "page_ja": "最速のコースは最速ではない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 78,
+      "page_ja": "片方向ではなく両方向",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 79,
+      "page_ja": "観測範囲の問題",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 80,
+      "page_ja": "効果の有無",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 81,
+      "page_ja": "イコールでないものを同一視し、差の拡大によって同一視できなくなる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 82,
+      "page_ja": "円柱は円にも四角にも見えるが、円でも四角でもない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 83,
+      "page_ja": "自分を自分の一部に使う",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 84,
+      "page_ja": "無の場所",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 85,
+      "page_ja": "同じものに属する違うもの",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 86,
+      "page_ja": "対称性",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 87,
+      "page_ja": "黄金比",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 88,
+      "page_ja": "陰陽太極図",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 89,
+      "page_ja": "弁証法",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 90,
+      "page_ja": "螺旋階段",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 91,
+      "page_ja": "逆に進むがゴールは同じ",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 92,
+      "page_ja": "一つでも二つでもある",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 93,
+      "page_ja": "降りるために登らなければならない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 94,
+      "page_ja": "別の世界で解決する",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 95,
+      "page_ja": "「同じ」と「違う」は両立する",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 96,
+      "page_ja": "0→1の1は人によって異なる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 97,
+      "page_ja": "0でも100でもない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 98,
+      "page_ja": "0と1と100",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 99,
+      "page_ja": "6と9",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 100,
+      "page_ja": "「Xである」と「Xでない」が両立する",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 101,
+      "page_ja": "「デジタル化でかえって効率が下がる」と言ってる人",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 102,
+      "page_ja": "あふれをさける",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 103,
+      "page_ja": "つながる-つながらないは誤った二項対立",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 104,
+      "page_ja": "どちらが大きいか",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 105,
+      "page_ja": "どちらが甘い？",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 106,
+      "page_ja": "どちらも差別されてる気持ち",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 107,
+      "page_ja": "みずから積み上げる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 108,
+      "page_ja": "エコーチェンバーと主観的Pluralityと境界のなめらか化",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 109,
+      "page_ja": "ギャップがあるvsゼロではない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 110,
+      "page_ja": "コップに半分水がある",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 111,
+      "page_ja": "バズワードは解像度が低い",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 112,
+      "page_ja": "パラメータによって価値が変わる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 113,
+      "page_ja": "レイヤーが違う",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 114,
+      "page_ja": "不足に注目する人",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 115,
+      "page_ja": "互いに相手が劣っていると思う",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 116,
+      "page_ja": "互いに視野が狭いと思う",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 117,
+      "page_ja": "伝統的に我々の領土",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 118,
+      "page_ja": "価値を認めない人と価値の減少を認めない人",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 119,
+      "page_ja": "値上がりか値下がりかは期間による",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 120,
+      "page_ja": "入れ子の概念",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 121,
+      "page_ja": "円柱は円にも四角にも見えるが、円でも四角でもない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 122,
+      "page_ja": "劣化コピーが広がる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 123,
+      "page_ja": "単語の意味がイコールでない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 124,
+      "page_ja": "同じ言葉が違うものを指す絵のシリーズ",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 125,
+      "page_ja": "増加か減少か",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 126,
+      "page_ja": "声の大きい人",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 127,
+      "page_ja": "変えた経緯を知らないと同じに見える",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 128,
+      "page_ja": "変化したものは同じものか",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 129,
+      "page_ja": "多様性と統一",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 130,
+      "page_ja": "大前提として劣化する",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 131,
+      "page_ja": "存在するしない対立",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 132,
+      "page_ja": "少数派ばかり観測する人の中では少数派が多数派",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 133,
+      "page_ja": "平均の比較",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 134,
+      "page_ja": "広がったか広がってないか",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 135,
+      "page_ja": "広義と狭義で真偽反転",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 136,
+      "page_ja": "必要と十分の認識ズレ",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 137,
+      "page_ja": "思想の偏った人",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 138,
+      "page_ja": "投影する向きが違う",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 139,
+      "page_ja": "抵抗線の真逆の解釈",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 140,
+      "page_ja": "抽象化は一通りではない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 141,
+      "page_ja": "拡大解釈すると言い切れなくなる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 142,
+      "page_ja": "改善した-してない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 143,
+      "page_ja": "新しいものの粗探しをする人",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 144,
+      "page_ja": "日記2024-05-20",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 145,
+      "page_ja": "時点による言葉の意味の違い",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 146,
+      "page_ja": "最終的に激しく悪化する",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 147,
+      "page_ja": "未来を見てすごいという人",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 148,
+      "page_ja": "格差是正と特権化",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 149,
+      "page_ja": "満たされ水準",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 150,
+      "page_ja": "特別扱い",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 151,
+      "page_ja": "独立した技術が将来シナジーを生む",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 152,
+      "page_ja": "狭い範囲を見て「無い」と言う",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 153,
+      "page_ja": "白黒境界不明でも白黒明確",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 154,
+      "page_ja": "稼げる稼げない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 155,
+      "page_ja": "経路上に得るものがある",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 156,
+      "page_ja": "脈絡ない追加を良いと思う人",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 157,
+      "page_ja": "自分の価値観から遠いものは低評価になる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 158,
+      "page_ja": "自分は両方知っているが相手は片方しか知らない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 159,
+      "page_ja": "良くなったけど悪くなった",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 160,
+      "page_ja": "複数人に影響する少数派がいて多数派の意見が食い違う",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 161,
+      "page_ja": "見ようとしているものしか見えない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 162,
+      "page_ja": "視野の狭い完璧主義者",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 163,
+      "page_ja": "観測スケールの違い",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 164,
+      "page_ja": "解像度が同じでも区切り方に個体差がある",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 165,
+      "page_ja": "認知の解像度",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 166,
+      "page_ja": "誤った二項対立",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 167,
+      "page_ja": "議論が平行線のまま進んでいない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 168,
+      "page_ja": "近似していいかどうか",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 169,
+      "page_ja": "進むべき方向",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 170,
+      "page_ja": "遅くて大きな動き",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 171,
+      "page_ja": "遅れてる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 172,
+      "page_ja": "遅れて発生する大きなコスト",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 173,
+      "page_ja": "遠い目標の達成プラン",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 174,
+      "page_ja": "開発の障害物が見えていないユーザの意見",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 175,
+      "page_ja": "集合の包含関係が逆",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 176,
+      "page_ja": "革新的技術",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 177,
+      "page_ja": "黒もある",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 178,
+      "page_ja": "曖昧な概念を指す複数のシンボル",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 179,
+      "page_ja": "解釈はいくつもある",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 180,
+      "page_ja": "ひろがってつながる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 181,
+      "page_ja": "共通の特徴",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 182,
+      "page_ja": "抽象を軸足にした変換",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 183,
+      "page_ja": "堤防に穴が開くと水が広がる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 184,
+      "page_ja": "抽象化でつながる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 185,
+      "page_ja": "認知漏れの認知",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 186,
+      "page_ja": "「AとBの間の関係」と「Bによって作られたAの側面」は同じ",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 187,
+      "page_ja": "直線的でない時間",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 188,
+      "page_ja": "小さな粒のある一つの塊",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 189,
+      "page_ja": "「Xである」も「Xでない」も正しくない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 190,
+      "page_ja": "描きやすい絵のバイアス",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 191,
+      "page_ja": "意味の交差点とは何か？",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 192,
+      "page_ja": "知識のネットワーク記法と灰色半透明の意味の図",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 193,
+      "page_ja": "書籍を読んだ時に感じること",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 194,
+      "page_ja": "わからないものをわかるまで掘り下げる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 195,
+      "page_ja": "違和感の発展",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 196,
+      "page_ja": "書籍と掘り下げ",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 197,
+      "page_ja": "量が減らなくても割合は減る",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 198,
+      "page_ja": "少し減って他が増える",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 199,
+      "page_ja": "存在するしない対立",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 200,
+      "page_ja": "見えていない湧き出し",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 201,
+      "page_ja": "異なる観測範囲の複数の視点に支えられた判断",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 202,
+      "page_ja": "移動する人が定住する人をむすびつける",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 203,
+      "page_ja": "移動する人のコミュニティがコミュニティをつなぐ",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 204,
+      "page_ja": "異なる領域を過小評価する",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 205,
+      "page_ja": "最速のコースは最速ではない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 206,
+      "page_ja": "敵を小集団とみなす",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 207,
+      "page_ja": "大抵のものはもうある",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 208,
+      "page_ja": "大きな石だけが水面から顔を出す",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 209,
+      "page_ja": "脈絡ない追加を良いと思う人",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 210,
+      "page_ja": "探索のゲームと知識の分布図",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 211,
+      "page_ja": "すべての人から学ぶことができる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 212,
+      "page_ja": "重要さと観測範囲",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 213,
+      "page_ja": "劣ったものが評価されているという気持ち",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 214,
+      "page_ja": "知識のない人",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 215,
+      "page_ja": "少数派ばかり観測する人の中では少数派が多数派",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 216,
+      "page_ja": "主張の端に噛み付く人",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 217,
+      "page_ja": "劣化コピーが広がる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 218,
+      "page_ja": "目立つ劣った人を一般化して攻撃",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 219,
+      "page_ja": "ピラミッドの底辺しか観測できてない人が見下し批判する現象",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 220,
+      "page_ja": "政治的対立",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 221,
+      "page_ja": "一部が消えて一部残り新しく生まれる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 222,
+      "page_ja": "詳しくないものを攻撃する人の世界は狭くなる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 223,
+      "page_ja": "観測範囲の狭い人に情報共有できない",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 224,
+      "page_ja": "ちぎれた世界を縫い止める糸",
+      "page_en": null,
+      "tags": []
     }
   ],
   "skipped": [
     "#Ｚ世代的価値観",
     "'cy' is not defined",
-    "1%の革命",
-    "01VERSE"
+    "01VERSE",
+    "1%の革命"
   ]
 }
