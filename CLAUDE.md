@@ -318,6 +318,21 @@ URL構造の変更は破壊的変更になるため慎重に：
 
 新しいVisual Thinking（VT）ページを追加する方法は2つあります。用途に応じて使い分けてください。
 
+### 候補ページの発見（オプション）
+
+追加すべきページを見つけるための補助スクリプト：
+
+```bash
+cd modules/mem
+node scripts/find_linked_vt_candidates.js
+```
+
+このスクリプトは以下を検索します：
+- 「盲点カード」からリンクされているページ
+- 「二人が違うことを言う絵のシリーズ」へのバックリンク
+
+Gyazo画像を含むページのみを候補として、add_new_vt.txt形式で出力します。
+
 ### 方法A: 管理画面経由（推奨・少数追加向け）
 
 **特徴:**
@@ -445,8 +460,12 @@ URL構造の変更は破壊的変更になるため慎重に：
    git push
    ```
 
-5. **vt_config.jsonを手動更新**
-   - 各ページの `page_en` フィールドに英語タイトルを設定
+5. **vt_config.jsonを自動更新**
+   ```bash
+   cd ../mem
+   node scripts/update_page_en_from_translations.js
+   ```
+   - 翻訳ファイルからタイトルを自動抽出してpage_enを更新
    - memでコミット・プッシュ
 
 ## Visual Thinking翻訳の更新手順
@@ -493,9 +512,12 @@ URL構造の変更は破壊的変更になるため慎重に：
    git push
    ```
 
-6. **vt_config.jsonを手動更新**
-   - `page_en` フィールドに英語タイトルを設定
-   - 自動検出スクリプト（find_en_pages_fast.js）は遅いため手動推奨
+6. **vt_config.jsonを自動更新**
+   ```bash
+   cd ../mem
+   node scripts/update_page_en_from_translations.js
+   ```
+   - 翻訳ファイルからタイトルを自動抽出してpage_enを更新
 
 7. **memでコミット**
    ```bash
