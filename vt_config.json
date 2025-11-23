@@ -85,7 +85,7 @@
     {
       "id": 13,
       "page_ja": "改善の解像度",
-      "page_en": null,
+      "page_en": "Resolution of Improvement",
       "tags": []
     },
     {
@@ -181,385 +181,385 @@
     {
       "id": 29,
       "page_ja": "パレート改善に幅がある",
-      "page_en": null,
+      "page_en": "The Range of Pareto Improvements",
       "tags": []
     },
     {
       "id": 30,
       "page_ja": "フォークできるなら熟議支援は不要",
-      "page_en": null,
+      "page_en": "If Forking Is Possible, Deliberation Support Is Unnecessary",
       "tags": []
     },
     {
       "id": 31,
       "page_ja": "船のメタファー",
-      "page_en": null,
+      "page_en": "The Ship Metaphor",
       "tags": []
     },
     {
       "id": 32,
       "page_ja": "コミュニティのフォークの実例",
-      "page_en": null,
+      "page_en": "Example of a Community Fork",
       "tags": []
     },
     {
       "id": 33,
       "page_ja": "政策の修正",
-      "page_en": null,
+      "page_en": "Policy Modification",
       "tags": []
     },
     {
       "id": 34,
       "page_ja": "一時的に悪かったが結果的に良かった",
-      "page_en": null,
+      "page_en": "Temporarily Bad, Ultimately Good",
       "tags": []
     },
     {
       "id": 35,
       "page_ja": "他人が何を知っているかの全体を知ることはできない",
-      "page_en": null,
+      "page_en": "Understanding the Limits of Knowing What Others Know",
       "tags": []
     },
     {
       "id": 36,
       "page_ja": "次元の呪い",
-      "page_en": null,
+      "page_en": "The Curse of Dimensionality",
       "tags": []
     },
     {
       "id": 37,
       "page_ja": "拡大していくプロセスの不確実性",
-      "page_en": null,
+      "page_en": "Uncertainty in Expanding Processes",
       "tags": []
     },
     {
       "id": 38,
       "page_ja": "短期的減少と長期的増加",
-      "page_en": null,
+      "page_en": "Short-Term Decline and Long-Term Increase",
       "tags": []
     },
     {
       "id": 39,
       "page_ja": "回して切る",
-      "page_en": null,
+      "page_en": "Rotate and Cut",
       "tags": []
     },
     {
       "id": 40,
       "page_ja": "落ちてるものを拾う",
-      "page_en": null,
+      "page_en": "Picking Up What Is Dropped",
       "tags": []
     },
     {
       "id": 41,
       "page_ja": "自他境界",
-      "page_en": null,
+      "page_en": "Boundary Between Self and Others",
       "tags": []
     },
     {
       "id": 42,
       "page_ja": "木に感情移入している",
-      "page_en": null,
+      "page_en": "Empathizing with Trees",
       "tags": []
     },
     {
       "id": 43,
       "page_ja": "平均的集団が多数派とは限らない",
-      "page_en": null,
+      "page_en": "Average Groups Are Not Always the Majority",
       "tags": []
     },
     {
       "id": 44,
       "page_ja": "「動かない」は「安全な中央」ではなく「取り残される端」",
-      "page_en": null,
+      "page_en": "Staying Still Is Not the 'Safe Center' but the 'Left Behind Edge'",
       "tags": []
     },
     {
       "id": 45,
       "page_ja": "濃いところだけ見る",
-      "page_en": null,
+      "page_en": "Focus Only on the Dense Areas",
       "tags": []
     },
     {
       "id": 46,
       "page_ja": "濃い薄い円の図",
-      "page_en": null,
+      "page_en": "Diagram of Dense and Sparse Circles",
       "tags": []
     },
     {
       "id": 47,
       "page_ja": "知識労働者と市場での値付け",
-      "page_en": null,
+      "page_en": "Pricing Knowledge Workers in the Market",
       "tags": []
     },
     {
       "id": 48,
       "page_ja": "曖昧な対立の境界が動く",
-      "page_en": null,
+      "page_en": "The Shifting Boundary of Ambiguous Oppositions",
       "tags": []
     },
     {
       "id": 49,
       "page_ja": "狭義と広義",
-      "page_en": null,
+      "page_en": "Narrow Sense and Broad Sense",
       "tags": []
     },
     {
       "id": 50,
       "page_ja": "一つの概念だと思っていたものが入れ子の二つの概念",
-      "page_en": null,
+      "page_en": "Nested Concepts: When One Concept Becomes Two",
       "tags": []
     },
     {
       "id": 51,
       "page_ja": "辺縁は移動コストが高い",
-      "page_en": null,
+      "page_en": "High Movement Costs at the Periphery",
       "tags": []
     },
     {
       "id": 52,
       "page_ja": "2属性のトレードオフ",
-      "page_en": null,
+      "page_en": "Trade-Offs Between Two Attributes",
       "tags": []
     },
     {
       "id": 53,
       "page_ja": "メジャーな方で呼ばれる",
-      "page_en": null,
+      "page_en": "Referred to by the More Popular Name",
       "tags": []
     },
     {
       "id": 54,
       "page_ja": "ツールによる競争条件の変化",
-      "page_en": null,
+      "page_en": "Changes in Competitive Conditions Due to Tools",
       "tags": []
     },
     {
       "id": 55,
       "page_ja": "盲点",
-      "page_en": null,
+      "page_en": "Recognizing Blind Spots in Learning",
       "tags": []
     },
     {
       "id": 56,
       "page_ja": "トップダウンとボトムアップ",
-      "page_en": null,
+      "page_en": "Top-Down and Bottom-Up Approaches",
       "tags": []
     },
     {
       "id": 57,
       "page_ja": "失敗確率が高いが平均的に良い",
-      "page_en": null,
+      "page_en": "Higher Failure Probability but Better on Average",
       "tags": []
     },
     {
       "id": 58,
       "page_ja": "バラツキが多い方がよいとき",
-      "page_en": null,
+      "page_en": "When Greater Variability Is Beneficial",
       "tags": []
     },
     {
       "id": 59,
       "page_ja": "円であるという思い込み",
-      "page_en": null,
+      "page_en": "The Assumption of Being a Circle",
       "tags": []
     },
     {
       "id": 60,
       "page_ja": "量が減らなくても割合は減る",
-      "page_en": null,
+      "page_en": "Proportions Decrease Even If Quantities Do Not",
       "tags": []
     },
     {
       "id": 61,
       "page_ja": "直交しない2軸",
-      "page_en": null,
+      "page_en": "Non-Orthogonal Axes in Diagrams",
       "tags": []
     },
     {
       "id": 62,
       "page_ja": "湖にコップ一杯の水を入れる",
-      "page_en": null,
+      "page_en": "Adding a Cup of Water to a Lake",
       "tags": []
     },
     {
       "id": 63,
       "page_ja": "インタラクションの属性",
-      "page_en": null,
+      "page_en": "Attributes of Interaction",
       "tags": []
     },
     {
       "id": 64,
       "page_ja": "対立しているものを分割する",
-      "page_en": null,
+      "page_en": "Dividing Conflicting Elements",
       "tags": []
     },
     {
       "id": 65,
       "page_ja": "上が単一という思い込み",
-      "page_en": null,
+      "page_en": "The Assumption of Singularity at the Top",
       "tags": []
     },
     {
       "id": 66,
       "page_ja": "バーベル",
-      "page_en": null,
+      "page_en": "Barbell Strategy and False Dichotomies",
       "tags": []
     },
     {
       "id": 67,
       "page_ja": "解が一つとは限らない",
-      "page_en": null,
+      "page_en": "Solutions Are Not Always Unique",
       "tags": []
     },
     {
       "id": 68,
       "page_ja": "大きな石だけが水面から顔を出す",
-      "page_en": null,
+      "page_en": "Only Large Stones Emerge from the Water's Surface",
       "tags": []
     },
     {
       "id": 69,
       "page_ja": "「Xである」と「Xでない」が両立する",
-      "page_en": null,
+      "page_en": "Coexistence of 'Being X' and 'Not Being X'",
       "tags": []
     },
     {
       "id": 70,
       "page_ja": "家族的類似性",
-      "page_en": null,
+      "page_en": "Family Resemblance",
       "tags": []
     },
     {
       "id": 71,
       "page_ja": "妥協の方法は複数ある",
-      "page_en": null,
+      "page_en": "Multiple Methods of Compromise Exist",
       "tags": []
     },
     {
       "id": 72,
       "page_ja": "良いものを移動させる",
-      "page_en": null,
+      "page_en": "Transferring Valuable Elements to New Spaces",
       "tags": []
     },
     {
       "id": 73,
       "page_ja": "要素ではなく集合",
-      "page_en": null,
+      "page_en": "Focus on Sets, Not Elements",
       "tags": []
     },
     {
       "id": 74,
       "page_ja": "集合ではなく軸",
-      "page_en": null,
+      "page_en": "Not a Set, But an Axis",
       "tags": []
     },
     {
       "id": 75,
       "page_ja": "対立は一つだけではない",
-      "page_en": null,
+      "page_en": "Opposition Is Not Singular",
       "tags": []
     },
     {
       "id": 76,
       "page_ja": "描きやすい絵のバイアス",
-      "page_en": null,
+      "page_en": "Bias of Easily Drawn Diagrams",
       "tags": []
     },
     {
       "id": 77,
       "page_ja": "最速のコースは最速ではない",
-      "page_en": null,
+      "page_en": "The Fastest Course Is Not the Fastest",
       "tags": []
     },
     {
       "id": 78,
       "page_ja": "片方向ではなく両方向",
-      "page_en": null,
+      "page_en": "Not One-Way, But Two-Way",
       "tags": []
     },
     {
       "id": 79,
       "page_ja": "観測範囲の問題",
-      "page_en": null,
+      "page_en": "The Problem of Observation Range",
       "tags": []
     },
     {
       "id": 80,
       "page_ja": "効果の有無",
-      "page_en": null,
+      "page_en": "The Presence or Absence of Effectiveness",
       "tags": []
     },
     {
       "id": 81,
       "page_ja": "イコールでないものを同一視し、差の拡大によって同一視できなくなる",
-      "page_en": null,
+      "page_en": "Identifying Non-Equals as Equals and the Expansion of Differences",
       "tags": []
     },
     {
       "id": 82,
       "page_ja": "円柱は円にも四角にも見えるが、円でも四角でもない",
-      "page_en": null,
+      "page_en": "A Cylinder Appears as a Circle or Rectangle, But Is Neither",
       "tags": []
     },
     {
       "id": 83,
       "page_ja": "自分を自分の一部に使う",
-      "page_en": null,
+      "page_en": "Using Oneself as a Part of Oneself",
       "tags": []
     },
     {
       "id": 84,
       "page_ja": "無の場所",
-      "page_en": null,
+      "page_en": "The Place of Nothingness",
       "tags": []
     },
     {
       "id": 85,
       "page_ja": "同じものに属する違うもの",
-      "page_en": null,
+      "page_en": "Different Things Belonging to the Same Entity",
       "tags": []
     },
     {
       "id": 86,
       "page_ja": "対称性",
-      "page_en": null,
+      "page_en": "Symmetry",
       "tags": []
     },
     {
       "id": 87,
       "page_ja": "黄金比",
-      "page_en": null,
+      "page_en": "The Golden Ratio",
       "tags": []
     },
     {
       "id": 88,
       "page_ja": "陰陽太極図",
-      "page_en": null,
+      "page_en": "Yin-Yang Taijitu Diagram",
       "tags": []
     },
     {
       "id": 89,
       "page_ja": "弁証法",
-      "page_en": null,
+      "page_en": "Dialectical Method",
       "tags": []
     },
     {
       "id": 90,
       "page_ja": "螺旋階段",
-      "page_en": null,
+      "page_en": "The Spiral Staircase",
       "tags": []
     },
     {
       "id": 91,
       "page_ja": "逆に進むがゴールは同じ",
-      "page_en": null,
+      "page_en": "Moving in Reverse, Yet Reaching the Same Goal",
       "tags": []
     },
     {
       "id": 92,
       "page_ja": "一つでも二つでもある",
-      "page_en": null,
+      "page_en": "Existence as One or Two: A Dialectical Resolution",
       "tags": []
     },
     {
@@ -571,13 +571,13 @@
     {
       "id": 94,
       "page_ja": "別の世界で解決する",
-      "page_en": null,
+      "page_en": "Solving in Another World",
       "tags": []
     },
     {
       "id": 95,
       "page_ja": "「同じ」と「違う」は両立する",
-      "page_en": null,
+      "page_en": "The Coexistence of 'Same' and 'Different'",
       "tags": []
     },
     {
@@ -589,25 +589,25 @@
     {
       "id": 97,
       "page_ja": "0でも100でもない",
-      "page_en": null,
+      "page_en": "Neither 0 Nor 100",
       "tags": []
     },
     {
       "id": 98,
       "page_ja": "0と1と100",
-      "page_en": null,
+      "page_en": "The Abstractness of 0, 1, and 100",
       "tags": []
     },
     {
       "id": 99,
       "page_ja": "6と9",
-      "page_en": null,
+      "page_en": "6 and 9",
       "tags": []
     },
     {
       "id": 100,
       "page_ja": "「Xである」と「Xでない」が両立する",
-      "page_en": null,
+      "page_en": "Coexistence of 'Being X' and 'Not Being X'",
       "tags": []
     },
     {
