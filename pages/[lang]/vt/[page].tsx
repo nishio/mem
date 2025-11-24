@@ -177,9 +177,20 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(fileContent);
 
-  const shortDescription = noEnglishVersion ? "" : extractDescription(content);
+  // Extract description first (to preserve metadata filtering)
+  const rawDescription = noEnglishVersion ? "" : extractDescription(content);
+  
+  // Process wiki-style links in the extracted description
+  const processedDescription = noEnglishVersion || !rawDescription
+    ? ""
+    : processWikiLinks(rawDescription, lang);
+  
+  // Convert description to HTML
+  const shortDescription = noEnglishVersion || !processedDescription
+    ? ""
+    : await marked.parse(processedDescription);
 
-  // Process wiki-style links (only if not noEnglishVersion)
+  // Process wiki-style links in full content (only if not noEnglishVersion)
   const processedContent = noEnglishVersion ? "" : processWikiLinks(content, lang);
 
   // Convert markdown to HTML (only if not noEnglishVersion)
@@ -355,38 +366,34 @@ export default function IllustPage(props: Props) {
 
         <div className="illust-nav">
           <div className="nav-buttons">
-            <Link href={`/${props.lang}/vt/${getFirstId()}`} className="nav-link">
-              |&lt;
-            </Link>
             {getPrevId() ? (
-              <Link href={`/${props.lang}/vt/${getPrevId()}`} className="nav-link">
-                &lt; Prev
+              <Link href={`/${props.lang}/vt/${getPrevId()}`} className="nav-button">
+                ← Previous
               </Link>
             ) : (
-              <span className="nav-link disabled">&lt; Prev</span>
+              <span className="nav-button disabled">← Previous</span>
             )}
-            <Link href={`/${props.lang}/vt/${getRandomId()}`} className="nav-link">
+            <Link href={`/${props.lang}/vt/${getRandomId()}`} className="nav-button">
               Random
             </Link>
             {getNextId() ? (
-              <Link href={`/${props.lang}/vt/${getNextId()}`} className="nav-link">
-                Next &gt;
+              <Link href={`/${props.lang}/vt/${getNextId()}`} className="nav-button">
+                Next →
               </Link>
             ) : (
-              <span className="nav-link disabled">Next &gt;</span>
+              <span className="nav-button disabled">Next →</span>
             )}
-            <Link href={`/${props.lang}/vt/${getLastId()}`} className="nav-link">
-              &gt;|
-            </Link>
+          </div>
+          <div className="nav-position">
+            {props.currentIndex + 1} / {props.totalIllusts}
           </div>
           <div className="nav-all">
-            <Link href={`/${props.lang}/vt`}>
-              Visual Thinking
+            <Link href={`/${props.lang}/vt`} className="nav-secondary">
+              {props.lang === "ja" ? "エントランスに戻る" : "Back to Entrance"}
             </Link>
-            <Link href={`/${props.lang}/vt/latest`}>
+            <Link href={`/${props.lang}/vt/latest`} className="nav-secondary">
               Latest
             </Link>
-
           </div>
         </div>
 
@@ -422,7 +429,10 @@ export default function IllustPage(props: Props) {
                 <>
                   <h2 className="modal-title">{props.title}</h2>
                   {props.shortDescription && (
-                    <p className="modal-description">{props.shortDescription}</p>
+                    <div
+                      className="modal-description"
+                      dangerouslySetInnerHTML={{ __html: props.shortDescription }}
+                    />
                   )}
                   <a
                     href={`/${props.lang}/${props.pageName}`}
@@ -528,32 +538,76 @@ export default function IllustPage(props: Props) {
           }
 
           .nav-buttons {
-            font-size: 1.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+          }
+
+          .nav-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            min-width: 44px;
+            padding: 0.5rem 1.2rem;
+            font-size: 1.1rem;
             font-family: monospace;
+            text-decoration: none;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+          }
+
+          .nav-button:hover {
+            border-color: #0070f3;
+            background-color: #f8f9fa;
+            transform: translateY(-1px);
+          }
+
+          .nav-button.disabled {
+            color: #ccc;
+            cursor: default;
+            background-color: #f9f9f9;
+            border-color: #e0e0e0;
+          }
+
+          .nav-button.disabled:hover {
+            transform: none;
+            border-color: #e0e0e0;
+            background-color: #f9f9f9;
+          }
+
+          .nav-position {
+            font-size: 0.95rem;
+            font-family: monospace;
+            color: #666;
             margin-bottom: 1rem;
           }
 
-          .nav-link {
-            text-decoration: none;
-          }
-
-          .nav-buttons :global(a),
-          .nav-buttons :global(span) {
-            margin: 0 0.5rem;
-          }
-
-          .nav-link.disabled {
-            color: #ccc;
-            cursor: default;
-          }
-
           .nav-all {
-            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 0.5rem;
           }
 
-          .nav-all :global(a) {
-            margin: 0 0.75rem;
+          .nav-secondary {
+            font-size: 1rem;
             text-decoration: none;
+            color: #0070f3;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+          }
+
+          .nav-secondary:hover {
+            background-color: #f0f0f0;
           }
 
           .modal-overlay {
@@ -629,8 +683,18 @@ export default function IllustPage(props: Props) {
           }
 
           @media (max-width: 768px) {
-            .nav-buttons {
+            .nav-button {
               font-size: 1rem;
+              padding: 0.5rem 1rem;
+              min-width: 100px;
+            }
+
+            .nav-position {
+              font-size: 0.9rem;
+            }
+
+            .nav-secondary {
+              font-size: 0.95rem;
             }
 
             .description-button {
