@@ -177,9 +177,20 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(fileContent);
 
-  const shortDescription = noEnglishVersion ? "" : extractDescription(content);
+  // Extract description first (to preserve metadata filtering)
+  const rawDescription = noEnglishVersion ? "" : extractDescription(content);
+  
+  // Process wiki-style links in the extracted description
+  const processedDescription = noEnglishVersion || !rawDescription
+    ? ""
+    : processWikiLinks(rawDescription, lang);
+  
+  // Convert description to HTML
+  const shortDescription = noEnglishVersion || !processedDescription
+    ? ""
+    : await marked.parse(processedDescription);
 
-  // Process wiki-style links (only if not noEnglishVersion)
+  // Process wiki-style links in full content (only if not noEnglishVersion)
   const processedContent = noEnglishVersion ? "" : processWikiLinks(content, lang);
 
   // Convert markdown to HTML (only if not noEnglishVersion)
@@ -418,7 +429,10 @@ export default function IllustPage(props: Props) {
                 <>
                   <h2 className="modal-title">{props.title}</h2>
                   {props.shortDescription && (
-                    <p className="modal-description">{props.shortDescription}</p>
+                    <div
+                      className="modal-description"
+                      dangerouslySetInnerHTML={{ __html: props.shortDescription }}
+                    />
                   )}
                   <a
                     href={`/${props.lang}/${props.pageName}`}
