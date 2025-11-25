@@ -12,6 +12,7 @@ type IllustConfig = {
     page_ja: string;
     page_en: string | null;
     tags: string[];
+    featured?: boolean;
   }>;
 };
 
@@ -21,11 +22,13 @@ type IllustItem = {
   pageName: string;
   imageUrl: string | null;
   tags: string[];
+  featured?: boolean;
 };
 
 type Props = {
   lang: string;
   illusts: IllustItem[];
+  featuredIllusts: IllustItem[];
 };
 
 type IntroSectionProps = {
@@ -136,13 +139,19 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
       pageName,
       imageUrl,
       tags: item.tags,
+      featured: item.featured,
     });
   }
+
+  // Separate featured and regular illusts
+  const featuredIllusts = illusts.filter(item => item.featured === true);
+  const regularIllusts = illusts.filter(item => item.featured !== true);
 
   return {
     props: {
       lang,
-      illusts,
+      illusts: regularIllusts,
+      featuredIllusts,
     },
     revalidate: 30,
   };
@@ -192,6 +201,29 @@ export default function IllustIndexPage(props: Props) {
           </Link>
         </p>
 
+        {props.featuredIllusts.length > 0 && (
+          <div className="featured-section">
+            <h2 className="featured-title">
+              {props.lang === "ja" ? "ピックアップ" : "Featured"}
+            </h2>
+            <div className="featured-grid">
+              {props.featuredIllusts.map((illust) => (
+                <Link key={illust.id} href={`/${props.lang}/vt/${illust.id}`}>
+                  <div className="featured-tile">
+                    {illust.imageUrl && (
+                      <img
+                        src={illust.imageUrl}
+                        alt="Visual Thinking"
+                        className="featured-image"
+                      />
+                    )}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div className="illust-grid">
           {props.illusts.map((illust) => (
             <Link key={illust.id} href={`/${props.lang}/vt/${illust.id}`}>
@@ -237,6 +269,76 @@ export default function IllustIndexPage(props: Props) {
               padding: 1rem;
               font-size: 0.95rem;
             }
+          }
+
+          .featured-section {
+            max-width: 1200px;
+            margin: 2rem auto 3rem;
+            padding: 2rem;
+            background-color: #f0f4f8;
+            border-radius: 12px;
+          }
+
+          .featured-title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+          }
+
+          .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
+          }
+
+          @media (max-width: 768px) {
+            .featured-section {
+              margin: 1.5rem auto 2rem;
+              padding: 1.5rem 1rem;
+            }
+
+            .featured-title {
+              font-size: 1.3rem;
+              margin-bottom: 1rem;
+            }
+
+            .featured-grid {
+              grid-template-columns: repeat(2, 1fr);
+              gap: 1rem;
+            }
+          }
+
+          .featured-tile {
+            display: block;
+            position: relative;
+            padding-bottom: 100%;
+            overflow: hidden;
+            border: 2px solid #0070f3;
+            border-radius: 12px;
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+          }
+
+          .featured-tile:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+          }
+
+          .featured-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
           }
 
           .illust-grid {
