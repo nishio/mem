@@ -22,7 +22,7 @@ type IllustItem = {
   pageName: string;
   imageUrl: string | null;
   tags: string[];
-  featured?: boolean;
+  featured: boolean;
 };
 
 type Props = {
@@ -139,7 +139,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
       pageName,
       imageUrl,
       tags: item.tags,
-      featured: item.featured,
+      featured: item.featured || false,
     });
   }
 

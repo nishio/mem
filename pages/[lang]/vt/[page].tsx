@@ -221,33 +221,45 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
     };
   });
 
+  // Get direct link IDs to exclude from shared references
+  const directLinkIds = new Set(directLinks.map(link => link.id));
+
   const sharedGroups = getSharedReferenceVtLinks(illustItem.id, vtGraph);
-  const sharedRefGroups = sharedGroups.map((group) => {
-    const vtLinks: VtLinkItem[] = group.vtIds.map((vtId) => {
-      const vtPageJa = vtGraph.idToPageJa.get(vtId) || "";
-      const vtJaFilePath = path.join(
-        process.cwd(),
-        "data",
-        "ja",
-        "pages",
-        `${vtPageJa}.md`
-      );
-      const vtJaFileContent = fs.existsSync(vtJaFilePath)
-        ? fs.readFileSync(vtJaFilePath, "utf-8")
-        : "";
-      const vtImageUrl = vtJaFileContent ? extractGyazoImage(vtJaFileContent) : null;
-      
+  const sharedRefGroups = sharedGroups
+    .map((group) => {
+      // Filter out VT IDs that are already in direct links
+      const filteredVtIds = group.vtIds.filter(vtId => !directLinkIds.has(vtId));
+
+      if (filteredVtIds.length === 0) {
+        return null; // Skip groups with no remaining VT IDs
+      }
+
+      const vtLinks: VtLinkItem[] = filteredVtIds.map((vtId) => {
+        const vtPageJa = vtGraph.idToPageJa.get(vtId) || "";
+        const vtJaFilePath = path.join(
+          process.cwd(),
+          "data",
+          "ja",
+          "pages",
+          `${vtPageJa}.md`
+        );
+        const vtJaFileContent = fs.existsSync(vtJaFilePath)
+          ? fs.readFileSync(vtJaFilePath, "utf-8")
+          : "";
+        const vtImageUrl = vtJaFileContent ? extractGyazoImage(vtJaFileContent) : null;
+
+        return {
+          id: vtId,
+          imageUrl: vtImageUrl,
+        };
+      });
+
       return {
-        id: vtId,
-        imageUrl: vtImageUrl,
+        via: group.via,
+        vtLinks,
       };
-    });
-    
-    return {
-      via: group.via,
-      vtLinks,
-    };
-  });
+    })
+    .filter((group): group is NonNullable<typeof group> => group !== null);
 
   return {
     props: {

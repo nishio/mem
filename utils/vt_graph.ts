@@ -165,10 +165,10 @@ export function getDirectVtLinks(
 
 /**
  * Get VT pages connected via shared references (non-VT pages)
- * Note: Initial implementation excludes VT pages as shared references (low priority)
+ * Note: Groups with identical vtIds are deduplicated (only the first is kept)
  * @param currentId Current VT page ID
  * @param graph VT link graph
- * @returns Array of shared reference groups
+ * @returns Array of shared reference groups (deduplicated by vtIds)
  */
 export function getSharedReferenceVtLinks(
   currentId: number,
@@ -187,9 +187,10 @@ export function getSharedReferenceVtLinks(
       continue;
     }
 
-    const otherVtIds = Array.from(vtIdsLinkingToTarget).filter(
-      (id) => id !== currentId
-    );
+    // Filter out current page and deduplicate (defensive)
+    const otherVtIds = Array.from(new Set(
+      Array.from(vtIdsLinkingToTarget).filter((id) => id !== currentId)
+    ));
 
     if (otherVtIds.length > 0) {
       sharedGroups.push({
@@ -207,5 +208,17 @@ export function getSharedReferenceVtLinks(
     return a.via.localeCompare(b.via);
   });
 
-  return sharedGroups;
+  // Deduplicate groups with identical vtIds
+  const seen = new Set<string>();
+  const deduplicated: SharedRefGroup[] = [];
+
+  for (const group of sharedGroups) {
+    const key = group.vtIds.join(',');
+    if (!seen.has(key)) {
+      seen.add(key);
+      deduplicated.push(group);
+    }
+  }
+
+  return deduplicated;
 }

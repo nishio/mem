@@ -8,7 +8,8 @@
         "xkcd",
         "communication",
         "democracy"
-      ]
+      ],
+      "featured": true
     },
     {
       "id": 2,
@@ -605,12 +606,6 @@
       "tags": []
     },
     {
-      "id": 100,
-      "page_ja": "「Xである」と「Xでない」が両立する",
-      "page_en": "Coexistence of 'Being X' and 'Not Being X'",
-      "tags": []
-    },
-    {
       "id": 101,
       "page_ja": "「デジタル化でかえって効率が下がる」と言ってる人",
       "page_en": "People Who Say 'Digitalization Lowers Efficiency'",
@@ -728,12 +723,6 @@
       "id": 120,
       "page_ja": "入れ子の概念",
       "page_en": "Nested Concepts",
-      "tags": []
-    },
-    {
-      "id": 121,
-      "page_ja": "円柱は円にも四角にも見えるが、円でも四角でもない",
-      "page_en": "A Cylinder Appears as a Circle or Rectangle, But Is Neither",
       "tags": []
     },
     {
@@ -1145,12 +1134,6 @@
       "tags": []
     },
     {
-      "id": 190,
-      "page_ja": "描きやすい絵のバイアス",
-      "page_en": "The Bias of Easy-to-Draw Diagrams",
-      "tags": []
-    },
-    {
       "id": 191,
       "page_ja": "意味の交差点とは何か？",
       "page_en": "What Is the Intersection of Meaning?",
@@ -1160,7 +1143,8 @@
       "id": 192,
       "page_ja": "知識のネットワーク記法と灰色半透明の意味の図",
       "page_en": "Knowledge Network Notation and Gray Translucent Meaning Diagram",
-      "tags": []
+      "tags": [],
+      "featured": true
     },
     {
       "id": 193,
@@ -1187,21 +1171,9 @@
       "tags": []
     },
     {
-      "id": 197,
-      "page_ja": "量が減らなくても割合は減る",
-      "page_en": "Proportion Decreases Even If Quantity Does Not",
-      "tags": []
-    },
-    {
       "id": 198,
       "page_ja": "少し減って他が増える",
       "page_en": "When Some Decrease, Others Increase",
-      "tags": []
-    },
-    {
-      "id": 199,
-      "page_ja": "存在するしない対立",
-      "page_en": "The Dichotomy of Existence and Non-Existence",
       "tags": []
     },
     {
@@ -1235,12 +1207,6 @@
       "tags": []
     },
     {
-      "id": 205,
-      "page_ja": "最速のコースは最速ではない",
-      "page_en": "The Fastest Course Is Not the Fastest",
-      "tags": []
-    },
-    {
       "id": 206,
       "page_ja": "敵を小集団とみなす",
       "page_en": "Viewing Opponents as Small Groups",
@@ -1250,18 +1216,6 @@
       "id": 207,
       "page_ja": "大抵のものはもうある",
       "page_en": "Most Things Already Exist",
-      "tags": []
-    },
-    {
-      "id": 208,
-      "page_ja": "大きな石だけが水面から顔を出す",
-      "page_en": "Only Large Stones Emerge from the Water's Surface",
-      "tags": []
-    },
-    {
-      "id": 209,
-      "page_ja": "脈絡ない追加を良いと思う人",
-      "page_en": "The Value of Contextless Additions",
       "tags": []
     },
     {
@@ -1295,21 +1249,9 @@
       "tags": []
     },
     {
-      "id": 215,
-      "page_ja": "少数派ばかり観測する人の中では少数派が多数派",
-      "page_en": "In a World of Observers, Minorities Become Majorities",
-      "tags": []
-    },
-    {
       "id": 216,
       "page_ja": "主張の端に噛み付く人",
       "page_en": "Biting at the Edges of an Argument",
-      "tags": []
-    },
-    {
-      "id": 217,
-      "page_ja": "劣化コピーが広がる",
-      "page_en": "The Spread of Deteriorated Copies",
       "tags": []
     },
     {
@@ -1322,7 +1264,8 @@
       "id": 219,
       "page_ja": "ピラミッドの底辺しか観測できてない人が見下し批判する現象",
       "page_en": "Phenomenon of Criticism from Limited Observation at Pyramid's Base",
-      "tags": []
+      "tags": [],
+      "featured": true
     },
     {
       "id": 220,
@@ -1388,7 +1331,8 @@
       "id": 230,
       "page_ja": "トートバッグ",
       "page_en": "Creating a Custom Tote Bag: A Journey in Design",
-      "tags": []
+      "tags": [],
+      "featured": true
     },
     {
       "id": 231,
@@ -1412,12 +1356,6 @@
       "id": 234,
       "page_ja": "知識の少ない人からでも学ぶことができる",
       "page_en": "Learning from Those with Less Knowledge",
-      "tags": []
-    },
-    {
-      "id": 235,
-      "page_ja": "トートバッグ",
-      "page_en": "Creating a Custom Tote Bag: A Personal Journey",
       "tags": []
     },
     {
@@ -1466,7 +1404,8 @@
       "id": 243,
       "page_ja": "解像度の段階",
       "page_en": "Stages of Cognitive Resolution",
-      "tags": []
+      "tags": [],
+      "featured": true
     },
     {
       "id": 244,
