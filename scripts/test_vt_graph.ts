@@ -31,7 +31,7 @@ if (vtIdsKeys.length !== uniqueVtIdsKeys.size) {
   console.log('⚠️  DUPLICATE vtIds FOUND!');
   console.log('vtIds keys:', vtIdsKeys);
   const duplicates = vtIdsKeys.filter((key, index) => vtIdsKeys.indexOf(key) !== index);
-  console.log('Duplicate keys:', [...new Set(duplicates)]);
+  console.log('Duplicate keys:', Array.from(new Set(duplicates)));
 } else {
   console.log('✅ No duplicate vtIds found');
 }
@@ -43,5 +43,5 @@ const uniqueViaNames = new Set(viaNames);
 if (viaNames.length !== uniqueViaNames.size) {
   console.log('ℹ️  Duplicate via names (different vtIds):');
   const duplicates = viaNames.filter((name, index) => viaNames.indexOf(name) !== index);
-  console.log('  ', [...new Set(duplicates)]);
+  console.log('  ', Array.from(new Set(duplicates)));
 }
