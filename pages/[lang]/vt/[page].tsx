@@ -5,7 +5,6 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
-import { extractDescription } from "../../../utils/extractDescription";
 import { useState } from "react";
 import {
   buildVtGraph,
@@ -33,7 +32,6 @@ type VtLinkItem = {
 type Props = {
   title: string;
   content: string;
-  shortDescription: string;
   imageUrl: string | null;
   lang: string;
   page: string;
@@ -89,7 +87,6 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
       props: {
         title: page,
         content: "",
-        shortDescription: "",
         imageUrl: null,
         lang,
         page,
@@ -142,7 +139,6 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
       props: {
         title: pageName,
         content: "",
-        shortDescription: "",
         imageUrl: null,
         lang,
         page,
@@ -176,19 +172,6 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   // Read and parse markdown file for description and content (language-specific)
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(fileContent);
-
-  // Extract description first (to preserve metadata filtering)
-  const rawDescription = noEnglishVersion ? "" : extractDescription(content);
-  
-  // Process wiki-style links in the extracted description
-  const processedDescription = noEnglishVersion || !rawDescription
-    ? ""
-    : processWikiLinks(rawDescription, lang);
-  
-  // Convert description to HTML
-  const shortDescription = noEnglishVersion || !processedDescription
-    ? ""
-    : await marked.parse(processedDescription);
 
   // Process wiki-style links in full content (only if not noEnglishVersion)
   const processedContent = noEnglishVersion ? "" : processWikiLinks(content, lang);
@@ -265,7 +248,6 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
     props: {
       title: noEnglishVersion ? illustItem.page_ja : (data.title || pageName),
       content: htmlContent,
-      shortDescription,
       imageUrl,
       lang,
       page,
@@ -440,10 +422,10 @@ export default function IllustPage(props: Props) {
               ) : (
                 <>
                   <h2 className="modal-title">{props.title}</h2>
-                  {props.shortDescription && (
+                  {props.content && (
                     <div
                       className="modal-description"
-                      dangerouslySetInnerHTML={{ __html: props.shortDescription }}
+                      dangerouslySetInnerHTML={{ __html: props.content }}
                     />
                   )}
                   <a
