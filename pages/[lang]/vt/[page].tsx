@@ -43,6 +43,8 @@ type Props = {
   currentIndex: number;
   noEnglishVersion: boolean;
   jaPageName: string;
+  prevId: number | null;
+  nextId: number | null;
   directVtLinks: VtLinkItem[];
   sharedRefGroups: Array<{
     via: string;
@@ -98,6 +100,8 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
         currentIndex: -1,
         noEnglishVersion: false,
         jaPageName: "",
+        prevId: null,
+        nextId: null,
         directVtLinks: [],
         sharedRefGroups: [],
       },
@@ -135,6 +139,10 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
 
   // Check if file exists
   if (!fs.existsSync(filePath)) {
+    const currentIndex = config.illusts.findIndex((item) => item.id === parseInt(page, 10));
+    const prevId = currentIndex > 0 ? config.illusts[currentIndex - 1].id : null;
+    const nextId = currentIndex < config.illusts.length - 1 ? config.illusts[currentIndex + 1].id : null;
+
     return {
       props: {
         title: pageName,
@@ -147,9 +155,11 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
         illustId: illustItem.id,
         hasEnVersion,
         totalIllusts: config.illusts.length,
-        currentIndex: config.illusts.findIndex((item) => item.id === parseInt(page, 10)),
+        currentIndex,
         noEnglishVersion,
         jaPageName: illustItem.page_ja,
+        prevId,
+        nextId,
         directVtLinks: [],
         sharedRefGroups: [],
       },
@@ -180,6 +190,10 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const htmlContent = noEnglishVersion ? "" : await marked.parse(processedContent);
 
   const currentIndex = config.illusts.findIndex((item) => item.id === parseInt(page, 10));
+
+  // Calculate prev/next IDs based on array order (not ID order)
+  const prevId = currentIndex > 0 ? config.illusts[currentIndex - 1].id : null;
+  const nextId = currentIndex < config.illusts.length - 1 ? config.illusts[currentIndex + 1].id : null;
 
   const vtGraph = buildVtGraph(config.illusts);
   
@@ -259,6 +273,8 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
       currentIndex,
       noEnglishVersion,
       jaPageName: illustItem.page_ja,
+      prevId,
+      nextId,
       directVtLinks,
       sharedRefGroups,
     },
@@ -307,12 +323,12 @@ export default function IllustPage(props: Props) {
   const getFirstId = () => 1;
   const getLastId = () => props.totalIllusts;
   const getPrevId = () => {
-    if (props.currentIndex <= 0) return null;
-    return props.currentIndex; // currentIndex is 0-based, but we need the ID of previous item
+    // Return the ID of the previous page in array order
+    return props.prevId;
   };
   const getNextId = () => {
-    if (props.currentIndex >= props.totalIllusts - 1) return null;
-    return props.currentIndex + 2; // currentIndex is 0-based, next item is currentIndex + 1, so ID is currentIndex + 2
+    // Return the ID of the next page in array order
+    return props.nextId;
   };
   const getRandomId = () => {
     return Math.floor(Math.random() * props.totalIllusts) + 1;

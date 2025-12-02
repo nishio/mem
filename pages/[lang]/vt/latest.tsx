@@ -100,8 +100,9 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
     });
   }
 
-  // Sort by ID descending (latest first)
-  illusts.sort((a, b) => b.id - a.id);
+  // Reverse to show latest added pages first
+  // (newer pages are added at the end of config.illusts array)
+  illusts.reverse();
 
   return {
     props: {
