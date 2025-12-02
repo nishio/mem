@@ -338,6 +338,27 @@ export default function IllustPage(props: Props) {
     <>
       <Head>
         <title>{props.title} - NISHIO Hirokazu</title>
+
+        {/* OGP tags for social media - image-focused display */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Visual Thinking" />
+        <meta property="og:url" content={`https://mem.nhiro.org/${props.lang}/vt/${props.page}`} />
+        {props.imageUrl && (
+          <>
+            <meta property="og:image" content={props.imageUrl} />
+            <meta property="og:image:alt" content="Visual Thinking" />
+          </>
+        )}
+
+        {/* Twitter Card - large image display */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Visual Thinking" />
+        {props.imageUrl && (
+          <>
+            <meta name="twitter:image" content={props.imageUrl} />
+            <meta name="twitter:image:alt" content="Visual Thinking" />
+          </>
+        )}
       </Head>
       <div className="document-header">
         <Link href="/" id="to-top">
