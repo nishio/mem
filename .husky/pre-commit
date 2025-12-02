@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Running type check before commit..."
+
+# TypeScript type check (fast, no full build)
+yarn tsc --noEmit
+
+if [ $? -ne 0 ]; then
+  echo "❌ Type check failed. Please fix errors before committing."
+  exit 1
+fi
+
+echo "✅ Type check passed"
