@@ -607,12 +607,6 @@
       "tags": []
     },
     {
-      "id": 100,
-      "page_ja": "尖った人材のたとえ",
-      "page_en": null,
-      "tags": []
-    },
-    {
       "id": 101,
       "page_ja": "「デジタル化でかえって効率が下がる」と言ってる人",
       "page_en": "People Who Say 'Digitalization Lowers Efficiency'",
@@ -730,12 +724,6 @@
       "id": 120,
       "page_ja": "入れ子の概念",
       "page_en": "Nested Concepts",
-      "tags": []
-    },
-    {
-      "id": 121,
-      "page_ja": "尖ったところを伸ばす",
-      "page_en": null,
       "tags": []
     },
     {
@@ -1147,12 +1135,6 @@
       "tags": []
     },
     {
-      "id": 190,
-      "page_ja": "スペシャリストとジェネラリスト",
-      "page_en": null,
-      "tags": []
-    },
-    {
       "id": 191,
       "page_ja": "意味の交差点とは何か？",
       "page_en": "What Is the Intersection of Meaning?",
@@ -1190,21 +1172,9 @@
       "tags": []
     },
     {
-      "id": 197,
-      "page_ja": "大人が子供より優れているという思い込み",
-      "page_en": null,
-      "tags": []
-    },
-    {
       "id": 198,
       "page_ja": "少し減って他が増える",
       "page_en": "When Some Decrease, Others Increase",
-      "tags": []
-    },
-    {
-      "id": 199,
-      "page_ja": "部下を育てる",
-      "page_en": null,
       "tags": []
     },
     {
@@ -1238,12 +1208,6 @@
       "tags": []
     },
     {
-      "id": 205,
-      "page_ja": "和で評価するとジェネラリストが選ばれる",
-      "page_en": null,
-      "tags": []
-    },
-    {
       "id": 206,
       "page_ja": "敵を小集団とみなす",
       "page_en": "Viewing Opponents as Small Groups",
@@ -1253,18 +1217,6 @@
       "id": 207,
       "page_ja": "大抵のものはもうある",
       "page_en": "Most Things Already Exist",
-      "tags": []
-    },
-    {
-      "id": 208,
-      "page_ja": "LLMとPluralityの関係",
-      "page_en": null,
-      "tags": []
-    },
-    {
-      "id": 209,
-      "page_ja": "人間はLLMの乗り物",
-      "page_en": null,
       "tags": []
     },
     {
@@ -1298,21 +1250,9 @@
       "tags": []
     },
     {
-      "id": 215,
-      "page_ja": "LLMは専門家間のコミュニケーションを円滑にする",
-      "page_en": null,
-      "tags": []
-    },
-    {
       "id": 216,
       "page_ja": "主張の端に噛み付く人",
       "page_en": "Biting at the Edges of an Argument",
-      "tags": []
-    },
-    {
-      "id": 217,
-      "page_ja": "T型人材",
-      "page_en": null,
       "tags": []
     },
     {
@@ -1389,12 +1329,6 @@
       "tags": []
     },
     {
-      "id": 230,
-      "page_ja": "専門性に閉じこもる人",
-      "page_en": null,
-      "tags": []
-    },
-    {
       "id": 231,
       "page_ja": "誤った二分法",
       "page_en": "The Fallacy of False Dichotomies",
@@ -1416,24 +1350,6 @@
       "id": 234,
       "page_ja": "知識の少ない人からでも学ぶことができる",
       "page_en": "Learning from Those with Less Knowledge",
-      "tags": []
-    },
-    {
-      "id": 235,
-      "page_ja": "複数の分野をまたぐ人はコミュニケーションのハブになる",
-      "page_en": null,
-      "tags": []
-    },
-    {
-      "id": 236,
-      "page_ja": "ふたこぶの知識",
-      "page_en": null,
-      "tags": []
-    },
-    {
-      "id": 237,
-      "page_ja": "会議出席代行",
-      "page_en": null,
       "tags": []
     },
     {
@@ -1513,6 +1429,90 @@
       "id": 250,
       "page_ja": "遅い自分はボトルネックだけど、それでも全体としては速く賢く動けている",
       "page_en": "Embracing AI Speed: Moving Faster and Smarter Despite Human Bottlenecks",
+      "tags": []
+    },
+    {
+      "id": 100,
+      "page_ja": "尖った人材のたとえ",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 121,
+      "page_ja": "尖ったところを伸ばす",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 190,
+      "page_ja": "スペシャリストとジェネラリスト",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 197,
+      "page_ja": "大人が子供より優れているという思い込み",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 199,
+      "page_ja": "部下を育てる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 205,
+      "page_ja": "和で評価するとジェネラリストが選ばれる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 208,
+      "page_ja": "LLMとPluralityの関係",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 209,
+      "page_ja": "人間はLLMの乗り物",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 215,
+      "page_ja": "LLMは専門家間のコミュニケーションを円滑にする",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 217,
+      "page_ja": "T型人材",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 230,
+      "page_ja": "専門性に閉じこもる人",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 235,
+      "page_ja": "複数の分野をまたぐ人はコミュニケーションのハブになる",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 236,
+      "page_ja": "ふたこぶの知識",
+      "page_en": null,
+      "tags": []
+    },
+    {
+      "id": 237,
+      "page_ja": "会議出席代行",
+      "page_en": null,
       "tags": []
     }
   ],

@@ -112,8 +112,8 @@ for (const pageName of newPages) {
   });
 }
 
-// IDでソート
-config.illusts.sort((a, b) => a.id - b.id);
+// NOTE: Do NOT sort by ID! Array order represents addition order.
+// New pages are pushed to the end, preserving chronological order.
 
 // Save vt_config.json
 fs.writeFileSync(configPath, JSON.stringify(config, null, 2), 'utf-8');
