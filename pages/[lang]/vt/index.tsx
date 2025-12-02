@@ -40,7 +40,7 @@ const IntroSection: FC<IntroSectionProps> = ({ lang }) => {
     return (
       <div className="intro">
         <p>
-          西尾泰和の言語非依存な図解を集めた美術館へようこそ。
+          ビジュアルソート(ビジュアルシンキングの産物、言語非依存な図解)を集めた美術館へようこそ。
         </p>
         <p>
           ここでは、言語的な説明よりも先に図解を見る体験を提供しています。
@@ -55,7 +55,7 @@ const IntroSection: FC<IntroSectionProps> = ({ lang }) => {
     return (
       <div className="intro">
         <p>
-          Welcome to a gallery of language-independent visual thinking by NISHIO Hirokazu.
+          Welcome to a gallery of visual thought (products of visual thinking, language-independent diagrams).
         </p>
         <p>
           Here, we provide an experience of viewing diagrams before linguistic explanations.
