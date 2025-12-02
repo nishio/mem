@@ -192,46 +192,14 @@ export default function IllustIndexPage(props: Props) {
 
         <IntroSection lang={props.lang} />
 
-        <p style={{ marginBottom: "1rem" }}>
-          <Link
-            href={`/${props.lang}/vt/latest`}
-            style={{ color: "#0066cc", textDecoration: "underline" }}
-          >
-            {props.lang === "ja" ? "最新順で見る" : "View Latest First"}
-          </Link>
-        </p>
-
-        {props.featuredIllusts.length > 0 && (
-          <div className="featured-section">
-            <h2 className="featured-title">
-              {props.lang === "ja" ? "ピックアップ" : "Featured"}
-            </h2>
-            <div className="featured-grid">
-              {props.featuredIllusts.map((illust) => (
-                <Link key={illust.id} href={`/${props.lang}/vt/${illust.id}`}>
-                  <div className="featured-tile">
-                    {illust.imageUrl && (
-                      <img
-                        src={illust.imageUrl}
-                        alt="Visual Thinking"
-                        className="featured-image"
-                      />
-                    )}
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
-
         <div className="illust-grid">
-          {props.illusts.map((illust) => (
+          {props.featuredIllusts.map((illust) => (
             <Link key={illust.id} href={`/${props.lang}/vt/${illust.id}`}>
               <div className="illust-tile">
                 {illust.imageUrl && (
                   <img
                     src={illust.imageUrl}
-                    alt={illust.title}
+                    alt="Visual Thinking"
                     className="illust-image"
                   />
                 )}
@@ -239,6 +207,15 @@ export default function IllustIndexPage(props: Props) {
             </Link>
           ))}
         </div>
+
+        <p style={{ marginTop: "1rem" }}>
+          <Link
+            href={`/${props.lang}/vt/latest`}
+            style={{ color: "#0066cc", textDecoration: "underline" }}
+          >
+            {props.lang === "ja" ? "新着順で見る" : "View Latest First"}
+          </Link>
+        </p>
 
         <style jsx>{`
           .page {
@@ -345,7 +322,6 @@ export default function IllustIndexPage(props: Props) {
             display: grid;
             grid-template-columns: repeat(auto-fit, 184px);
             gap: 1rem;
-            justify-content: center;
             margin-top: 2rem;
           }
 
