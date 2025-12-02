@@ -41,14 +41,21 @@ for (const line of lines) {
 
 console.log(`Found ${pageNames.length} pages in add_new_vt.txt`);
 
-// Check for existing pages
+// Check for existing pages and skipped pages
 const existingPages = new Set(config.illusts.map(i => i.page_ja));
-const newPages = pageNames.filter(name => !existingPages.has(name));
+const skippedPagesSet = new Set(config.skipped || []);
+const newPages = pageNames.filter(name => !existingPages.has(name) && !skippedPagesSet.has(name));
 const duplicates = pageNames.filter(name => existingPages.has(name));
+const skippedFromList = pageNames.filter(name => skippedPagesSet.has(name));
 
 if (duplicates.length > 0) {
-  console.log(`\nSkipping ${duplicates.length} duplicate pages:`);
+  console.log(`\nSkipping ${duplicates.length} duplicate pages (already in illusts):`);
   duplicates.forEach(name => console.log(`  - ${name}`));
+}
+
+if (skippedFromList.length > 0) {
+  console.log(`\nSkipping ${skippedFromList.length} pages in skipped list:`);
+  skippedFromList.forEach(name => console.log(`  - ${name}`));
 }
 
 if (newPages.length === 0) {
