@@ -658,7 +658,7 @@ export default function IllustPage(props: Props) {
             background: white;
             padding: 2rem;
             border-radius: 12px;
-            max-width: 600px;
+            max-width: 900px;
             width: 90%;
             max-height: 80vh;
             overflow-y: auto;
@@ -695,6 +695,13 @@ export default function IllustPage(props: Props) {
             font-size: 1.05rem;
             margin-bottom: 2rem;
             white-space: pre-wrap;
+          }
+
+          .modal-description :global(img) {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1rem auto;
           }
 
           .modal-link {
