@@ -13,7 +13,7 @@
     "@progfay/scrapbox-parser": "^7.2.0",
     "gray-matter": "^4.0.3",
     "marked": "^17.0.0",
-    "next": "^15.5.6",
+    "next": "^15.5.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "remark": "^15.0.1",
