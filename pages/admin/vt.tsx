@@ -7,6 +7,7 @@ type ScanResult = {
   title: string;
   imageUrl: string;
   linkType?: "forward" | "backward" | "2hop";
+  status?: "registered" | "skipped" | "available";
 };
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -264,52 +265,64 @@ export default function AdminVTPage() {
         )}
 
         <div className="grid">
-          {filteredResults.map((result) => (
-            <div key={result.pageName} className="card">
-              <div className="card-checkbox">
-                <input
-                  type="checkbox"
-                  checked={selectedPages.has(result.pageName)}
-                  onChange={() => toggleSelection(result.pageName)}
-                />
-              </div>
-              <img src={result.imageUrl} alt={result.title} />
-              <div className="card-info">
-                <h3>
-                  <a
-                    href={`https://scrapbox.io/nishio/${encodeURIComponent(result.pageName)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="title-link"
-                  >
-                    {result.title}
-                  </a>
-                  {result.linkType && (
-                    <span className={`link-badge badge-${result.linkType}`}>
-                      {result.linkType === "forward" && "→"}
-                      {result.linkType === "backward" && "←"}
-                      {result.linkType === "2hop" && "↔"}
-                    </span>
-                  )}
-                </h3>
-                <p className="page-name">{result.pageName}</p>
-                <div className="card-actions">
-                  <button
-                    className="btn-add"
-                    onClick={() => handleAdd(result.pageName)}
-                  >
-                    Add
-                  </button>
-                  <button
-                    className="btn-skip"
-                    onClick={() => handleSkip(result.pageName)}
-                  >
-                    Skip
-                  </button>
+          {filteredResults.map((result) => {
+            const isDisabled = result.status === "registered" || result.status === "skipped";
+            return (
+              <div key={result.pageName} className={`card ${isDisabled ? "card-disabled" : ""}`}>
+                <div className="card-checkbox">
+                  <input
+                    type="checkbox"
+                    checked={selectedPages.has(result.pageName)}
+                    onChange={() => toggleSelection(result.pageName)}
+                    disabled={isDisabled}
+                  />
+                </div>
+                <img src={result.imageUrl} alt={result.title} />
+                <div className="card-info">
+                  <h3>
+                    <a
+                      href={`https://scrapbox.io/nishio/${encodeURIComponent(result.pageName)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="title-link"
+                    >
+                      {result.title}
+                    </a>
+                    {result.linkType && (
+                      <span className={`link-badge badge-${result.linkType}`}>
+                        {result.linkType === "forward" && "→"}
+                        {result.linkType === "backward" && "←"}
+                        {result.linkType === "2hop" && "↔"}
+                      </span>
+                    )}
+                    {result.status === "registered" && (
+                      <span className="status-badge status-registered">✓ Registered</span>
+                    )}
+                    {result.status === "skipped" && (
+                      <span className="status-badge status-skipped">Skipped</span>
+                    )}
+                  </h3>
+                  <p className="page-name">{result.pageName}</p>
+                  <div className="card-actions">
+                    <button
+                      className="btn-add"
+                      onClick={() => handleAdd(result.pageName)}
+                      disabled={isDisabled}
+                    >
+                      Add
+                    </button>
+                    <button
+                      className="btn-skip"
+                      onClick={() => handleSkip(result.pageName)}
+                      disabled={isDisabled}
+                    >
+                      Skip
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <style jsx>{`
@@ -461,6 +474,15 @@ export default function AdminVTPage() {
             position: relative;
           }
 
+          .card-disabled {
+            opacity: 0.5;
+            background-color: #f5f5f5;
+          }
+
+          .card-disabled img {
+            filter: grayscale(50%);
+          }
+
           .card-checkbox {
             position: absolute;
             top: 10px;
@@ -554,6 +576,25 @@ export default function AdminVTPage() {
           .badge-2hop {
             background-color: #fff3e0;
             color: #f57c00;
+          }
+
+          .status-badge {
+            display: inline-block;
+            margin-left: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+          }
+
+          .status-registered {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+          }
+
+          .status-skipped {
+            background-color: #fff3e0;
+            color: #e65100;
           }
         `}</style>
       </div>

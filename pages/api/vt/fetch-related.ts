@@ -8,6 +8,7 @@ type RelatedPage = {
   title: string;
   imageUrl: string;
   linkType: "forward" | "backward" | "2hop";
+  status?: "registered" | "skipped" | "available";
 };
 
 /**
@@ -61,21 +62,10 @@ export default async function handler(
     );
 
     // Extract 2-hop links
-    const links2hop = new Set<string>();
-    const linksLcToLinks: Record<string, string> = {};
-    Array.from(directLinks).forEach((link) => {
-      linksLcToLinks[link.toLowerCase()] = link;
-    });
-
-    (pageData.relatedPages?.links2hop || []).forEach((item: any) => {
-      if (item.linksLc) {
-        item.linksLc.forEach((linkLc: string) => {
-          if (linksLcToLinks[linkLc]) {
-            links2hop.add(linksLcToLinks[linkLc]);
-          }
-        });
-      }
-    });
+    // links2hop contains pages that are linked from 1-hop pages
+    const links2hop = new Set<string>(
+      (pageData.relatedPages?.links2hop || []).map((item: any) => item.title)
+    );
 
     // Categorize links
     const forelinks = new Set(
@@ -102,12 +92,21 @@ export default async function handler(
     // Get image URLs from markdown files
     const pagesDir = path.join(process.cwd(), "data", "ja", "pages");
     const results: RelatedPage[] = [];
+    const processedPages = new Set<string>(); // Track processed pages to avoid duplicates
 
     const processLinks = (links: Set<string>, linkType: RelatedPage["linkType"]) => {
       links.forEach((link) => {
-        // Skip already registered or skipped pages
-        if (registeredPages.has(link) || skippedPages.has(link)) {
+        // Skip if already processed (avoid duplicates)
+        if (processedPages.has(link)) {
           return;
+        }
+
+        // Determine status
+        let status: RelatedPage["status"] = "available";
+        if (registeredPages.has(link)) {
+          status = "registered";
+        } else if (skippedPages.has(link)) {
+          status = "skipped";
         }
 
         const filePath = path.join(pagesDir, `${link}.md`);
@@ -131,12 +130,14 @@ export default async function handler(
             title: data.title || link,
             imageUrl: imageMatch[1],
             linkType,
+            status,
           });
+          processedPages.add(link); // Mark as processed
         }
       });
     };
 
-    // Process all link types
+    // Process all link types (priority order: forward > backward > 2hop)
     processLinks(forelinks, "forward");
     processLinks(backlinks, "backward");
     processLinks(links2hopOnly, "2hop");
