@@ -1434,25 +1434,25 @@
     {
       "id": 100,
       "page_ja": "尖った人材のたとえ",
-      "page_en": null,
+      "page_en": "Metaphor of Sharp and Rounded Talent",
       "tags": []
     },
     {
       "id": 121,
       "page_ja": "尖ったところを伸ばす",
-      "page_en": null,
+      "page_en": "Nurturing Unique Strengths",
       "tags": []
     },
     {
       "id": 190,
       "page_ja": "スペシャリストとジェネラリスト",
-      "page_en": null,
+      "page_en": "Specialists and Generalists",
       "tags": []
     },
     {
       "id": 197,
       "page_ja": "大人が子供より優れているという思い込み",
-      "page_en": null,
+      "page_en": "The Misconception That Adults Are Superior to Children",
       "tags": []
     },
     {
@@ -1464,187 +1464,235 @@
     {
       "id": 205,
       "page_ja": "和で評価するとジェネラリストが選ばれる",
-      "page_en": null,
+      "page_en": "Generalists Chosen When Evaluated by Sum Scores",
       "tags": []
     },
     {
       "id": 208,
       "page_ja": "LLMとPluralityの関係",
-      "page_en": null,
+      "page_en": "The Relationship Between LLM and Plurality",
       "tags": []
     },
     {
       "id": 209,
       "page_ja": "人間はLLMの乗り物",
-      "page_en": null,
+      "page_en": "Humans as Vehicles for LLMs",
       "tags": []
     },
     {
       "id": 215,
       "page_ja": "LLMは専門家間のコミュニケーションを円滑にする",
-      "page_en": null,
+      "page_en": "LLM Facilitates Communication Among Experts",
       "tags": []
     },
     {
       "id": 217,
       "page_ja": "T型人材",
-      "page_en": null,
+      "page_en": "T-Shaped Professionals",
       "tags": []
     },
     {
       "id": 230,
       "page_ja": "専門性に閉じこもる人",
-      "page_en": null,
+      "page_en": "People Confining Themselves to Specialization",
       "tags": []
     },
     {
       "id": 235,
       "page_ja": "複数の分野をまたぐ人はコミュニケーションのハブになる",
-      "page_en": null,
+      "page_en": "People Bridging Multiple Fields Become Communication Hubs",
       "tags": []
     },
     {
       "id": 236,
       "page_ja": "ふたこぶの知識",
-      "page_en": null,
+      "page_en": "The Two-Humped Knowledge",
       "tags": []
     },
     {
       "id": 237,
       "page_ja": "会議出席代行",
-      "page_en": null,
+      "page_en": "Meeting Attendance Delegation with AI",
       "tags": []
     },
     {
       "id": 251,
       "page_ja": "湧き出しを発見した人が壁を立てることで差異が生まれる",
-      "page_en": null,
+      "page_en": "Differences Arise When Discoverers of Springs Build Walls",
       "tags": []
     },
     {
       "id": 252,
       "page_ja": "エントロピー増大の法則",
-      "page_en": null,
+      "page_en": "The Law of Increasing Entropy",
       "tags": []
     },
     {
       "id": 253,
       "page_ja": "AIが仲介するコミュニケーション",
-      "page_en": null,
+      "page_en": "AI-Mediated Communication",
       "tags": []
     },
     {
       "id": 254,
       "page_ja": "しゃべれるマニフェスト",
-      "page_en": null,
+      "page_en": "The Speakable Manifesto",
       "tags": []
     },
     {
       "id": 255,
       "page_ja": "2025年のブロードリスニング",
-      "page_en": null,
+      "page_en": "Broad Listening in 2025",
       "tags": []
     },
     {
       "id": 256,
       "page_ja": "ブロードリスニングの3種類のステークホルダー",
-      "page_en": null,
+      "page_en": "Three Types of Stakeholders in Broad Listening",
       "tags": []
     },
     {
       "id": 257,
       "page_ja": "知識交換の必要条件",
-      "page_en": null,
+      "page_en": "Necessary Conditions for Knowledge Exchange",
       "tags": []
     },
     {
       "id": 258,
       "page_ja": "リテラシーの霧",
-      "page_en": null,
+      "page_en": "The Fog of Literacy",
       "tags": []
     },
     {
       "id": 259,
       "page_ja": "頂上は狭い",
-      "page_en": null,
+      "page_en": "The Summit Is Narrow",
       "tags": []
     },
     {
       "id": 260,
       "page_ja": "賢い人はわかりやすく説明できる",
-      "page_en": null,
+      "page_en": "Wise People Can Explain Clearly",
       "tags": []
     },
     {
       "id": 261,
       "page_ja": "違う道の人とは知識交換できる",
-      "page_en": null,
+      "page_en": "Exchanging Knowledge with Those on Different Paths",
       "tags": []
     },
     {
       "id": 262,
       "page_ja": "専門性ブリッジ",
-      "page_en": null,
+      "page_en": "Bridging Specializations",
       "tags": []
     },
     {
       "id": 263,
       "page_ja": "思考の結節点2024-06-13",
-      "page_en": null,
+      "page_en": "Nodal Points of Thought 2024-06-13",
       "tags": []
     },
     {
       "id": 264,
       "page_ja": "網を広げる",
-      "page_en": null,
+      "page_en": "Casting a Wide Net",
       "tags": []
     },
     {
       "id": 265,
       "page_ja": "リソースの流れが価値を生む",
-      "page_en": null,
+      "page_en": "Resource Flow Creates Value",
       "tags": []
     },
     {
       "id": 266,
       "page_ja": "得意分野をかけ合わせてレアな人材になる",
-      "page_en": null,
+      "page_en": "Become a Unique Talent by Combining Specialties",
       "tags": []
     },
     {
       "id": 267,
       "page_ja": "たくさんの山を横断する存在",
-      "page_en": null,
+      "page_en": "Existence Traversing Many Mountains",
       "tags": []
     },
     {
       "id": 268,
       "page_ja": "シリアルマスタリーはバーベル戦略",
-      "page_en": null,
+      "page_en": "Serial Mastery as a Barbell Strategy",
       "tags": []
     },
     {
       "id": 269,
       "page_ja": "リテラシーの霧の奥に光が見える",
-      "page_en": null,
+      "page_en": "A Glimpse of Light Beyond the Fog of Literacy",
       "tags": []
     },
     {
       "id": 270,
       "page_ja": "なぜか去っていく",
-      "page_en": null,
+      "page_en": "Why They Leave for Some Reason",
       "tags": []
     },
     {
       "id": 271,
       "page_ja": "市場のマイナス",
-      "page_en": null,
+      "page_en": "The Negative of the Market",
       "tags": []
     },
     {
       "id": 272,
       "page_ja": "道の枝分かれと教え合いの関係",
-      "page_en": null,
+      "page_en": "The Relationship Between Path Branching and Mutual Teaching",
+      "tags": []
+    },
+    {
+      "id": 273,
+      "page_ja": "動かない人は障壁にも機会にも気づかない",
+      "page_en": "Those Who Don't Move Miss Barriers and Opportunities",
+      "tags": []
+    },
+    {
+      "id": 274,
+      "page_ja": "制約の形状を調べる",
+      "page_en": "Exploring the Shape of Constraints",
+      "tags": []
+    },
+    {
+      "id": 275,
+      "page_ja": "浅い探検と深い探検",
+      "page_en": "Shallow Exploration and Deep Exploration",
+      "tags": []
+    },
+    {
+      "id": 276,
+      "page_ja": "障害がなくなったことに気づかない",
+      "page_en": "Unnoticed Removal of Obstacles",
+      "tags": []
+    },
+    {
+      "id": 277,
+      "page_ja": "低きに流れて混雑する",
+      "page_en": "Flowing to the Low and Crowding",
+      "tags": []
+    },
+    {
+      "id": 278,
+      "page_ja": "進む先に壁があることは進まない理由にはならない",
+      "page_en": "A Wall Ahead Is Not a Reason to Stop Moving Forward",
+      "tags": []
+    },
+    {
+      "id": 279,
+      "page_ja": "進んで壁に当たって曲がる",
+      "page_en": "Advance, Hit a Wall, and Change Direction",
+      "tags": []
+    },
+    {
+      "id": 280,
+      "page_ja": "制約のゆるい成果を見下すのは滑稽",
+      "page_en": "Ridiculing Loose Constraints Is Absurd",
       "tags": []
     }
   ],
