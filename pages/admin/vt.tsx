@@ -196,10 +196,10 @@ export default function AdminVTPage() {
   return (
     <>
       <Head>
-        <title>Visual Thinking Admin - NISHIO Hirokazu</title>
+        <title>Visual Thought Museum Admin - NISHIO Hirokazu</title>
       </Head>
       <div className="admin-page">
-        <h1>Visual Thinking Admin</h1>
+        <h1>Visual Thought Museum Admin</h1>
 
         <div className="controls">
           <button onClick={handleScan} disabled={loading} className="scan-button">

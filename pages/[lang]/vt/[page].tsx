@@ -310,7 +310,7 @@ export default function IllustPage(props: Props) {
           </p>
           <p>
             <Link href={`/${props.lang}/vt`}>
-              Back to Visual Thinking list
+              Back to Visual Thought Museum list
             </Link>
           </p>
         </div>
@@ -341,22 +341,22 @@ export default function IllustPage(props: Props) {
 
         {/* OGP tags for social media - image-focused display */}
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Visual Thinking" />
+        <meta property="og:title" content="Visual Thought Museum" />
         <meta property="og:url" content={`https://mem.nhiro.org/${props.lang}/vt/${props.page}`} />
         {props.imageUrl && (
           <>
             <meta property="og:image" content={props.imageUrl} />
-            <meta property="og:image:alt" content="Visual Thinking" />
+            <meta property="og:image:alt" content="Visual Thought Museum" />
           </>
         )}
 
         {/* Twitter Card - large image display */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Visual Thinking" />
+        <meta name="twitter:title" content="Visual Thought Museum" />
         {props.imageUrl && (
           <>
             <meta name="twitter:image" content={props.imageUrl} />
-            <meta name="twitter:image:alt" content="Visual Thinking" />
+            <meta name="twitter:image:alt" content="Visual Thought Museum" />
           </>
         )}
       </Head>
@@ -366,7 +366,7 @@ export default function IllustPage(props: Props) {
         </Link>
         <span style={{ margin: "0 0.5em" }}> &gt; </span>
         <Link href={`/${props.lang}/vt`} id="to-top">
-          Visual Thinking
+          Visual Thought Museum
         </Link>
         {props.hasEnVersion && (
           <Link href={`/${otherLang}/vt/${props.page}`} className="header-util">
@@ -379,7 +379,7 @@ export default function IllustPage(props: Props) {
           <div className="illust-image-container">
             <img
               src={props.imageUrl}
-              alt="Visual Thinking"
+              alt="Visual Thought Museum"
               className="illust-image"
             />
           </div>
@@ -834,7 +834,7 @@ export default function IllustPage(props: Props) {
         `}</style>
       </div>
       <div className="footer">
-        (C)NISHIO Hirokazu / Visual Thinking
+        (C)NISHIO Hirokazu / Visual Thought Museum
         <br />
         Source:{" "}
         <a

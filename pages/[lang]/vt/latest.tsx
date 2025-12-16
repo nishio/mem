@@ -126,7 +126,7 @@ export default function IllustLatestPage(props: Props) {
   return (
     <>
       <Head>
-        <title>NISHIO Hirokazu - Visual Thinking (Latest)</title>
+        <title>NISHIO Hirokazu - Visual Thought Museum (Latest)</title>
       </Head>
       <div className="document-header">
         <Link href="/" id="to-top">
@@ -134,7 +134,7 @@ export default function IllustLatestPage(props: Props) {
         </Link>
         <span style={{ margin: "0 0.5em" }}> &gt; </span>
         <Link href={`/${props.lang}/vt`} id="to-top">
-          Visual Thinking
+          Visual Thought Museum
         </Link>
         <span style={{ margin: "0 0.5em" }}> &gt; </span>
         <span>Latest</span>
