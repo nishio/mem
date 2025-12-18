@@ -170,7 +170,8 @@ export default function IllustIndexPage(props: Props) {
   return (
     <>
       <Head>
-        <title>NISHIO Hirokazu - Visual Thought Museum</title>
+        <title>{props.lang === "ja" ? "NISHIO Hirokazu - ビジュアル思考ミュージアム" : "NISHIO Hirokazu - Visual Thought Museum"}</title>
+        <meta name="keywords" content={props.lang === "ja" ? "ビジュアルシンキング,ビジュアル思考,図解,Visual Thinking" : "Visual Thinking,Visual Thought,Illustration"} />
       </Head>
       <div className="document-header">
         <Link href="/" id="to-top">
@@ -178,7 +179,7 @@ export default function IllustIndexPage(props: Props) {
         </Link>
         <span style={{ margin: "0 0.5em" }}> &gt; </span>
         <Link href={`/${props.lang}/vt`} id="to-top">
-          Visual Thought Museum
+          {props.lang === "ja" ? "ビジュアル思考ミュージアム" : "Visual Thought Museum"}
         </Link>
         {/* <span className="header-util">
           [{props.lang === "ja" ? "日本語" : "English"}]
@@ -188,7 +189,7 @@ export default function IllustIndexPage(props: Props) {
         </Link>
       </div >
       <div className="page">
-        <h1>{props.lang === "ja" ? "ビジュアルシンキング" : "Visual Thought Museum"}</h1>
+        <h1>{props.lang === "ja" ? "ビジュアル思考ミュージアム" : "Visual Thought Museum"}</h1>
 
         <IntroSection lang={props.lang} />
 

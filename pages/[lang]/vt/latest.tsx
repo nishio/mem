@@ -126,7 +126,7 @@ export default function IllustLatestPage(props: Props) {
   return (
     <>
       <Head>
-        <title>NISHIO Hirokazu - Visual Thought Museum (Latest)</title>
+        <title>{props.lang === "ja" ? "NISHIO Hirokazu - ビジュアル思考ミュージアム（最新順）" : "NISHIO Hirokazu - Visual Thought Museum (Latest)"}</title>
       </Head>
       <div className="document-header">
         <Link href="/" id="to-top">
@@ -134,16 +134,16 @@ export default function IllustLatestPage(props: Props) {
         </Link>
         <span style={{ margin: "0 0.5em" }}> &gt; </span>
         <Link href={`/${props.lang}/vt`} id="to-top">
-          Visual Thought Museum
+          {props.lang === "ja" ? "ビジュアル思考ミュージアム" : "Visual Thought Museum"}
         </Link>
         <span style={{ margin: "0 0.5em" }}> &gt; </span>
-        <span>Latest</span>
+        <span>{props.lang === "ja" ? "最新順" : "Latest"}</span>
         <Link href={`/${otherLang}/vt/latest`} className="header-util">
           [{otherLang === "ja" ? "日本語" : "English"}]
         </Link>
       </div >
       <div className="page">
-        <h1>{props.lang === "ja" ? "イラスト一覧（最新順）" : "Illustrations (Latest)"}</h1>
+        <h1>{props.lang === "ja" ? "ビジュアル思考ミュージアム（最新順）" : "Visual Thought Museum (Latest)"}</h1>
 
         <div className="illust-grid">
           {props.illusts.map((illust) => (

@@ -310,7 +310,7 @@ export default function IllustPage(props: Props) {
           </p>
           <p>
             <Link href={`/${props.lang}/vt`}>
-              Back to Visual Thought Museum list
+              {props.lang === "ja" ? "ビジュアル思考ミュージアムに戻る" : "Back to Visual Thought Museum list"}
             </Link>
           </p>
         </div>
@@ -366,7 +366,7 @@ export default function IllustPage(props: Props) {
         </Link>
         <span style={{ margin: "0 0.5em" }}> &gt; </span>
         <Link href={`/${props.lang}/vt`} id="to-top">
-          Visual Thought Museum
+          {props.lang === "ja" ? "ビジュアル思考ミュージアム" : "Visual Thought Museum"}
         </Link>
         {props.hasEnVersion && (
           <Link href={`/${otherLang}/vt/${props.page}`} className="header-util">
