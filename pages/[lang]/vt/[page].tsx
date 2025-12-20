@@ -14,6 +14,7 @@ import {
   DirectVtLink,
   SharedRefGroup,
 } from "../../../utils/vt_graph";
+import { extractDescription } from "../../../utils/extractDescription";
 
 type IllustConfig = {
   illusts: Array<{
@@ -32,6 +33,7 @@ type VtLinkItem = {
 type Props = {
   title: string;
   content: string;
+  description: string;
   imageUrl: string | null;
   lang: string;
   page: string;
@@ -89,6 +91,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
       props: {
         title: page,
         content: "",
+        description: "",
         imageUrl: null,
         lang,
         page,
@@ -147,6 +150,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
       props: {
         title: pageName,
         content: "",
+        description: "",
         imageUrl: null,
         lang,
         page,
@@ -182,6 +186,9 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   // Read and parse markdown file for description and content (language-specific)
   const fileContent = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(fileContent);
+
+  // Extract description for AI/SEO (not shown to humans)
+  const description = extractDescription(content);
 
   // Process wiki-style links in full content (only if not noEnglishVersion)
   const processedContent = noEnglishVersion ? "" : processWikiLinks(content, lang);
@@ -262,6 +269,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
     props: {
       title: noEnglishVersion ? illustItem.page_ja : (data.title || pageName),
       content: htmlContent,
+      description,
       imageUrl,
       lang,
       page,
@@ -358,6 +366,37 @@ export default function IllustPage(props: Props) {
             <meta name="twitter:image" content={props.imageUrl} />
             <meta name="twitter:image:alt" content="Visual Thought Museum" />
           </>
+        )}
+
+        {/* Meta description for AI/SEO (not visible to humans, not in OGP cards) */}
+        {props.description && <meta name="description" content={props.description} />}
+
+        {/* Schema.org structured data for AI discoverability */}
+        {props.description && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "VisualArtwork",
+                "name": props.title,
+                "description": props.description,
+                "image": props.imageUrl,
+                "author": {
+                  "@type": "Person",
+                  "name": "NISHIO Hirokazu",
+                  "url": "https://mem.nhiro.org"
+                },
+                "inLanguage": props.lang,
+                "isPartOf": {
+                  "@type": "WebPage",
+                  "name": props.lang === "ja" ? "ビジュアル思考ミュージアム" : "Visual Thought Museum",
+                  "url": `https://mem.nhiro.org/${props.lang}/vt`
+                },
+                "url": `https://mem.nhiro.org/${props.lang}/vt/${props.page}`
+              })
+            }}
+          />
         )}
       </Head>
       <div className="document-header">
