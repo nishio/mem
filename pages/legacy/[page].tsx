@@ -8,6 +8,10 @@ import { TScrapboxPageJSON } from "../../utils/TScrapboxPageJSON";
 import { TPageProps } from "../../utils/TPageProps";
 import { RelatedPages } from "../../components/RelatedPages";
 
+// Pages are fetched from the Scrapbox API on first request and regenerated
+// at most once a day after that (only when the page is requested).
+const REVALIDATE_SECONDS = 60 * 60 * 24;
+
 export const getStaticProps: GetStaticProps<TPageProps> = async (ctx) => {
   const project = "nishio";
   const page = encodeURIComponent(ctx.params!!.page as string);
@@ -16,6 +20,22 @@ export const getStaticProps: GetStaticProps<TPageProps> = async (ctx) => {
   }
   const url = `https://scrapbox.io/api/pages/${project}/${page}`;
   const response = await fetch(url);
+
+  // The page does not exist on Scrapbox: return a real 404. The 404 is
+  // cached like a page and checked again at most once a day.
+  if (response.status === 404) {
+    return {
+      notFound: true,
+      revalidate: REVALIDATE_SECONDS,
+    };
+  }
+
+  // Other API errors: throw so that the error is not cached for a day.
+  // The last successfully generated page keeps being served meanwhile.
+  if (!response.ok) {
+    throw new Error(`Scrapbox API returned ${response.status} for ${url}`);
+  }
+
   const json: TScrapboxPageJSON = await response.json();
 
   // Handle case when page doesn't exist or API returns invalid data
@@ -35,7 +55,7 @@ export const getStaticProps: GetStaticProps<TPageProps> = async (ctx) => {
           relatedPages: { links1hop: [], links2hop: [] },
         },
       },
-      revalidate: 30,
+      revalidate: REVALIDATE_SECONDS,
     };
   }
 
@@ -50,7 +70,7 @@ export const getStaticProps: GetStaticProps<TPageProps> = async (ctx) => {
       page: ctx.params!!.page as string,
       json: json,
     },
-    revalidate: 30,
+    revalidate: REVALIDATE_SECONDS,
   };
 };
 

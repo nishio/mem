@@ -22,6 +22,9 @@ function processWikiLinks(markdown: string, lang: string): string {
   });
 }
 
+// The Markdown under data/ is cloned at build time and does not change until
+// the next deploy, so a page is generated on first request and never
+// regenerated (revalidate: false).
 export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const lang = ctx.params!!.lang as string;
   const page = ctx.params!!.page as string;
@@ -55,7 +58,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
         page,
         exists: false,
       },
-      revalidate: 30,
+      revalidate: false,
     };
   }
 
@@ -77,7 +80,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
       page,
       exists: true,
     },
-    revalidate: 30,
+    revalidate: false,
   };
 };
 
