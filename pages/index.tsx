@@ -24,7 +24,8 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
       exists: response.ok,
       json: json,
     },
-    revalidate: 30,
+    // Fetched from the Scrapbox API; regenerate at most once a day.
+    revalidate: 60 * 60 * 24,
   };
 };
 

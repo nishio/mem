@@ -67,6 +67,8 @@ function processWikiLinks(markdown: string, lang: string): string {
   });
 }
 
+// vt_config.json and the Markdown under data/ only change with a new deploy,
+// so the page is never regenerated (revalidate: false).
 export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const lang = ctx.params!!.lang as string;
   const page = ctx.params!!.page as string;
@@ -286,7 +288,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
       directVtLinks,
       sharedRefGroups,
     },
-    revalidate: 30,
+    revalidate: false,
   };
 };
 

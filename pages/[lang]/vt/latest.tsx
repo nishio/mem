@@ -33,6 +33,8 @@ function extractGyazoImage(markdown: string): string | null {
   return match ? match[1] : null;
 }
 
+// vt_config.json and the Markdown under data/ only change with a new deploy,
+// so the page is never regenerated (revalidate: false).
 export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
   const lang = ctx.params!!.lang as string;
 
@@ -109,7 +111,7 @@ export const getStaticProps: GetStaticProps<Props> = async (ctx) => {
       lang,
       illusts,
     },
-    revalidate: 30,
+    revalidate: false,
   };
 };
 
